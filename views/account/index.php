@@ -29,16 +29,16 @@ $this->params['breadcrumbs'][] = array(
     <h1><?= Html::encode($this->title) ?> (<?=$username?>)</h1>
 
     <ul id="ul-account-index" class="nav nav-tabs" role="tablist">
-        <li class="nav-item active">
-            <a class="nav-link" data-toggle="tab" href="#home" role="tab">Серверы</a>
+        <li id="servers_li" class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#servers_content" role="tab">Серверы</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Заказы</a>
+        <li id="orders_li" class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#orders_content" role="tab">Заказы</a>
         </li>
     </ul>
 
     <div class="tab-content">
-        <div class="tab-pane active" id="home" role="tabpanel">
+        <div class="tab-pane" id="servers_content" role="tabpanel">
             <div class="div-user-servers">
                 <h3>Предоставленные серверы</h3>
                 <?php
@@ -70,12 +70,11 @@ $this->params['breadcrumbs'][] = array(
             </div>
         </div>
 
-        <div class="tab-pane" id="profile" role="tabpanel">
+        <div class="tab-pane" id="orders_content" role="tabpanel">
             <div class="div-user-orders">
 
                 <h3>Мои заказы</h3>
                 <?php
-
                 $dataProvider = new ActiveDataProvider([
                     'query' => $orderQuery,
                     'sort' => false
@@ -116,6 +115,15 @@ $this->params['breadcrumbs'][] = array(
     </div>
 </div>
 
+<?
+// Определяем аткивную вкладку личного кабинета
+$active = 'servers';
+$request = Yii::$app->request;
+$active = ($request->get()[1]['active_li'] !== NULL) ? $request->get()[1]['active_li'] : 'servers';
+?>
+<script>
+    var active = "<?php echo $active?>";
+</script>
 <?
 // Регистрируем JS file
 $this->registerJSFile(Yii::$app->request->baseUrl.'/js/account-index.js',['depends' => [\yii\web\JqueryAsset::className()]]);

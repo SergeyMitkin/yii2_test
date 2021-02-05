@@ -33,10 +33,8 @@ class AccountController extends Controller
         // Если пришли по ссылке с заказа тарифа, добавляем заказ
         if ($rate_id != null){
 
-            // Событие при добавлении заказа
+            // Событие после добавления заказа
             Event::on(Orders::class, Orders::EVENT_AFTER_INSERT, function ($event){
-
-
 
                 $order_id = $event->sender->id;
                 $user = $event->sender->user;
@@ -57,9 +55,10 @@ class AccountController extends Controller
 
             });
 
+            // Добавляем заказ
             $model_orders->setOrder($rate_id, $user_id);
-            // событие
-            $this->redirect(['index']);
+            // Переходим на вкладку заказов
+            $this->redirect(['index', array('active_li' => 'orders')]);
         };
 
         $serverQuery = $model_servers->getServersByUserId($user_id);
