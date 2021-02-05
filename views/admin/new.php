@@ -117,6 +117,6 @@ Modal::begin([
 echo 'Модальное окно';
 
 Modal::end();
-//
+
 // Регистрируем JS file
 $this->registerJSFile(Yii::$app->request->baseUrl.'/js/admin-new.js',['depends' => [\yii\web\JqueryAsset::className()]]);
