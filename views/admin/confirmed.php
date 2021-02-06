@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = array(
                     'query' => $serverQuery,
                     'sort' => false
                 ]);
-
+                Pjax::begin();
                 echo GridView::widget([
                     'dataProvider' => $serverDataProvider,
                     'summary' => false,
@@ -77,6 +77,7 @@ $this->params['breadcrumbs'][] = array(
                         ],
                     ]
                 ]);
+                Pjax::end();
                 ?>
             </div>
         </div>
@@ -91,7 +92,7 @@ $this->params['breadcrumbs'][] = array(
                     'query' => $orderQuery,
                     'sort' => false
                 ]);
-
+                Pjax::begin();
                 echo GridView::widget([
                     'dataProvider' => $dataProvider,
                     'summary' => false,
@@ -114,6 +115,7 @@ $this->params['breadcrumbs'][] = array(
                         ],
                     ]
                 ]);
+                Pjax::end();
                 ?>
             </div>
         </div>
