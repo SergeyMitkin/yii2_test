@@ -29,6 +29,7 @@ class m210206_212241_add_position_order_id_to_servers_table extends Migration
      */
     public function safeDown()
     {
+        $this->dropForeignKey('fk_servers_orders', 'servers');
         $this->dropColumn('servers', 'order_id');
     }
 
