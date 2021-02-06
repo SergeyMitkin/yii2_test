@@ -100,6 +100,18 @@ Modal::begin([
 echo 'Модальное окно';
 
 Modal::end();
+?>
 
+<script>
+    var is_guest = "<? //php echo 'guest';
+        if(Yii::$app->user->isGuest){
+            echo 'guest';
+        }else{
+            echo 'authorized';
+        }
+    ?>"
+</script>
+
+<?
 // Регистрируем JS file
 $this->registerJSFile(Yii::$app->request->baseUrl.'/js/index.js',['depends' => [\yii\web\JqueryAsset::className()]]);
