@@ -61,7 +61,7 @@ class Servers extends \yii\db\ActiveRecord
 
     public function getServersWithRates(){
         $orderQuery = (new Query())
-            ->select('servers.id, servers.date, rates.name AS Rate, user.email')
+            ->select('servers.id, servers.date, servers.order_id, rates.name AS Rate, user.email')
             ->from('yii_test.servers')
             ->join('LEFT JOIN', 'user', 'user.id = servers.user_id')
             ->join('LEFT JOIN', 'rates', 'rates.id = servers.rate_id');
@@ -81,10 +81,11 @@ class Servers extends \yii\db\ActiveRecord
     }
 
     // Создаём запись о сервере
-    public function setServer($rate_id, $user_id)
+    public function setServer($rate_id, $user_id, $order_id)
     {
         $this->rate_id = $rate_id;
         $this->user_id = $user_id;
+        $this->order_id = $order_id;
         $this->save();
     }
 }

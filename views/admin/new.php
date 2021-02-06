@@ -96,7 +96,7 @@ $this->params['breadcrumbs'][] = array(
     Pjax::end();
     ?>
 </div>
-//
+
 <?php
 // Модальное окно принятия заказа
 Modal::begin([

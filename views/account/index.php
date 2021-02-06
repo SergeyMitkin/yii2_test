@@ -19,10 +19,6 @@ $this->params['breadcrumbs'][] = array(
     'label'=> $this->title,
     'url'=>Url::toRoute('account/index')
 );
-$this->params['breadcrumbs'][] = array(
-    'label'=> 'Тарифы',
-    'url'=>Url::toRoute('account/rates')
-);
 
 ?>
 <div class="account-index">

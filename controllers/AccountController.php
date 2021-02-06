@@ -14,7 +14,6 @@ use yii\web\Controller;
 use app\models\tables\Orders;
 use app\models\Email;
 use yii\base\Event;
-// use app\models\tables\Rates;
 
 class AccountController extends Controller
 {
@@ -71,16 +70,4 @@ class AccountController extends Controller
             'model_orders' => $model_orders,
         ]);
     }
-
-    // Страница с тарифами
-    /*
-    public function actionRates()
-    {
-        $model = new Rates();
-        return $this->render('rates', [
-            'title' => 'Тарифы',
-            'model' => $model
-        ]);
-    }
-    */
 }

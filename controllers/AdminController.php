@@ -51,7 +51,7 @@ class AdminController extends Controller
                 $user_id = $order->user_id;
                 $rate_id = $order->rate_id;
 
-                $model_servers->setServer($rate_id, $user_id);
+                $model_servers->setServer($rate_id, $user_id, $order_id);
             }
 
         };

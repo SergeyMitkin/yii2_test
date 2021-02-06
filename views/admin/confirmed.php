@@ -60,6 +60,10 @@ $this->params['breadcrumbs'][] = array(
                         ],
                         'id',
                         [
+                            'attribute' => 'order_id',
+                            'label' => 'Id заказа'
+                        ],
+                        [
                             'attribute' => 'email',
                             'label' => 'Email пользователя'
                         ],
