@@ -33,22 +33,20 @@ $this->title = 'Аренда выделеных серверов';
                     'dataProvider' => $dataProvider,
                     'summary' => false,
                     'showHeader'=> false,
-
                     'tableOptions' => [
-                        'class' => 'table table-inverse table-sm'
+                        'class' => 'table table-inverse'
                     ],
-                    /*
-                    'headerRowOptions' => [
-                        'class' => 'header-row'
-                    ],
-                    */
                     'rowOptions' => [
                         'class' => 'rates-row',
                     ],
-
                     'columns' => [
-
-                        'name',
+                        [
+                            'attribute' => 'name',
+                            'format' => 'html',
+                            'value' => function($model){
+                                return Html::tag('span', $model->name, ['class' => 'rate-name-td']);
+                            }
+                        ],
                         [
                             'attribute' => 'price',
                             'value'=> function($model){
