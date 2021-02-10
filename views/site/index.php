@@ -15,68 +15,82 @@ $this->title = 'Аренда выделеных серверов';
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Аренда выделенных серверов</h1>
+        <h1>АРЕНДА ВЫДЕЛЕННЫХ СЕРВЕРОВ</h1>
     </div>
 
     <div class="body-content">
         <h1>Выберите тариф</h1>
-    </div>
 
-    <div class="rate-rates">
-        <?php
-        $dataProvider = new ActiveDataProvider([
-            'query' => $model::find(),
-            'sort' => false
-        ]);
-
-        Pjax::begin();
-            echo GridView::widget([
-                'dataProvider' => $dataProvider,
-                'summary' => false,
-                'columns' => [
-                    ['class' => 'yii\grid\SerialColumn'],
-                    'name',
-                    [
-                        'attribute' => 'price',
-                        'value'=> function($model){
-                            return $model->price . ' $';
-                        }
-                    ],
-                    [
-                        'class' => 'yii\grid\ActionColumn',
-                        'template' => '{order}',
-                        'buttons' => [
-                            'order' => function ($url, $model, $key) {
-
-                                $iconName = "shopping-cart";
-                                $id = 'order-icon_'.$key;
-
-                                // Стилизация кнопки
-                                $icon = Html::tag('span', '', ['class' => "glyphicon glyphicon-$iconName"]);
-
-                                // При нажатии переходим на страницу выделенных серверов пользователя
-                                $url = Url::toRoute(['account/index', 'id' => $key]);
-
-                                $options = [
-                                    'title' => 'Заказать',
-                                    'aria-label' => 'Заказать',
-                                    'class' => 'rate-order-buttons',
-                                    'id' => $id,
-                                    'data-rate-id' => $key,
-                                    'data-price' => $model->price,
-                                    'data-url' => $url,
-                                    'data-toggle' => 'modal',
-                                    'data-target' => '#rate-order-modal',
-                                ];
-
-                                return Html::a($icon, $url, $options);
-                            },
-                        ],
-                    ],
-                ]
+        <div class="rate-rates">
+            <?php
+            $dataProvider = new ActiveDataProvider([
+                'query' => $model::find(),
+                'sort' => false
             ]);
-        Pjax::end();
-        ?>
+
+            Pjax::begin();
+                echo GridView::widget([
+                    'dataProvider' => $dataProvider,
+                    'summary' => false,
+                    'showHeader'=> false,
+
+                    'tableOptions' => [
+                        'class' => 'table table-inverse table-sm'
+                    ],
+                    /*
+                    'headerRowOptions' => [
+                        'class' => 'header-row'
+                    ],
+                    */
+                    'rowOptions' => [
+                        'class' => 'rates-row',
+                    ],
+
+                    'columns' => [
+
+                        'name',
+                        [
+                            'attribute' => 'price',
+                            'value'=> function($model){
+                                return $model->price . ' $';
+                            }
+                        ],
+                        [
+                            'class' => 'yii\grid\ActionColumn',
+                            'template' => '{order}',
+                            'buttons' => [
+                                'order' => function ($url, $model, $key) {
+
+                                    $iconName = "shopping-cart";
+                                    $id = 'order-icon_'.$key;
+
+                                    // Стилизация кнопки
+                                    $icon = Html::tag('span', '', ['class' => "glyphicon glyphicon-$iconName"]);
+
+                                    // При нажатии переходим на страницу выделенных серверов пользователя
+                                    $url = Url::toRoute(['account/index', 'id' => $key]);
+
+                                    $options = [
+                                        'title' => 'Заказать',
+                                        'aria-label' => 'Заказать',
+                                        'class' => 'rate-order-buttons',
+                                        'id' => $id,
+                                        'data-rate-id' => $key,
+                                        'data-price' => $model->price,
+                                        'data-url' => $url,
+                                        'data-toggle' => 'modal',
+                                        'data-target' => '#rate-order-modal',
+                                    ];
+
+                                    return Html::a($icon, $url, $options);
+                                },
+                            ],
+                        ],
+                    ]
+                ]);
+            Pjax::end();
+            ?>
+        </div>
     </div>
 </div>
 

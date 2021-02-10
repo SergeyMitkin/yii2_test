@@ -13,9 +13,9 @@ class m201019_035629_rates extends Migration
      */
     public function safeUp()
     {
-        $this->insert($this->table, array('name'=>'Тариф1','price'=>'1'));
-        $this->insert($this->table, array('name'=>'Тариф2','price'=>'2'));
-        $this->insert($this->table, array('name'=>'Тариф3','price'=>'3'));
+        $this->insert($this->table, array('name'=>'Тариф 1','price'=>'1'));
+        $this->insert($this->table, array('name'=>'Тариф 2','price'=>'2'));
+        $this->insert($this->table, array('name'=>'Тариф 3','price'=>'3'));
 
     }
 
