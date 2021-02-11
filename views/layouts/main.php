@@ -77,8 +77,10 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p>Изображение <a href="https://pixabay.com/ru/users/bsdrouin-5016447/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2402637">Bethany Drouin</a> с сайта <a href="https://pixabay.com/ru/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2402637">Pixabay</a></p>
-        <p>&copy; My Company <?= date('Y') ?></p>
+        <div class="pull-left">
+            <p>Изображение <a href="https://pixabay.com/ru/users/bsdrouin-5016447/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2402637">Bethany Drouin</a> с сайта <a href="https://pixabay.com/ru/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2402637">Pixabay</a></p>
+            <p>&copy; My Company <?= date('Y') ?></p>
+        </div>
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
