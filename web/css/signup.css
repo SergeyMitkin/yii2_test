@@ -1,0 +1,27 @@
+.site-signup h1{
+    color: #f5f5f5;
+}
+
+.fill-form-request{
+    color: #f5f5f5;
+    background-color: rgb(34,34,34);
+    padding: 10px;
+    margin-left: -10px;
+    border-radius: 5px;
+}
+
+.control-label{
+    color: yellow;
+}
+
+.has-error .control-label{
+    color: red;
+}
+
+.has-success .control-label{
+    color: #00e600;
+}
+
+.has-error .help-block-error{
+    color: red;
+}
