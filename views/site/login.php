@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-login">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p><span class="fill-form-request">Пожалуйста, заполните поля, чтобы авторизоваться:</span></p>
+    <p><span class="fill-form-request">Заполните поля, чтобы авторизоваться:</span></p>
 
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',
