@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 use yii\bootstrap\Modal;
 
 // Регистрируем CSS file
-$this->registerCssFile('css/admin-new.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
+$this->registerCssFile('css/site-index.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
 
 /* @var $this yii\web\View */
 $this->title = 'Аренда выделеных серверов';

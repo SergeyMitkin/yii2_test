@@ -14,6 +14,9 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\Pjax;
 
+// Регистрируем CSS file
+$this->registerCssFile('css/account-index.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
+
 $this->title = 'Личный кабинет';
 $this->params['breadcrumbs'][] = array(
     'label'=> $this->title,
