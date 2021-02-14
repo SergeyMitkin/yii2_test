@@ -15,7 +15,7 @@ body {
 }
 
 .footer {
-    height: 90px;
+    height: 110px;
     background-color: #f5f5f5;
     border-top: 1px solid #ddd;
     padding-top: 20px;
@@ -45,20 +45,6 @@ body {
 .rates-row{
     color: #f5f5f5;
     font-size: 21px;
-}
-
-table{
-    margin-bottom: 50%;
-}
-
-table tbody tr:nth-of-type(odd){
-    color: #0a0a0a;
-    background-color: yellow;
-}
-
-table tbody tr:nth-of-type(even) td{
-   padding-top: 15px;
-   padding-bottom: 15px;
 }
 
 .rate-name-td{

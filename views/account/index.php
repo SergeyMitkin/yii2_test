@@ -45,9 +45,13 @@ $this->params['breadcrumbs'][] = array(
                     'query' => $serverQuery,
                     'sort' => false
                 ]);
+
+                // echo $this->render('_search', ['model' => $searchModel]);
+
                 Pjax::begin();
                 echo GridView::widget([
-                    'dataProvider' => $serverDataProvider,
+                    'dataProvider' => $dataProvider,
+                    'filterModel' => $searchModel,
                     'summary' => false,
                     'columns' => [
                         [
@@ -56,7 +60,7 @@ $this->params['breadcrumbs'][] = array(
                         'id',
                         [
                             'attribute' => 'Rate',
-                            'label' => 'Тариф'
+                            'label' => 'Тариф',
                         ],
                         [
                             'attribute' => 'date',

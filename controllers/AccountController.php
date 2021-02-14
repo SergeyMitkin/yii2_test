@@ -9,14 +9,33 @@
 namespace app\controllers;
 
 use app\models\tables\Servers;
+use app\models\filters\ServersFilter;
 use Yii;
 use yii\web\Controller;
 use app\models\tables\Orders;
 use app\models\Email;
 use yii\base\Event;
+use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
 
 class AccountController extends Controller
 {
+
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
+    }
+
 
     // Главная страница личного кабинета
     public function actionIndex()
@@ -60,12 +79,20 @@ class AccountController extends Controller
             $this->redirect(['index', array('active_li' => 'orders')]);
         };
 
+        $searchModel = new ServersFilter();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $user_id);
+
+
         $serverQuery = $model_servers->getServersByUserId($user_id);
+
+
         $orderQuery = $model_orders->getOrdersByUserId($user_id);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
             'username' => $username,
-            'serverQuery' => $serverQuery,
+            // 'serverQuery' => $serverQuery,
             'orderQuery' => $orderQuery,
             'model_orders' => $model_orders,
         ]);

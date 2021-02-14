@@ -1,0 +1,78 @@
+<?php
+
+namespace app\models\filters;
+
+use yii\base\Model;
+use yii\data\ActiveDataProvider;
+use app\models\tables\Servers;
+
+/**
+ * ServersFilter represents the model behind the search form of `app\models\tables\Servers`.
+ */
+class ServersFilter extends Servers
+{
+    /**
+     * {@inheritdoc}
+     */
+    public function rules()
+    {
+        return [
+            [['id'], 'integer'],
+            //[['id', 'rate_id', 'user_id', 'order_id'], 'integer'],
+            [['date'], 'safe'],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function scenarios()
+    {
+        // bypass scenarios() implementation in the parent class
+        return Model::scenarios();
+    }
+
+    /**
+     * Creates data provider instance with search query applied
+     *
+     * @param array $params
+     *
+     * @return ActiveDataProvider
+     */
+    public function search($params, $user_id)
+    {
+
+        $query = Servers::find()
+           // ->where(['user_id' => $user_id])
+           // ->all();
+        ;
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'rate_id' => $this->rate_id,
+            'user_id' => $this->user_id,
+            'date' => $this->date,
+            'order_id' => $this->order_id,
+        ]);
+
+        // Выводим заказы только для авторизованного пользователя
+        $query->andFilterWhere(['user_id' => $user_id]);
+
+        return $dataProvider;
+    }
+}

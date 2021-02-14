@@ -7,3 +7,17 @@
     margin-left: 10px;
     margin-right: 10px;
 }
+
+table{
+    margin-bottom: 50%;
+}
+
+table tbody tr:nth-of-type(odd){
+    color: #0a0a0a;
+    background-color: yellow;
+}
+
+table tbody tr:nth-of-type(even) td{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
