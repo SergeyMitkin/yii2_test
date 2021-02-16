@@ -82,9 +82,7 @@ class AccountController extends Controller
         $searchModel = new ServersFilter();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $user_id);
 
-
-        $serverQuery = $model_servers->getServersByUserId($user_id);
-
+       // $serverQuery = $model_servers->getServersByUserId($user_id);
 
         $orderQuery = $model_orders->getOrdersByUserId($user_id);
 

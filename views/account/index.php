@@ -41,10 +41,12 @@ $this->params['breadcrumbs'][] = array(
             <div class="div-user-servers">
                 <h3>Предоставленные серверы</h3>
                 <?php
+                /*
                 $serverDataProvider = new ActiveDataProvider([
                     'query' => $serverQuery,
                     'sort' => false
                 ]);
+                */
 
                 // echo $this->render('_search', ['model' => $searchModel]);
 
@@ -59,8 +61,12 @@ $this->params['breadcrumbs'][] = array(
                         ],
                         'id',
                         [
-                            'attribute' => 'Rate',
+                            'attribute' => 'rate_name',
                             'label' => 'Тариф',
+                            'filter' => [ "1"=>"Тариф 1", "2"=>"Тариф 2", "3"=>"Тариф 3" ],
+                            'value' => function($model){
+                                return $model->rate->name;
+                            }
                         ],
                         [
                             'attribute' => 'date',
