@@ -15,8 +15,7 @@ use yii\base\Event;
 use yii\web\Controller;
 use Yii;
 use app\models\filters\AdminOrdersFilter;
-use app\models\filters\AccountServersFilter;
-use yii\helpers\Url;
+use app\models\filters\AdminServersFilter;
 
 class AdminController extends Controller
 {
@@ -69,22 +68,17 @@ class AdminController extends Controller
     // Страница принятых заказов
     public function actionConfirmed(){
 
-        $modal_servers = new Servers();
-        $model_orders = new Orders();
+        $serversSearchModel = new AdminServersFilter();
+        $serversDataProvider = $serversSearchModel->search(Yii::$app->request->queryParams);
 
         $ordersSearchModel = new AdminOrdersFilter();
         $ordersDataProvider = $ordersSearchModel->search(Yii::$app->request->queryParams);
 
-
-        $serverQuery = $modal_servers->getServersWithRates();
-        // $orderQuery = $model_orders->getConfirmedOrders();
-
         return $this->render('confirmed', [
-            'serverQuery' => $serverQuery,
+            'serversSearchModel' => $serversSearchModel,
+            'serversDataProvider' => $serversDataProvider,
             'ordersSearchModel' => $ordersSearchModel,
             'ordersDataProvider' => $ordersDataProvider,
-            // 'orderQuery' => $orderQuery,
-            'model_orders' => $model_orders,
         ]);
     }
 }

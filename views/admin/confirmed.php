@@ -46,34 +46,60 @@ $this->params['breadcrumbs'][] = array(
             <div class="div-admin-servers">
                 <h1>Предоставленные Серверы</h1>
                 <?php
+                /*
                 $serverDataProvider = new ActiveDataProvider([
                     'query' => $serverQuery,
                     'sort' => false
                 ]);
+                */
                 Pjax::begin();
                 echo GridView::widget([
-                    'dataProvider' => $serverDataProvider,
+                    'dataProvider' => $serversDataProvider,
+                    'filterModel' => $serversSearchModel,
                     'summary' => false,
                     'columns' => [
                         [
                             'class' => 'yii\grid\SerialColumn',
                         ],
-                        'id',
+                        [
+                            'attribute' => 'id',
+                            'label' => 'Id сервера'
+                        ],
                         [
                             'attribute' => 'order_id',
-                            'label' => 'Id заказа'
+                            'label' => 'Id заказа',
+                            'value' => function($model){
+                                return $model->order->id;
+                            }
                         ],
                         [
-                            'attribute' => 'email',
-                            'label' => 'Email пользователя'
+                            'attribute' => 'user_email',
+                            'label' => 'Email пользователя',
+                            'value' => function($model){
+                                return $model->user->email;
+                            }
                         ],
                         [
-                            'attribute' => 'Rate',
-                            'label' => 'Тариф'
+                            'attribute' => 'rate_name',
+                            'label' => 'Тариф',
+                            'filter' => [ "1"=>"Тариф 1", "2"=>"Тариф 2", "3"=>"Тариф 3" ],
+                            'value' => function($model){
+                                return $model->rate->name;
+                            }
                         ],
                         [
                             'attribute' => 'date',
-                            'label' => 'Дата и время'
+                            'label' => 'Дата и время',
+                            'value' => 'date',
+                            'format' => 'raw',
+                            'filter' => DatePicker::widget([
+                                'model' => $ordersSearchModel,
+                                'attribute' => 'date',
+                                'clientOptions' => [
+                                    'autoclose' => true,
+                                    'format' => 'yyyy-mm-dd'
+                                ]
+                            ])
                         ],
                     ]
                 ]);
@@ -115,6 +141,7 @@ $this->params['breadcrumbs'][] = array(
                         ],
                         [
                             'attribute' => 'date',
+                            'label' => 'Дата и время',
                             'value' => 'date',
                             'format' => 'raw',
                             'filter' => DatePicker::widget([

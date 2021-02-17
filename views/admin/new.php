@@ -61,6 +61,7 @@ $this->params['breadcrumbs'][] = array(
             ],
             [
                 'attribute' => 'date',
+                'label' => 'Дата и время',
                 'value' => 'date',
                 'format' => 'raw',
                 'filter' => DatePicker::widget([

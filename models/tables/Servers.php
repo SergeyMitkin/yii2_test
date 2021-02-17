@@ -44,6 +44,7 @@ class Servers extends \yii\db\ActiveRecord
             'id' => 'ID',
             'rate_id' => 'Rate ID',
             'user_id' => 'User ID',
+            'date' => 'Дата и время'
         ];
     }
 
@@ -57,16 +58,14 @@ class Servers extends \yii\db\ActiveRecord
         return $this->hasOne(Rates::className(), ['id' => 'rate_id']);
     }
 
-    // Получаем все серверы с таблицей тарифов
+    public function getOrder()
+    {
+        return $this->hasOne(Orders::className(), ['id' => 'order_id']);
+    }
 
-    public function getServersWithRates(){
-        $orderQuery = (new Query())
-            ->select('servers.id, servers.date, servers.order_id, rates.name AS Rate, user.email')
-            ->from('yii_test.servers')
-            ->join('LEFT JOIN', 'user', 'user.id = servers.user_id')
-            ->join('LEFT JOIN', 'rates', 'rates.id = servers.rate_id');
-
-        return $orderQuery;
+    public function getUser()
+    {
+        return $this->hasOne(Users::className(), ['id' => 'user_id']);
     }
 
     // Создаём запись о сервере

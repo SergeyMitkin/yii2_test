@@ -46,7 +46,7 @@ class Orders extends \yii\db\ActiveRecord
             'id' => 'ID',
             'rate_id' => 'Rate ID',
             'user_id' => 'User ID',
-            'date' => 'Дата',
+            'date' => 'Дата и время',
             'status' => 'Статус',
         ];
     }
