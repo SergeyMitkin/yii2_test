@@ -70,17 +70,6 @@ class Orders extends \yii\db\ActiveRecord
         }
     }
 
-    // Получаем заказы для пользователя
-    public function getOrdersByUserId($user_id){
-        $orderQuery = (new Query())
-            ->select('orders.id, rates.name AS Rate, date, status')
-            ->from('yii_test.orders')
-            ->join('LEFT JOIN', 'rates', 'rates.id = orders.rate_id')
-            ->where("user_id = $user_id");
-
-        return $orderQuery;
-    }
-
     // Получаем новые заказы
     public function getNewOrders(){
         $orderQuery = (new Query())

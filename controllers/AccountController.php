@@ -8,6 +8,7 @@
 
 namespace app\controllers;
 
+use app\models\filters\OrdersFilter;
 use app\models\tables\Servers;
 use app\models\filters\ServersFilter;
 use Yii;
@@ -40,7 +41,6 @@ class AccountController extends Controller
     // Главная страница личного кабинета
     public function actionIndex()
     {
-        $model_servers = new Servers();
         $model_orders = new Orders();
 
         $request = Yii::$app->request;
@@ -82,13 +82,15 @@ class AccountController extends Controller
         $serversSearchModel = new ServersFilter();
         $serversDataProvider = $serversSearchModel->search(Yii::$app->request->queryParams, $user_id);
 
-        $orderQuery = $model_orders->getOrdersByUserId($user_id);
+        $ordersSearchModel = new OrdersFilter();
+        $ordersDataProvider = $ordersSearchModel->search(Yii::$app->request->queryParams, $user_id);
 
         return $this->render('index', [
             'serversSearchModel' => $serversSearchModel,
             'serversDataProvider' => $serversDataProvider,
+            'ordersSearchModel' => $ordersSearchModel,
+            'ordersDataProvider' => $ordersDataProvider,
             'username' => $username,
-            'orderQuery' => $orderQuery,
             'model_orders' => $model_orders,
         ]);
     }

@@ -9,7 +9,6 @@
 /* @var $this yii\web\View */
 
 use yii\grid\GridView;
-use yii\data\ActiveDataProvider;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\Pjax;
@@ -22,7 +21,6 @@ $this->params['breadcrumbs'][] = array(
     'label'=> $this->title,
     'url'=>Url::toRoute('account/index')
 );
-
 ?>
 <div class="account-index">
     <h1><?= Html::encode($this->title) ?> (<?=$username?>)</h1>
@@ -41,7 +39,6 @@ $this->params['breadcrumbs'][] = array(
             <div class="div-user-servers">
                 <h3>Предоставленные серверы</h3>
                 <?php
-
                 Pjax::begin();
                 echo GridView::widget([
                     'dataProvider' => $serversDataProvider,
@@ -76,14 +73,10 @@ $this->params['breadcrumbs'][] = array(
 
                 <h3>Мои заказы</h3>
                 <?php
-                $dataProvider = new ActiveDataProvider([
-                    'query' => $orderQuery,
-                    'sort' => false
-                ]);
-
                 Pjax::begin();
                 echo GridView::widget([
-                    'dataProvider' => $dataProvider,
+                    'dataProvider' => $ordersDataProvider,
+                    'filterModel' => $ordersSearchModel,
                     'summary' => false,
                     'columns' => [
                         [
@@ -91,8 +84,12 @@ $this->params['breadcrumbs'][] = array(
                         ],
                         'id',
                         [
-                            'attribute' => 'Rate',
-                            'label' => 'Тариф'
+                            'attribute' => 'rate_name',
+                            'label' => 'Тариф',
+                            'filter' => [ "1"=>"Тариф 1", "2"=>"Тариф 2", "3"=>"Тариф 3" ],
+                            'value' => function($model){
+                                return $model->rate->name;
+                            }
                         ],
                         [
                             'attribute' => 'date',
@@ -101,9 +98,10 @@ $this->params['breadcrumbs'][] = array(
                         [
                             'attribute' => 'status',
                             'label' => 'Статус',
+                            'filter' => [ "0"=>"Новый", "1"=>"Подтверждён"],
                             // Вывадим статус заказа
-                            'value' => function($model_orders){
-                                $status_name = ($model_orders['status'] == 0) ? 'Новый' : 'Подтверждён';
+                            'value' => function($model){
+                                $status_name = ($model['status'] == 0) ? 'Новый' : 'Подтверждён';
                                 return $status_name;
                             }
                         ]

@@ -69,17 +69,6 @@ class Servers extends \yii\db\ActiveRecord
         return $orderQuery;
     }
 
-    // Получаем серверы для пользователя
-    public function getServersByUserId($user_id){
-        $serverQuery = (new Query())
-            ->select('servers.id, servers.date, rates.name AS Rate')
-            ->from('yii_test.servers')
-            ->join('LEFT JOIN', 'rates', 'rates.id = servers.rate_id')
-            ->where("user_id = $user_id");
-
-        return $serverQuery;
-    }
-
     // Создаём запись о сервере
     public function setServer($rate_id, $user_id, $order_id)
     {
