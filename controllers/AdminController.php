@@ -16,6 +16,7 @@ use yii\web\Controller;
 use Yii;
 use app\models\filters\AdminOrdersFilter;
 use app\models\filters\AccountServersFilter;
+use yii\helpers\Url;
 
 class AdminController extends Controller
 {
@@ -71,12 +72,18 @@ class AdminController extends Controller
         $modal_servers = new Servers();
         $model_orders = new Orders();
 
+        $ordersSearchModel = new AdminOrdersFilter();
+        $ordersDataProvider = $ordersSearchModel->search(Yii::$app->request->queryParams);
+
+
         $serverQuery = $modal_servers->getServersWithRates();
-        $orderQuery = $model_orders->getConfirmedOrders();
+        // $orderQuery = $model_orders->getConfirmedOrders();
 
         return $this->render('confirmed', [
             'serverQuery' => $serverQuery,
-            'orderQuery' => $orderQuery,
+            'ordersSearchModel' => $ordersSearchModel,
+            'ordersDataProvider' => $ordersDataProvider,
+            // 'orderQuery' => $orderQuery,
             'model_orders' => $model_orders,
         ]);
     }

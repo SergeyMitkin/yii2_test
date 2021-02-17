@@ -7,6 +7,7 @@ use app\models\User;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\tables\Orders;
+use Yii;
 
 /**
  * AccountServersFilter represents the model behind the search form of `app\models\tables\Servers`.
@@ -48,8 +49,8 @@ class AdminOrdersFilter extends Orders
         $query = Orders::find();
         $query->joinWith(['rate']);
         $query->joinWith(['user']);
-        // add conditions that should always apply here
 
+        // add conditions that should always apply here
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
@@ -78,8 +79,13 @@ class AdminOrdersFilter extends Orders
         ])
             ->andFilterWhere(['like', 'date', $this->date])
             ->andFilterWhere(['like', Rates::tableName().'.name', $this->rate_name])
-            ->andFilterWhere(['like', User::tableName().'.email', $this->user_email])
-            ->andFilterWhere(['status' => 0]); // Выводим заказы только новые заказы
+            ->andFilterWhere(['like', User::tableName().'.email', $this->user_email]);
+
+            if ($params['r'] === 'admin/new'){
+               $query ->andFilterWhere(['status' => 0]); // Выводим заказы только новые заказы
+            } else if ($params['r'] === 'admin/confirmed'){
+                $query ->andFilterWhere(['status' => 1]); // Выводим заказы только принятые
+            }
 
         return $dataProvider;
     }

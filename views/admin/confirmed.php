@@ -14,7 +14,7 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\Pjax;
-use yii\bootstrap\Modal;
+use dosamigos\datepicker\DatePicker; // Подключаем виджет для фильтра по дате
 
 $this->title = 'Подтверждённые Заказы';
 $this->params['breadcrumbs'][] = array(
@@ -88,13 +88,10 @@ $this->params['breadcrumbs'][] = array(
                 <h1><?= Html::encode($this->title) ?></h1>
 
                 <?php
-                $dataProvider = new ActiveDataProvider([
-                    'query' => $orderQuery,
-                    'sort' => false
-                ]);
                 Pjax::begin();
                 echo GridView::widget([
-                    'dataProvider' => $dataProvider,
+                    'dataProvider' => $ordersDataProvider,
+                    'filterModel' => $ordersSearchModel,
                     'summary' => false,
                     'columns' => [
                         [
@@ -102,16 +99,32 @@ $this->params['breadcrumbs'][] = array(
                         ],
                         'id',
                         [
-                            'attribute' => 'email',
-                            'label' => 'Email пользователя'
+                            'attribute' => 'user_email',
+                            'label' => 'Email пользователя',
+                            'value' => function($model){
+                                return $model->user->email;
+                            }
                         ],
                         [
-                            'attribute' => 'Rate',
-                            'label' => 'Тариф'
+                            'attribute' => 'rate_name',
+                            'label' => 'Тариф',
+                            'filter' => [ "1"=>"Тариф 1", "2"=>"Тариф 2", "3"=>"Тариф 3" ],
+                            'value' => function($model){
+                                return $model->rate->name;
+                            }
                         ],
                         [
                             'attribute' => 'date',
-                            'label' => 'Дата'
+                            'value' => 'date',
+                            'format' => 'raw',
+                            'filter' => DatePicker::widget([
+                                'model' => $ordersSearchModel,
+                                'attribute' => 'date',
+                                'clientOptions' => [
+                                    'autoclose' => true,
+                                    'format' => 'yyyy-mm-dd'
+                                ]
+                            ])
                         ],
                     ]
                 ]);
