@@ -68,9 +68,10 @@ class ServersFilter extends Servers
         // grid filtering conditions
         $query->andFilterWhere([
             'servers.id' => $this->id,
-            'date' => $this->date,
+            //'date' => $this->date,
             'order_id' => $this->order_id,
         ])
+        ->andFilterWhere(['like', 'date', $this->date])
         ->andFilterWhere(['like', Rates::tableName().'.name', $this->rate_name])
         ;
 

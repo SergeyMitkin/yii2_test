@@ -12,6 +12,7 @@ use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\Pjax;
+use dosamigos\datepicker\DatePicker; // Подключаем виджет для фильтра по дате
 
 // Регистрируем CSS file
 $this->registerCssFile('css/account-index.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
@@ -59,7 +60,16 @@ $this->params['breadcrumbs'][] = array(
                         ],
                         [
                             'attribute' => 'date',
-                            'label' => 'Дата'
+                            'value' => 'date',
+                            'format' => 'raw',
+                            'filter' => DatePicker::widget([
+                                'model' => $serversSearchModel,
+                                'attribute' => 'date',
+                                    'clientOptions' => [
+                                        'autoclose' => true,
+                                        'format' => 'yyyy-mm-dd'
+                                    ]
+                            ])
                         ]
                     ]
                 ]);

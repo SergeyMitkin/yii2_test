@@ -79,7 +79,6 @@ $this->title = 'Аренда выделеных серверов';
                                         'data-toggle' => 'modal',
                                         'data-target' => '#rate-order-modal',
                                     ];
-
                                     return Html::a($icon, $url, $options);
                                 },
                             ],

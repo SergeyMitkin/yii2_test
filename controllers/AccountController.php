@@ -37,7 +37,6 @@ class AccountController extends Controller
         ];
     }
 
-
     // Главная страница личного кабинета
     public function actionIndex()
     {
