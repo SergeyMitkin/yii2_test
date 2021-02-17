@@ -61,13 +61,13 @@ class ServersFilter extends Servers
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
+            $query->where('0=1');
             return $dataProvider;
         }
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
+            'servers.id' => $this->id,
             'date' => $this->date,
             'order_id' => $this->order_id,
         ])

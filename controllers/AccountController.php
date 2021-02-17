@@ -79,18 +79,15 @@ class AccountController extends Controller
             $this->redirect(['index', array('active_li' => 'orders')]);
         };
 
-        $searchModel = new ServersFilter();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $user_id);
-
-       // $serverQuery = $model_servers->getServersByUserId($user_id);
+        $serversSearchModel = new ServersFilter();
+        $serversDataProvider = $serversSearchModel->search(Yii::$app->request->queryParams, $user_id);
 
         $orderQuery = $model_orders->getOrdersByUserId($user_id);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'serversSearchModel' => $serversSearchModel,
+            'serversDataProvider' => $serversDataProvider,
             'username' => $username,
-            // 'serverQuery' => $serverQuery,
             'orderQuery' => $orderQuery,
             'model_orders' => $model_orders,
         ]);

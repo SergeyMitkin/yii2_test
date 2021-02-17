@@ -41,19 +41,11 @@ $this->params['breadcrumbs'][] = array(
             <div class="div-user-servers">
                 <h3>Предоставленные серверы</h3>
                 <?php
-                /*
-                $serverDataProvider = new ActiveDataProvider([
-                    'query' => $serverQuery,
-                    'sort' => false
-                ]);
-                */
-
-                // echo $this->render('_search', ['model' => $searchModel]);
 
                 Pjax::begin();
                 echo GridView::widget([
-                    'dataProvider' => $dataProvider,
-                    'filterModel' => $searchModel,
+                    'dataProvider' => $serversDataProvider,
+                    'filterModel' => $serversSearchModel,
                     'summary' => false,
                     'columns' => [
                         [
