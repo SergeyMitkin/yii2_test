@@ -103,8 +103,23 @@ $this->params['breadcrumbs'][] = array(
                         ],
                         [
                             'attribute' => 'date',
+                            'value' => 'date',
+                            'format' => 'raw',
+                            'filter' => DatePicker::widget([
+                                'model' => $ordersSearchModel,
+                                'attribute' => 'date',
+                                    'clientOptions' => [
+                                        'autoclose' => true,
+                                        'format' => 'yyyy-mm-dd'
+                                    ]
+                            ])
+                        ],
+                        /*
+                        [
+                            'attribute' => 'date',
                             'label' => 'Дата'
                         ],
+                        */
                         [
                             'attribute' => 'status',
                             'label' => 'Статус',

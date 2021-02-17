@@ -68,11 +68,11 @@ class OrdersFilter extends Orders
         // grid filtering conditions
         $query->andFilterWhere([
             'orders.id' => $this->id,
-            'date' => $this->date,
+          //  'date' => $this->date,
             'status' => $this->status,
         ])
-        ->andFilterWhere(['like', Rates::tableName().'.name', $this->rate_name])
-        ;
+        ->andFilterWhere(['like', 'date', $this->date])
+        ->andFilterWhere(['like', Rates::tableName().'.name', $this->rate_name]);
 
         // Выводим заказы только для авторизованного пользователя
         $query->andFilterWhere(['user_id' => $user_id]);
