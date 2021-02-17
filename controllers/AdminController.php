@@ -14,6 +14,8 @@ use app\models\tables\Servers;
 use yii\base\Event;
 use yii\web\Controller;
 use Yii;
+use app\models\filters\AdminOrdersFilter;
+use app\models\filters\AccountServersFilter;
 
 class AdminController extends Controller
 {
@@ -38,7 +40,6 @@ class AdminController extends Controller
 
             $model_email = new Email();
             $model_email->contact($email, $subject, $body);
-
         });
 
         // Принимаем заказ через Pjax
@@ -53,14 +54,14 @@ class AdminController extends Controller
 
                 $model_servers->setServer($rate_id, $user_id, $order_id);
             }
-
         };
 
-        $orderQuery = $model_orders->getNewOrders();
+        $ordersSearchModel = new AdminOrdersFilter();
+        $ordersDataProvider = $ordersSearchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('new', [
-            'orderQuery' => $orderQuery,
-            'model_orders' => $model_orders,
+            'ordersSearchModel' => $ordersSearchModel,
+            'ordersDataProvider' => $ordersDataProvider
         ]);
     }
 

@@ -8,15 +8,13 @@
 
 namespace app\controllers;
 
-use app\models\filters\OrdersFilter;
-use app\models\tables\Servers;
-use app\models\filters\ServersFilter;
+use app\models\filters\AccountOrdersFilter;
+use app\models\filters\AccountServersFilter;
 use Yii;
 use yii\web\Controller;
 use app\models\tables\Orders;
 use app\models\Email;
 use yii\base\Event;
-use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 class AccountController extends Controller
@@ -69,7 +67,6 @@ class AccountController extends Controller
 
                 $model_email = new Email();
                 $model_email->contact($email, $subject, $body);
-
             });
 
             // Добавляем заказ
@@ -78,11 +75,11 @@ class AccountController extends Controller
             $this->redirect(['index', array('active_li' => 'orders')]);
         };
 
-        $serversSearchModel = new ServersFilter();
-        $serversDataProvider = $serversSearchModel->search(Yii::$app->request->queryParams, $user_id);
+        $serversSearchModel = new AccountServersFilter();
+        $serversDataProvider = $serversSearchModel->search(Yii::$app->request->queryParams);
 
-        $ordersSearchModel = new OrdersFilter();
-        $ordersDataProvider = $ordersSearchModel->search(Yii::$app->request->queryParams, $user_id);
+        $ordersSearchModel = new AccountOrdersFilter();
+        $ordersDataProvider = $ordersSearchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'serversSearchModel' => $serversSearchModel,

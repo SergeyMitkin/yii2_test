@@ -114,12 +114,6 @@ $this->params['breadcrumbs'][] = array(
                                     ]
                             ])
                         ],
-                        /*
-                        [
-                            'attribute' => 'date',
-                            'label' => 'Дата'
-                        ],
-                        */
                         [
                             'attribute' => 'status',
                             'label' => 'Статус',

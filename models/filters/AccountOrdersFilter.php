@@ -5,12 +5,12 @@ namespace app\models\filters;
 use app\models\tables\Rates;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\tables\Servers;
+use app\models\tables\Orders;
 
 /**
- * ServersFilter represents the model behind the search form of `app\models\tables\Servers`.
+ * AccountServersFilter represents the model behind the search form of `app\models\tables\Servers`.
  */
-class ServersFilter extends Servers
+class AccountOrdersFilter extends Orders
 {
     public $rate_name;
 
@@ -21,7 +21,7 @@ class ServersFilter extends Servers
     {
         return [
             [['id', 'rate_id'], 'integer'],
-            [['date', 'rate_name'], 'safe'],
+            [['date', 'rate_name', 'status'], 'safe'],
         ];
     }
 
@@ -41,10 +41,10 @@ class ServersFilter extends Servers
      *
      * @return ActiveDataProvider
      */
-    public function search($params, $user_id)
+    public function search($params)
     {
 
-        $query = Servers::find();
+        $query = Orders::find();
         $query->joinWith(['rate']);
         // add conditions that should always apply here
 
@@ -67,13 +67,12 @@ class ServersFilter extends Servers
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'servers.id' => $this->id,
+            'orders.id' => $this->id,
+            'status' => $this->status,
         ])
-        ->andFilterWhere(['like', 'date', $this->date])
-        ->andFilterWhere(['like', Rates::tableName().'.name', $this->rate_name]);
-
-        // Выводим заказы только для авторизованного пользователя
-        $query->andFilterWhere(['user_id' => $user_id]);
+            ->andFilterWhere(['like', 'date', $this->date])
+            ->andFilterWhere(['like', Rates::tableName().'.name', $this->rate_name])
+            ->andFilterWhere(['user_id' => \Yii::$app->user->identity->id]); // Выводим заказы только для авторизованного пользователя
 
         return $dataProvider;
     }
