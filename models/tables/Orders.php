@@ -70,18 +70,6 @@ class Orders extends \yii\db\ActiveRecord
         }
     }
 
-    // Получаем принятые заказы
-    public function getConfirmedOrders(){
-        $orderQuery = (new Query())
-            ->select('orders.id, user.email, rates.name AS Rate, date')
-            ->from('yii_test.orders')
-            ->join('LEFT JOIN', 'user', 'user.id = orders.user_id')
-            ->join('LEFT JOIN', 'rates', 'rates.id = orders.rate_id')
-            ->where("status = 1");
-
-        return $orderQuery;
-    }
-
     // Получаем тариф
     public function getRate(){
         return $this->hasOne(Rates::class, ['id' => 'rate_id']);

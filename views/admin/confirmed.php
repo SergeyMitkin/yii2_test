@@ -8,13 +8,14 @@
 
 /* @var $this yii\web\View */
 
-
 use yii\grid\GridView;
-use yii\data\ActiveDataProvider;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\Pjax;
 use dosamigos\datepicker\DatePicker; // Подключаем виджет для фильтра по дате
+
+// Регистрируем CSS file
+$this->registerCssFile('css/admin-confirmed.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
 
 $this->title = 'Подтверждённые Заказы';
 $this->params['breadcrumbs'][] = array(
@@ -40,18 +41,10 @@ $this->params['breadcrumbs'][] = array(
     </ul>
 
     <div class="tab-content">
-
         <div class="tab-pane active" id="home" role="tabpanel">
-
             <div class="div-admin-servers">
                 <h1>Предоставленные Серверы</h1>
                 <?php
-                /*
-                $serverDataProvider = new ActiveDataProvider([
-                    'query' => $serverQuery,
-                    'sort' => false
-                ]);
-                */
                 Pjax::begin();
                 echo GridView::widget([
                     'dataProvider' => $serversDataProvider,
@@ -109,10 +102,8 @@ $this->params['breadcrumbs'][] = array(
         </div>
 
         <div class="tab-pane" id="profile" role="tabpanel">
-
             <div class="div-admin-orders">
                 <h1><?= Html::encode($this->title) ?></h1>
-
                 <?php
                 Pjax::begin();
                 echo GridView::widget([
@@ -161,4 +152,3 @@ $this->params['breadcrumbs'][] = array(
         </div>
     </div>
 </div>
-

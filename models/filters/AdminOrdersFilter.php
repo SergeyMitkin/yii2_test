@@ -7,7 +7,6 @@ use app\models\User;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\tables\Orders;
-use Yii;
 
 /**
  * AccountServersFilter represents the model behind the search form of `app\models\tables\Servers`.
