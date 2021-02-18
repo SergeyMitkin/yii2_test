@@ -30,40 +30,51 @@ $this->params['breadcrumbs'][] = array(
 
 ?>
 <div class="admin-new">
-
     <h1><?= Html::encode($this->title) ?></h1>
-
     <?php
     Pjax::begin(['id' => 'admin-new-orders']);
     echo GridView::widget([
         'dataProvider' => $ordersDataProvider,
         'filterModel' => $ordersSearchModel,
         'summary' => false,
+        'headerRowOptions' => [
+            'class' => 'header-row'
+        ],
         'columns' => [
             [
                 'class' => 'yii\grid\SerialColumn',
             ],
-            'id',
+            [
+                'attribute' => 'id',
+                'format' => 'html',
+                'value' => function($model){
+                    return Html::tag('span', $model->id, ['class' => 'span-in-td']);
+                }
+            ],
             [
                 'attribute' => 'user_email',
                 'label' => 'Email пользователя',
+                'format' => 'html',
                 'value' => function($model){
-                    return $model->user->email;
+                    return Html::tag('span', $model->user->email, ['class' => 'span-in-td']);
                 }
             ],
             [
                 'attribute' => 'rate_name',
                 'label' => 'Тариф',
+                'format' => 'html',
                 'filter' => [ "1"=>"Тариф 1", "2"=>"Тариф 2", "3"=>"Тариф 3" ],
                 'value' => function($model){
-                    return $model->rate->name;
+                    return Html::tag('span', $model->rate->name, ['class' => 'span-in-td']);
                 }
             ],
             [
                 'attribute' => 'date',
                 'label' => 'Дата и время',
-                'value' => 'date',
                 'format' => 'raw',
+                'value' => function($model){
+                    return Html::tag('span', $model->date, ['class' => 'span-in-td']);
+                },
                 'filter' => DatePicker::widget([
                     'model' => $ordersSearchModel,
                     'attribute' => 'date',
