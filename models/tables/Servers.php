@@ -2,15 +2,13 @@
 
 namespace app\models\tables;
 
-use Yii;
-use yii\db\Query;
-
 /**
  * This is the model class for table "servers".
  *
  * @property int $id
  * @property int|null $rate_id
  * @property int|null $user_id
+ * @property string|null $date
  *
  * @property Rates $rate
  */
@@ -31,7 +29,8 @@ class Servers extends \yii\db\ActiveRecord
     {
         return [
             [['rate_id', 'user_id'], 'integer'],
-            [['rate_id'], 'exist', 'skipOnError' => true, 'targetClass' => Rates::className(), 'targetAttribute' => ['rate_id' => 'id']],
+            [['date'], 'safe'],
+            [['rate_id'], 'exist', 'skipOnError' => true, 'targetClass' => Rates::className(), 'targetAttribute' => ['rate_id' => 'id']]
         ];
     }
 

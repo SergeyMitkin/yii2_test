@@ -49,6 +49,9 @@ $this->params['breadcrumbs'][] = array(
                 echo GridView::widget([
                     'dataProvider' => $serversDataProvider,
                     'filterModel' => $serversSearchModel,
+                    'headerRowOptions' => [
+                        'class' => 'header-row'
+                    ],
                     'summary' => false,
                     'columns' => [
                         [
@@ -56,37 +59,46 @@ $this->params['breadcrumbs'][] = array(
                         ],
                         [
                             'attribute' => 'id',
-                            'label' => 'Id сервера'
+                            'label' => 'Id сервера',
+                            'format' => 'html',
+                            'value' => function($model){
+                                return Html::tag('span', $model->id, ['class' => 'span-in-td']);
+                            }
                         ],
                         [
                             'attribute' => 'order_id',
                             'label' => 'Id заказа',
+                            'format' => 'html',
                             'value' => function($model){
-                                return $model->order->id;
+                                return Html::tag('span', $model->order->id, ['class' => 'span-in-td']);
                             }
                         ],
                         [
                             'attribute' => 'user_email',
                             'label' => 'Email пользователя',
+                            'format' => 'html',
                             'value' => function($model){
-                                return $model->user->email;
+                                return Html::tag('span', $model->user->email, ['class' => 'span-in-td']);
                             }
                         ],
                         [
                             'attribute' => 'rate_name',
                             'label' => 'Тариф',
                             'filter' => [ "1"=>"Тариф 1", "2"=>"Тариф 2", "3"=>"Тариф 3" ],
+                            'format' => 'html',
                             'value' => function($model){
-                                return $model->rate->name;
+                                return Html::tag('span', $model->rate->name, ['class' => 'span-in-td']);
                             }
                         ],
                         [
                             'attribute' => 'date',
                             'label' => 'Дата и время',
-                            'value' => 'date',
                             'format' => 'raw',
+                            'value' => function($model){
+                                return Html::tag('span', $model->date, ['class' => 'span-in-td']);
+                            },
                             'filter' => DatePicker::widget([
-                                'model' => $ordersSearchModel,
+                                'model' => $serversSearchModel,
                                 'attribute' => 'date',
                                 'clientOptions' => [
                                     'autoclose' => true,
@@ -109,32 +121,45 @@ $this->params['breadcrumbs'][] = array(
                 echo GridView::widget([
                     'dataProvider' => $ordersDataProvider,
                     'filterModel' => $ordersSearchModel,
+                    'headerRowOptions' => [
+                        'class' => 'header-row'
+                    ],
                     'summary' => false,
                     'columns' => [
                         [
                             'class' => 'yii\grid\SerialColumn',
                         ],
-                        'id',
+                        [
+                            'attribute' => 'id',
+                            'format' => 'html',
+                            'value' => function($model){
+                                return Html::tag('span', $model->id, ['class' => 'span-in-td']);
+                            }
+                        ],
                         [
                             'attribute' => 'user_email',
                             'label' => 'Email пользователя',
+                            'format' => 'html',
                             'value' => function($model){
-                                return $model->user->email;
+                                return Html::tag('span', $model->user->email, ['class' => 'span-in-td']);
                             }
                         ],
                         [
                             'attribute' => 'rate_name',
                             'label' => 'Тариф',
                             'filter' => [ "1"=>"Тариф 1", "2"=>"Тариф 2", "3"=>"Тариф 3" ],
+                            'format' => 'html',
                             'value' => function($model){
-                                return $model->rate->name;
-                            }
+                                return Html::tag('span', $model->rate->name, ['class' => 'span-in-td']);
+                            },
                         ],
                         [
                             'attribute' => 'date',
                             'label' => 'Дата и время',
-                            'value' => 'date',
                             'format' => 'raw',
+                            'value' => function($model){
+                                return Html::tag('span', $model->date, ['class' => 'span-in-td']);
+                            },
                             'filter' => DatePicker::widget([
                                 'model' => $ordersSearchModel,
                                 'attribute' => 'date',

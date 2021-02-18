@@ -81,12 +81,14 @@ class AdminServersFilter extends Servers
             return $dataProvider;
         }
 
+
+
         // grid filtering conditions
         $query->andFilterWhere([
             'servers.id' => $this->id,
             'order_id' => $this->order_id
         ])
-        ->andFilterWhere(['like', 'date', $this->date])
+        ->andFilterWhere(['like', 'servers.date', $this->date])
         ->andFilterWhere(['like', Rates::tableName().'.name', $this->rate_name])
         ->andFilterWhere(['like', User::tableName().'.email', $this->user_email]);
 

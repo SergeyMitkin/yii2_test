@@ -58,6 +58,16 @@ body {
     margin-left: 60%;
 }
 
+.header-row{
+    background-color: rgb(249, 249, 249);
+}
+
+.span-in-td{
+    padding: 2px 8px;
+    background-color: rgb(249, 249, 249);
+    border-radius: 2px;
+}
+
 .footer {
     height: 110px;
     background-color: #f5f5f5;

@@ -3,18 +3,8 @@
     background-position: 93% 30%;
 }
 
-.header-row{
-    background-color: rgb(249, 249, 249);
-}
-
 .confirm-buttons{
     margin-top: 10px;
     margin-left: 10px;
     margin-right: 10px;
-}
-
-.span-in-td{
-    padding: 2px 8px;
-    background-color: rgb(249, 249, 249);
-    border-radius: 2px;
 }
