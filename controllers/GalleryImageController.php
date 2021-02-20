@@ -23,8 +23,22 @@ class GalleryImageController extends \yii\web\Controller
 
     public function actionIndex()
     {
-        $dataProvider = GalleryImage::find()->all();
-        return $this->render('index', ['model' => $dataProvider[0]]);
+        // Записи таблицы gallery_image
+        $imagesDataProvider = GalleryImage::find()
+            ->all();
+
+        // Записи таблицы gallery_image - галлереи
+        $galleriesDataProvider = array();
+        for ($i=0; $i<count($imagesDataProvider); $i++){
+            if ($imagesDataProvider[$i]['rank'] == 0){
+                array_push($galleriesDataProvider, $imagesDataProvider[$i]);
+            }
+        }
+
+        return $this->render('index', [
+            'model' => $imagesDataProvider,
+            'galleries' => $galleriesDataProvider
+        ]);
     }
 
 }

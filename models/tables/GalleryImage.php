@@ -24,13 +24,24 @@ class GalleryImage extends \yii\db\ActiveRecord
         return 'gallery_image';
     }
 
-
     public function rules()
     {
         return [
             [['type', 'ownerId', 'name', 'description'], 'required'],
             [['type', 'ownerId', 'name', 'description'], 'string'],
             [['rank'], 'integer'],
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'type' => 'Type',
+            'ownerId' => 'Owner ID',
+            'rank' => 'Rank',
+            'name' => 'Name',
+            'description' => 'Description',
         ];
     }
 
@@ -44,7 +55,6 @@ class GalleryImage extends \yii\db\ActiveRecord
 
                 'directory' => Yii::getAlias('@webroot') . '/images/gallery-image/gallery',
                 'url' =>  Yii::getAlias('@web') . '/images/gallery-image/gallery',
-
 
                 'versions' => [
                     'small' => function ($img) {
@@ -69,16 +79,23 @@ class GalleryImage extends \yii\db\ActiveRecord
         ];
     }
 
-
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'type' => 'Type',
-            'ownerId' => 'Owner ID',
-            'rank' => 'Rank',
-            'name' => 'Name',
-            'description' => 'Description',
-        ];
+    // Создаём галлерею
+    public function setGallery($name, $description){
+        $this->type = 'gallery';
+        $this->rank = 0;
+        $this->name = $name;
+        $this->description = $description;
+        $this->save();
     }
+
+    // Создаём заказ
+    /*
+    public function setOrder($rate_id, $user_id){
+
+        $this->rate_id = $rate_id;
+        $this->user_id = $user_id;
+        $this->save();
+    }
+    */
+
 }

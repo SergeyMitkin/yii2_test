@@ -16,7 +16,7 @@ use Yii;
  * Multiple messages could be set as follows:
  *
  * ```php
- * Yii::$app->session->setFlash('error', ['Error 1', 'Error 2']);
+ * Yii::$app->session->setFlash('error', ['Error 1', 'Error 14']);
  * ```
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>

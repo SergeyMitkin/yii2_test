@@ -16,7 +16,7 @@ use yii\console\ExitCode;
  * This command is provided as an example for you to learn how to create console commands.
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
- * @since 2.0
+ * @since 14.0
  */
 class HelloController extends Controller
 {
