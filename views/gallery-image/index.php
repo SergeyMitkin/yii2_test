@@ -81,7 +81,7 @@ Modal::end();
 for ($i=0; $i<count($galleries); $i++){
     $owner_id = $galleries[$i]['id'];
     ?>
-    <div class="col-xs-12 text-center">
+    <div class="col-xs-4 text-center">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="gallery-titles">

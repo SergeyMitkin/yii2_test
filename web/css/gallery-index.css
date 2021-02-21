@@ -1,20 +1,14 @@
-.panel-body{
-    clear: left;
-
-}
-
 .panel-heading{
-
-
+    position: relative;
 }
 
 .gallery-titles{
-
-
-
+    display: inline-block;
 }
 
 .gallery-actions{
-
-
+    display: inline-block;
+    position: absolute;
+    right: 15px;
 }
+
