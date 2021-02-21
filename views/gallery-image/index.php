@@ -63,7 +63,11 @@ Modal::begin([
                 'rows' => 3
             ]
     ) .
-    '</div>';
+    '</div>' .
+
+    '<span class="input-group-btn">' .
+     Html::submitButton('Отправить', ['class' => 'btn btn-success']) .
+    '</span>';
     ActiveForm::end();
 Modal::end();
 ?>
@@ -108,4 +112,4 @@ foreach ($model[0]->getBehavior('galleryBehavior')->getImages() as $image) {
 */
 
 // Регистрируем JS file
-$this->registerJSFile('@web/js/gallery-image-index.js',['depends' => [\yii\web\JqueryAsset::className()]]);
+// $this->registerJSFile('@web/js/gallery-image-index.js',['depends' => [\yii\web\JqueryAsset::className()]]);

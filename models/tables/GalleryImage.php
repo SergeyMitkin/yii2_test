@@ -81,21 +81,13 @@ class GalleryImage extends \yii\db\ActiveRecord
 
     // Создаём галлерею
     public function setGallery($name, $description){
+
         $this->type = 'gallery';
-        $this->rank = 0;
+        $this->ownerId = '0';
+        $this->rank = '0';
         $this->name = $name;
         $this->description = $description;
         $this->save();
     }
-
-    // Создаём заказ
-    /*
-    public function setOrder($rate_id, $user_id){
-
-        $this->rate_id = $rate_id;
-        $this->user_id = $user_id;
-        $this->save();
-    }
-    */
 
 }

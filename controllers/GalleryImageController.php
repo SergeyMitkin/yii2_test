@@ -23,6 +23,15 @@ class GalleryImageController extends \yii\web\Controller
 
     public function actionIndex()
     {
+        $request = \Yii::$app->request;
+
+        // Создаём галерею
+        if ($request->isPost){
+            $model = new GalleryImage();
+            $model->setGallery($request->post('gallery_name'), $request->post('gallery_description'));
+            return $this->redirect(['index']);
+        }
+
         // Записи таблицы gallery_image
         $imagesDataProvider = GalleryImage::find()
             ->all();
