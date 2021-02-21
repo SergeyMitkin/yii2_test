@@ -11,12 +11,20 @@ use yii\helpers\Html;
 // Регистрируем CSS file
 $this->registerCssFile('css/gallery-index.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
 
+/*
+ *
+ */
+
 ?>
 
 <?php
+
 // Модальное окно формы создания галереи
 Modal::begin([
     'headerOptions' => [
+        'style' => 'display:none;'
+    ],
+    'footerOptions' => [
         'style' => 'display:none;'
     ],
     'toggleButton' => [
@@ -24,9 +32,6 @@ Modal::begin([
         'tag' => 'button',
         'id' => 'gallery-create-button',
         'class' => 'btn btn-success'
-    ],
-    'footerOptions' => [
-        'style' => 'display:none;'
     ],
     'options' => [
         'id' => 'create-gallery-modal'
@@ -89,10 +94,10 @@ for ($i=0; $i<count($galleries); $i++){
                     <p><?=$galleries[$i]['description']?></p>
                 </div>
                 <div class="gallery-actions">
-                    <span class="editGallery btn btn-primary btn-xs">
+                    <span id="gallery-edit-span-id_<?=$galleries[$i]['id']?>" class="edit-gallery-span btn btn-primary btn-xs" data-toggle="modal", data-target="#create-gallery-modal">
                         <i class="glyphicon glyphicon-pencil gliphicon-white"></i>
                     </span>
-                    <span class="deleteGallery btn btn-danger btn-xs">
+                    <span id="gallery-delete-span-id_<?=$galleries[$i]['id']?>" class="delete-gallery-span btn btn-danger btn-xs">
                         <i class="glyphicon glyphicon-remove gliphicon-white"></i>
                     </span>
                 </div>
@@ -125,4 +130,4 @@ foreach ($model[0]->getBehavior('galleryBehavior')->getImages() as $image) {
 */
 
 // Регистрируем JS file
-// $this->registerJSFile('@web/js/gallery-image-index.js',['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJSFile('@web/js/gallery-image-index.js',['depends' => [\yii\web\JqueryAsset::className()]]);

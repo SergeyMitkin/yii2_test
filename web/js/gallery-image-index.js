@@ -1,10 +1,21 @@
 $(document).ready(function() {
+
+    function getGalleryData(gallery_id){
+
+    }
     //console.log('gallery-image');
-/*
-    $("#create-gallery-modal").on('show.bs.modal', function (event) {
+    $(".edit-gallery-span").on('click', function (event) {
 
-        var modal = $(this);
+        var gallery_id =$(this).attr('id').split("_").pop(); // Получаем id галереи из id кнопки
+        console.log(gallery_id);
 
+    })
+
+    $("#create-gallery-modal").on('show.bs.modal', function () {
+
+        //console.log($(this));
+
+        /*
         modal.find(".modal-body").html(
             '<form class="create-gallery-form" id="create-gallery-form-id">' +
 
@@ -28,7 +39,8 @@ $(document).ready(function() {
 
             '</form>'
         )
+        */
         //console.log(modal);
     })
-*/
+
 })
