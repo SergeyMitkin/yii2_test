@@ -26,7 +26,7 @@ class GalleryImageController extends \yii\web\Controller
         $request = \Yii::$app->request;
 
         // Создаём галерею
-        if ($request->isPost){
+        if ($request->isPost && null !== $request->post('gallery_name')){
             $model = new GalleryImage();
             $model->setGallery($request->post('gallery_name'), $request->post('gallery_description'));
             return $this->redirect(['index']);

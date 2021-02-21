@@ -8,6 +8,9 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model \app\models\tables\GalleryImage */
+// Регистрируем CSS file
+$this->registerCssFile('css/gallery-index.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
+
 ?>
 
 <?php
@@ -81,8 +84,18 @@ for ($i=0; $i<count($galleries); $i++){
     <div class="col-xs-12 text-center">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3><?=$galleries[$i]['name']?></h3>
-                <p><?=$galleries[$i]['description']?></p>
+                <div class="gallery-titles">
+                    <h3><?=$galleries[$i]['name']?></h3>
+                    <p><?=$galleries[$i]['description']?></p>
+                </div>
+                <div class="gallery-actions">
+                    <span class="editGallery btn btn-primary btn-xs">
+                        <i class="glyphicon glyphicon-pencil gliphicon-white"></i>
+                    </span>
+                    <span class="deleteGallery btn btn-danger btn-xs">
+                        <i class="glyphicon glyphicon-remove gliphicon-white"></i>
+                    </span>
+                </div>
             </div>
             <div class="panel-body">
                 <?php
