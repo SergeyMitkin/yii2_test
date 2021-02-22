@@ -68,6 +68,12 @@ body {
     border-radius: 2px;
 }
 
+.confirm-buttons{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 .footer {
     height: 110px;
     background-color: #f5f5f5;

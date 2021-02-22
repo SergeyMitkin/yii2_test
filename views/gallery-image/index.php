@@ -5,20 +5,16 @@ use zxbodya\yii2\galleryManager\GalleryManager;
 use yii\bootstrap\Modal;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model \app\models\tables\GalleryImage */
 // Регистрируем CSS file
 $this->registerCssFile('css/gallery-index.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
 
-/*
- *
- */
-
 ?>
 
-<?php
-
+<?
 // Модальное окно формы создания галереи
 Modal::begin([
     'headerOptions' => [
@@ -38,50 +34,49 @@ Modal::begin([
     ],
 ]);
 
-    ActiveForm::begin([
-        'method' => 'post',
-        'options' => [
-            'class' => 'create-gallery-form',
-            'id' => 'create-gallery-form-id'
-        ]
-    ]);
-    echo '<div class="input-group input-group-sm form-group" id="group-for-gallery-name-input">' .
+ActiveForm::begin([
+    'method' => 'post',
+    'options' => [
+        'class' => 'create-gallery-form',
+        'id' => 'create-gallery-form-id'
+    ]
+]);
+echo '<div class="input-group input-group-sm form-group" id="group-for-gallery-name-input">' .
     Html::label('Название галереи', 'gallery-modal-name-input').
     Html::input(
-            'text',
-            'gallery_name',
-            '',
-            [
-                'id' => 'gallery-modal-name-input',
-                'class' => 'form-control',
-                'placeholder' => 'Название галереи'
-            ]
+        'text',
+        'gallery_name',
+        '',
+        [
+            'id' => 'gallery-modal-name-input',
+            'class' => 'form-control',
+            'placeholder' => 'Название галереи'
+        ]
     ) .
     '</div>' .
 
     '<div class="form-group">' .
     Html::label('Описание галереи', 'gallery-modal-description-textarea') .
     Html::textarea(
-            'gallery_description',
-            '',
-            [
-                'class' => 'form-control',
-                'id' => 'gallery-modal-description-textarea',
-                'placeholder' => 'Описание галереи',
-                'rows' => 3
-            ]
+        'gallery_description',
+        '',
+        [
+            'class' => 'form-control',
+            'id' => 'gallery-modal-description-textarea',
+            'placeholder' => 'Описание галереи',
+            'rows' => 3
+        ]
     ) .
     '</div>' .
 
     '<span class="input-group-btn">' .
-     Html::submitButton('Отправить', ['class' => 'btn btn-success']) .
+    Html::submitButton('Отправить', ['class' => 'btn btn-success']) .
     '</span>';
-    ActiveForm::end();
+ActiveForm::end();
 Modal::end();
 ?>
 
 <div class="row">
-
 <?
 for ($i=0; $i<count($galleries); $i++){
     $owner_id = $galleries[$i]['id'];
@@ -97,7 +92,7 @@ for ($i=0; $i<count($galleries); $i++){
                     <span id="gallery-edit-span-id_<?=$galleries[$i]['id']?>" class="edit-gallery-span btn btn-primary btn-xs" data-toggle="modal", data-target="#create-gallery-modal">
                         <i class="glyphicon glyphicon-pencil gliphicon-white"></i>
                     </span>
-                    <span id="gallery-delete-span-id_<?=$galleries[$i]['id']?>" class="delete-gallery-span btn btn-danger btn-xs">
+                    <span class="delete-gallery-span btn btn-danger btn-xs" data-gallery-id="<?=$galleries[$i]['id']?>" data-url="<?=Url::current(['gallery_id' => $galleries[$i]['id']])?>" data-toggle="modal", data-target="#delete-gallery-modal">
                         <i class="glyphicon glyphicon-remove gliphicon-white"></i>
                     </span>
                 </div>
@@ -122,9 +117,25 @@ for ($i=0; $i<count($galleries); $i++){
     <?}
 ?>
 </div>
+
 <?php
+// Модальное окно подтверждения удаления галереи
+Modal::begin([
+    'headerOptions' => [
+        'style' => 'display:none;'
+    ],
+    'footerOptions' => [
+        'style' => 'display:none;'
+    ],
+    'options' => [
+        'id' => 'delete-gallery-modal'
+    ],
+    'size' => Modal::SIZE_SMALL,
+]);
 
+echo 'Модальное окно';
 
+Modal::end();
 /*
 foreach ($model[0]->getBehavior('galleryBehavior')->getImages() as $image) {
     echo \yii\helpers\Html::img($image->getUrl('small'));
