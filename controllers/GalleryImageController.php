@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\tables\GalleryImage;
+use yii\helpers\Json;
 use zxbodya\yii2\galleryManager\GalleryManagerAction;
 
 class GalleryImageController extends \yii\web\Controller
@@ -25,10 +26,18 @@ class GalleryImageController extends \yii\web\Controller
     {
         $request = \Yii::$app->request;
 
+        if ($request->isAjax && $request->isGet){
+            if ($request->get('ajax') == 'get_gallery_data'){
+                $gallery_data = GalleryImage::findOne($request->get('gallery_id'));
+                echo Json::encode($gallery_data);
+                exit;
+            }
+        }
+
         // Создаём галерею
         if ($request->isPost && null !== $request->post('gallery_name')){
             $model = new GalleryImage();
-            $model->setGallery($request->post('gallery_name'), $request->post('gallery_description'));
+            $model->setGallery($request->post('gallery_name'), $request->post('gallery_description'), $request->post('gallery_id'));
             return $this->redirect(['index']);
         }
 

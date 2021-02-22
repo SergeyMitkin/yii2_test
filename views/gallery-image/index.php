@@ -123,6 +123,8 @@ for ($i=0; $i<count($galleries); $i++){
 ?>
 </div>
 <?php
+
+
 /*
 foreach ($model[0]->getBehavior('galleryBehavior')->getImages() as $image) {
     echo \yii\helpers\Html::img($image->getUrl('small'));

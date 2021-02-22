@@ -2,6 +2,7 @@
 
 namespace app\models\tables;
 
+use phpDocumentor\Reflection\DocBlock\Description;
 use zxbodya\yii2\galleryManager\GalleryBehavior;
 use Yii;
 
@@ -80,14 +81,17 @@ class GalleryImage extends \yii\db\ActiveRecord
     }
 
     // Создаём галлерею
-    public function setGallery($name, $description){
+    public function setGallery($name, $description, $id=0){
 
-        $this->type = 'gallery';
-        $this->ownerId = '0';
-        $this->rank = '0';
-        $this->name = $name;
-        $this->description = $description;
-        $this->save();
+        // Если id > 0 обновляем галерею
+        $gallery = ($id > 0) ? $this::findOne($id) : $this;
+
+        $gallery->type = 'gallery';
+        $gallery->ownerId = '0';
+        $gallery->rank = '0';
+        $gallery->name = $name;
+        $gallery->description = $description;
+        $gallery->save();
     }
 
 }
