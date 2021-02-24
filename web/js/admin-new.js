@@ -17,7 +17,6 @@ $(document).ready(function() {
         // При клике на ссылку "Подтвердить", подтверждаем заказ и перезагружаем GridView
         $('#confirm-order-a_' + order_id).on('click', function (event) {
             event.preventDefault();
-
             modal.modal('hide');
 
             $.pjax.reload({

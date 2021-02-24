@@ -109,7 +109,6 @@ $this->params['breadcrumbs'][] = array(
 
                         // Стилизация кнопки
                         $icon = Html::tag('span', '', ['class' => "glyphicon glyphicon-$iconName"]);
-
                         return Html::a($icon, $url, $options);
                     },
                 ],

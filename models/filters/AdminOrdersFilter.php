@@ -72,8 +72,6 @@ class AdminOrdersFilter extends Orders
             return $dataProvider;
         }
 
-
-
         // grid filtering conditions
         $query->andFilterWhere([
             'orders.id' => $this->id,

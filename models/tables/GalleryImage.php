@@ -46,40 +46,6 @@ class GalleryImage extends \yii\db\ActiveRecord
         ];
     }
 
-    public function behaviors()
-    {
-        return [
-            'galleryBehavior' => [
-                'class' => GalleryBehavior::className(),
-                'type' => 'gallery-image',
-                'extension' => 'jpg',
-
-                'directory' => Yii::getAlias('@webroot') . '/images/gallery-image/gallery',
-                'url' =>  Yii::getAlias('@web') . '/images/gallery-image/gallery',
-
-                'versions' => [
-                    'small' => function ($img) {
-                        /** @var \Imagine\Image\ImageInterface $img */
-                        return $img
-                            ->copy()
-                            ->thumbnail(new \Imagine\Image\Box(200, 200));
-                    },
-                    'medium' => function ($img) {
-                        /** @var Imagine\Image\ImageInterface $img */
-                        $dstSize = $img->getSize();
-                        $maxWidth = 800;
-                        if ($dstSize->getWidth() > $maxWidth) {
-                            $dstSize = $dstSize->widen($maxWidth);
-                        }
-                        return $img
-                            ->copy()
-                            ->resize($dstSize);
-                    },
-                ]
-            ]
-        ];
-    }
-
     // Создаём галлерею
     public function setGallery($name, $description, $id=0){
 
@@ -92,6 +58,11 @@ class GalleryImage extends \yii\db\ActiveRecord
         $gallery->name = $name;
         $gallery->description = $description;
         $gallery->save();
+    }
+
+    public function deleteGallery($gallery_id){
+        $gallery = $this::findOne($gallery_id);
+        $gallery->delete();
     }
 
 }

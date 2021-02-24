@@ -8,7 +8,7 @@ $(document).ready(function() {
             url: '',
             type: "GET",
             data: {
-                ajax: 'get_gallery_data',
+                ajax: 'get-gallery-data',
                 gallery_id: gallery_id
             },
             error: function(){
@@ -23,6 +23,8 @@ $(document).ready(function() {
         })
     })
 
+    //console.log('pjax');
+
     // Удаление галереи
     $('#delete-gallery-modal').on('show.bs.modal', function (event) {
         var gallery_id = $(event.relatedTarget).data("gallery-id");
@@ -35,18 +37,20 @@ $(document).ready(function() {
             '</div>');
 
         // При клике на ссылку "Удалить", удаляем галерею
-        $('.confirm-delete').on('click', function () {
-            //event.preventDefault;
-            console.log($(this).data("id"));
+        $('.confirm-delete').on('click', function (event) {
+            event.preventDefault();
+            var id = $(this).data("id");
+            var modal = $("#delete-gallery-modal");
 
-            //modal.modal('hide');
+            modal.modal('hide');
 
-            /*
             $.pjax.reload({
-                container:'#admin-new-orders',
-                data: {id: order_id}
+                container:"#galleries-listView",
+                data: {
+                    action: "delete-gallery",
+                    id: id
+                }
             });
-            */
         })
     })
 })

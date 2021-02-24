@@ -9,7 +9,7 @@ use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $model \app\models\tables\GalleryImage */
 // Регистрируем CSS file
-$this->registerCssFile('css/galleries.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
+$this->registerCssFile('css/galleries-index.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
 
 ?>
 
@@ -75,18 +75,18 @@ ActiveForm::end();
 Modal::end();
 ?>
 
-<div class="row">
-    <?
-    Pjax::begin(['id' => 'galleries-listView', 'clientOptions' => ['method' => 'POST']]);
-    echo
-    \yii\widgets\ListView::widget([
-        'dataProvider' => $galleries,
-        'itemView' => 'view',
-        'viewParams' => ['images_query' => $images_query]
-    ]);
-    Pjax::end();
-    ?>
-</div>
+    <div class="row">
+        <?
+        Pjax::begin(['id' => 'galleries-listView', 'clientOptions' => ['method' => 'POST']]);
+        echo
+        \yii\widgets\ListView::widget([
+            'dataProvider' => $galleries,
+            'itemView' => 'view',
+            'viewParams' => ['images_query' => $images_query]
+        ]);
+        Pjax::end();
+        ?>
+    </div>
 
 <?php
 // Модальное окно подтверждения удаления галереи
