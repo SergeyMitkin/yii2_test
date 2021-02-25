@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "35fd68297f7c9ff54576d8d138d7be18",
+    "content-hash": "20f15e3b626d5f6cf28ac06742232b29",
     "packages": [
         {
             "name": "2amigos/yii2-date-picker-widget",
@@ -66,6 +66,22 @@
                 "yii2"
             ],
             "time": "2017-07-05T05:52:03+00:00"
+        },
+        {
+            "name": "bower-asset/blueimp-gallery",
+            "version": "v3.3.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:blueimp/Gallery.git",
+                "reference": "37434f1d06b358a04f45e2c0de518ff52390a3fe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/blueimp/Gallery/zipball/37434f1d06b358a04f45e2c0de518ff52390a3fe",
+                "reference": "37434f1d06b358a04f45e2c0de518ff52390a3fe",
+                "shasum": null
+            },
+            "type": "bower-asset"
         },
         {
             "name": "bower-asset/bootstrap",
@@ -477,6 +493,172 @@
                 "image processing"
             ],
             "time": "2020-11-03T22:35:03+00:00"
+        },
+        {
+            "name": "npm-asset/bootstrap",
+            "version": "4.6.0",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/bootstrap/-/bootstrap-4.6.0.tgz",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/bootstrap-fileinput",
+            "version": "5.1.2",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/bootstrap-fileinput/-/bootstrap-fileinput-5.1.2.tgz",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "npm-asset/bootstrap": ">=3.4.1",
+                "npm-asset/jquery": ">=1.9.0",
+                "npm-asset/opencollective-postinstall": ">=2.0.2,<3.0.0"
+            },
+            "type": "npm-asset",
+            "license": [
+                "BSD-3-Clause"
+            ]
+        },
+        {
+            "name": "npm-asset/jquery",
+            "version": "3.5.1",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/jquery/-/jquery-3.5.1.tgz",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/opencollective-postinstall",
+            "version": "2.0.3",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/opencollective-postinstall/-/opencollective-postinstall-2.0.3.tgz",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "onmotion/yii2-gallery",
+            "version": "1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/onmotion/yii2-gallery.git",
+                "reference": "1a2e37d4ab48afab92725c849d069ee31e4ca320"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/onmotion/yii2-gallery/zipball/1a2e37d4ab48afab92725c849d069ee31e4ca320",
+                "reference": "1a2e37d4ab48afab92725c849d069ee31e4ca320",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/blueimp-gallery": ">=v2.17.0",
+                "npm-asset/bootstrap-fileinput": "^5.0",
+                "onmotion/yii2-helpers": "*",
+                "yiisoft/yii2": ">=2.0.1"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "asset-installer-paths": {
+                    "npm-asset-library": "vendor/npm",
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "onmotion\\gallery\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Alexandr Kozhevnikov",
+                    "email": "onmotion1@gmail.com",
+                    "homepage": "http://kozhevnikov.me",
+                    "role": "Developer"
+                }
+            ],
+            "description": "blueimp gallery with fileupload in your Yii2 application",
+            "keywords": [
+                "blueimp",
+                "gallery",
+                "module",
+                "photo",
+                "yii2"
+            ],
+            "time": "2019-10-01T09:00:39+00:00"
+        },
+        {
+            "name": "onmotion/yii2-helpers",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/onmotion/yii2-helpers.git",
+                "reference": "2a2c7a02bed1c336469a0d3d5b92b24c46460fe4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/onmotion/yii2-helpers/zipball/2a2c7a02bed1c336469a0d3d5b92b24c46460fe4",
+                "reference": "2a2c7a02bed1c336469a0d3d5b92b24c46460fe4",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "asset-installer-paths": {
+                    "npm-asset-library": "vendor/npm",
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "onmotion\\helpers\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Alexandr Kozhevnikov",
+                    "email": "onmotion1@gmail.com",
+                    "homepage": "http://kozhevnikov.me",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The helpers for Yii2 application",
+            "homepage": "https://github.com/onmotion/yii2-helpers",
+            "keywords": [
+                " helpers",
+                " ru2en",
+                " translator",
+                "yii2"
+            ],
+            "time": "2016-09-21T07:25:56+00:00"
         },
         {
             "name": "paragonie/random_compat",

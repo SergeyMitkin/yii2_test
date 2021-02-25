@@ -38,6 +38,7 @@ AppAsset::register($this);
     $items = [
         ['label' => 'Главная', 'url' => ['/site/index']]
     ];
+    $items[]=['label' => 'Галерея', 'url' => ['/gallery/']];
     if(Yii::$app->user->isGuest){
         $items[]=['label' => 'Вход', 'url' => ['/site/login', 'login' => 'users']];
         $items[]=['label' => 'Вход для адимнистратора', 'url' => ['/site/login', 'login' => 'admin']];

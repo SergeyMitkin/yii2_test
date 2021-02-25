@@ -11,6 +11,11 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+    'modules' => [
+        'gallery' => [
+            'class' => 'onmotion\gallery\Module',
+        ]
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -47,6 +52,13 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+            ],
+        ],
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@vendor/onmotion/yii2-gallery/views' => '@app/views/gallery', // example: @app/views/gallery/default/index.php
+                ],
             ],
         ],
     ],
