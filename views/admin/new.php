@@ -87,14 +87,14 @@ $this->params['breadcrumbs'][] = array(
             [
                 'class' => 'yii\grid\ActionColumn',
                 // Кнопка принятия заказа
-                'template' => '{confirm}, {cancel}',
+                'template' => '{confirm} {cancel}',
                 'buttons' => [
                     'confirm' => function ($url, $model_orders, $key) {
 
                         $options = [
                             'title' => 'Подтвердить',
                             'aria-label' => 'Подтвердить',
-                            'class' => 'accept-icons',
+                            'class' => 'accept-icons span-in-td',
                             'data-order-id' => $key,
                             'data-url' => $url,
                             'data-action' => 'confirm',
@@ -111,7 +111,7 @@ $this->params['breadcrumbs'][] = array(
                         $options = [
                             'title' => 'Отменить',
                             'aria-label' => 'Отменить',
-                            'class' => 'accept-icons',
+                            'class' => 'accept-icons span-in-td',
                             'data-order-id' => $key,
                             'data-url' => $url,
                             'data-action' => 'cancel',
