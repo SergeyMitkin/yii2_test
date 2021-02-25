@@ -152,8 +152,10 @@ $(document).ready(function() {
     });
     
     inputField.on('fileunlock', function(event, data, previewId, index) {
-        //location.reload();
-    });
+        inputField.on('fileunlock', function(event, data, previewId, index){
+            location.reload();
+        }) 
+    }); 
 });
 JS
 );
