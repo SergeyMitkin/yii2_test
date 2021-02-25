@@ -70,11 +70,21 @@ class Orders extends \yii\db\ActiveRecord
         }
     }
 
+    // Отменяем заказ
+    public function cancelOrder($order_id){
+
+        $order = $this::findOne($order_id);
+        if ($order->delete()){
+            return true;
+        };
+    }
+
     // Получаем тариф
     public function getRate(){
         return $this->hasOne(Rates::class, ['id' => 'rate_id']);
     }
 
+    // Получаем пользователя
     public function getUser(){
         return $this->hasOne(User::class, ['id' => 'user_id']);
     }

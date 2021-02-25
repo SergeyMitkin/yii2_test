@@ -45,16 +45,35 @@ class AdminController extends Controller
         // Принимаем заказ через Pjax
         if ($request->isPjax){
 
-            if ($model_orders->confirmOrder($order_id)){
+            if($request->get('action') === 'confirm'){
+                if ($model_orders->confirmOrder($request->get('id'))){
+                    $model_servers = new Servers();
+                    $order = $model_orders::findOne($order_id);
+                    $user_id = $order->user_id;
+                    $rate_id = $order->rate_id;
 
-                $model_servers = new Servers();
-                $order = $model_orders::findOne($order_id);
-                $user_id = $order->user_id;
-                $rate_id = $order->rate_id;
+                    $model_servers->setServer($rate_id, $user_id, $order_id);
 
-                $model_servers->setServer($rate_id, $user_id, $order_id);
+                    if ($request->get('page') !== NULL){
+                       return $this->redirect( Yii::app()->createUrl('new',array('page'=>$request->get('page'))));
+                    } else {
+                        return $this->redirect('new');
+                    }
+                }
             }
-        };
+            else if ($request->get('action') === 'cancel'){
+
+
+                $model_orders->cancelOrder($order_id);
+
+
+                if ($request->get('page') !== NULL){
+                    return $this->redirect( Yii::app()->createUrl('new',array('page'=>$request->get('page'))));
+                } else {
+                    return $this->redirect('new');
+                }
+            }
+        }
 
         $ordersSearchModel = new AdminOrdersFilter();
         $ordersDataProvider = $ordersSearchModel->search(Yii::$app->request->queryParams);

@@ -87,31 +87,52 @@ $this->params['breadcrumbs'][] = array(
             [
                 'class' => 'yii\grid\ActionColumn',
                 // Кнопка принятия заказа
-                'template' => '{confirm}',
+                'template' => '{confirm}, {cancel}',
                 'buttons' => [
-                    'confirm' => function ($url, $model_orders/*, $key*/) {
-
-                        $order_id = $model_orders['id'];
-                        $iconName = "ok-sign";
-                        $id_tag = 'confirm-icon_'.$order_id;
-                        $url = Url::current(['id' => $order_id]);
+                    'confirm' => function ($url, $model_orders, $key) {
 
                         $options = [
                             'title' => 'Подтвердить',
                             'aria-label' => 'Подтвердить',
-                            'id' => $id_tag,
                             'class' => 'accept-icons',
-                            'data-order-id' => $order_id,
+                            'data-order-id' => $key,
                             'data-url' => $url,
+                            'data-action' => 'confirm',
                             'data-toggle' => 'modal',
-                            'data-target' => '#confirm-order-modal',
+                            'data-target' => '#action-order-modal'
                         ];
 
-                        // Стилизация кнопки
-                        $icon = Html::tag('span', '', ['class' => "glyphicon glyphicon-$iconName"]);
-                        return Html::a($icon, $url, $options);
+                        return Html::a('<span class="glyphicon glyphicon-ok-sign"></span>', $url, $options);
                     },
+
+                    // Кнопка удаления заказа
+                    'cancel' => function ($url, $model_orders, $key){
+
+                        $options = [
+                            'title' => 'Отменить',
+                            'aria-label' => 'Отменить',
+                            'class' => 'accept-icons',
+                            'data-order-id' => $key,
+                            'data-url' => $url,
+                            'data-action' => 'cancel',
+                            'data-toggle' => 'modal',
+                            'data-target' => '#action-order-modal'
+                        ];
+
+                        return Html::a('<span class="glyphicon glyphicon-remove"></span>', $url, $options);
+                    }
+
                 ],
+                'urlCreator' => function ($action, $model, $key, $index) {
+                    if ($action === 'confirm') {
+                        $url = Url::current(['id' => $key, 'action' => 'confirm']);
+                        return $url;
+                    }
+                    if ($action === 'cancel'){
+                        $url = Url::current(['id' => $key, 'action' => 'cancel']);
+                        return $url;
+                    }
+                }
             ]
         ]
     ]);
@@ -129,7 +150,7 @@ Modal::begin([
         'style' => 'display:none;'
     ],
     'options' => [
-        'id' => 'confirm-order-modal'
+        'id' => 'action-order-modal'
     ],
     'size' => Modal::SIZE_SMALL,
 ]);

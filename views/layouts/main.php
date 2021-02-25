@@ -38,7 +38,6 @@ AppAsset::register($this);
     $items = [
         ['label' => 'Главная', 'url' => ['/site/index']]
     ];
-    $items[]=['label' => 'Галерея', 'url' => ['/gallery/']];
     if(Yii::$app->user->isGuest){
         $items[]=['label' => 'Вход', 'url' => ['/site/login', 'login' => 'users']];
         $items[]=['label' => 'Вход для адимнистратора', 'url' => ['/site/login', 'login' => 'admin']];
@@ -59,7 +58,7 @@ AppAsset::register($this);
             . Html::endForm()
             . '</li>';
     }
-
+    $items[]=['label' => 'Галерея', 'url' => ['/gallery/']];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $items,
