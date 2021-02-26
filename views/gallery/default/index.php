@@ -3,6 +3,8 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\bootstrap\Modal;
 
+// Регистрируем CSS file
+$this->registerCssFile('css/gallery-index.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
 /* @var $this yii\web\View */
 /* @var $searchModel onmotion\gallery\models\GallerySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */

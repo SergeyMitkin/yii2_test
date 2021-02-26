@@ -1,0 +1,12 @@
+.wrap {
+    background: url("../images/network-2402637.jpg");
+}
+
+.name {
+    background-color: rgba(245,245,245,0.9);
+    padding-bottom: 10px;
+}
+
+.summary{
+    color: rgb(245,245,245);
+}
