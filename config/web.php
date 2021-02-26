@@ -5,13 +5,19 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'name' => 'My Company',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@adminlte/widgets'=>'@vendor/adminlte/yii2-widgets'
     ],
     'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Admin',
+            'layout' => 'main'
+        ],
         'gallery' => [
             'class' => 'onmotion\gallery\Module',
         ]
@@ -53,6 +59,10 @@ $config = [
             'showScriptName' => false,
             'rules' => [
             ],
+            'normalizer' => [
+                'class' => 'yii\web\UrlNormalizer',
+                'action' => yii\web\UrlNormalizer::ACTION_REDIRECT_PERMANENT
+            ]
         ],
         'view' => [
             'theme' => [

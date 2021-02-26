@@ -29,7 +29,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'Главная',
+        'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse',
@@ -80,7 +80,7 @@ AppAsset::register($this);
         <div class="pull-left">
             <p>Изображение <a href="https://pixabay.com/ru/users/bsdrouin-5016447/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2402637">Bethany Drouin</a> с сайта <a href="https://pixabay.com/ru/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2402637">Pixabay</a></p>
             <p>Изображение <a href="https://pixabay.com/ru/users/peggy_marco-1553824/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1834091">Peggy und Marco Lachmann-Anke</a> с сайта <a href="https://pixabay.com/ru/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1834091">Pixabay</a></p>
-            <p>&copy; My Company <?= date('Y') ?></p>
+            <p>&copy; <span><?= Yii::$app->name ?></span> <?= date('Y') ?></p>
         </div>
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>

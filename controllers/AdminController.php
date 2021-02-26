@@ -42,10 +42,10 @@ class AdminController extends Controller
             $model_email->contact($email, $subject, $body);
         });
 
-        // Принимаем заказ через Pjax
         if ($request->isPjax){
-
+            // Принимаем заказ
             if($request->get('action') === 'confirm'){
+
                 if ($model_orders->confirmOrder($request->get('id'))){
                     $model_servers = new Servers();
                     $order = $model_orders::findOne($order_id);
@@ -61,11 +61,10 @@ class AdminController extends Controller
                     }
                 }
             }
+            // Отменяем заказ
             else if ($request->get('action') === 'cancel'){
 
-
                 $model_orders->cancelOrder($order_id);
-
 
                 if ($request->get('page') !== NULL){
                     return $this->redirect( Yii::app()->createUrl('new',array('page'=>$request->get('page'))));
