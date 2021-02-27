@@ -2,26 +2,26 @@
 /**
  * Created by PhpStorm.
  * User: Sergey
- * Date: 13.10.2020
- * Time: 22:52
+ * Date: 27.02.2021
+ * Time: 10:44
  */
 
-namespace app\controllers;
+namespace app\modules\admin\controllers;
 
-use app\models\Email;
-use app\models\tables\Orders;
-use app\models\tables\Servers;
-use yii\base\Event;
-use yii\web\Controller;
 use Yii;
+use app\models\tables\Orders;
 use app\models\filters\OrdersFilter;
-use app\models\filters\AdminServersFilter;
+use app\models\Email;
+use app\models\tables\Servers;
+use yii\web\Controller;
+use yii\base\Event;
 
-class AdminController extends Controller
+
+class OrdersController extends Controller
 {
-    // Страница новых заказов
-    public function actionNew(){
 
+    public function actionIndex()
+    {
         $request = Yii::$app->request;
         $order_id = $request->get()["id"];
         $model_orders = new Orders();
@@ -55,9 +55,9 @@ class AdminController extends Controller
                     $model_servers->setServer($rate_id, $user_id, $order_id);
 
                     if ($request->get('page') !== NULL){
-                       return $this->redirect( Yii::app()->createUrl('new',array('page'=>$request->get('page'))));
+                        return $this->redirect( Yii::app()->createUrl('new',array('page'=>$request->get('page'))));
                     } else {
-                        return $this->redirect('new');
+                        return $this->redirect('index');
                     }
                 }
             }
@@ -69,7 +69,7 @@ class AdminController extends Controller
                 if ($request->get('page') !== NULL){
                     return $this->redirect( Yii::app()->createUrl('new',array('page'=>$request->get('page'))));
                 } else {
-                    return $this->redirect('new');
+                    return $this->redirect('index');
                 }
             }
         }
@@ -77,26 +77,10 @@ class AdminController extends Controller
         $ordersSearchModel = new OrdersFilter();
         $ordersDataProvider = $ordersSearchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('new', [
+        return $this->render('index', [
             'ordersSearchModel' => $ordersSearchModel,
             'ordersDataProvider' => $ordersDataProvider
         ]);
     }
 
-    // Страница принятых заказов
-    public function actionConfirmed(){
-
-        $serversSearchModel = new AdminServersFilter();
-        $serversDataProvider = $serversSearchModel->search(Yii::$app->request->queryParams);
-
-        $ordersSearchModel = new OrdersFilter();
-        $ordersDataProvider = $ordersSearchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('confirmed', [
-            'serversSearchModel' => $serversSearchModel,
-            'serversDataProvider' => $serversDataProvider,
-            'ordersSearchModel' => $ordersSearchModel,
-            'ordersDataProvider' => $ordersDataProvider,
-        ]);
-    }
 }

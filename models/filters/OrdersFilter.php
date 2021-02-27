@@ -12,7 +12,7 @@ use yii\helpers\Url;
 /**
  * AccountServersFilter represents the model behind the search form of `app\models\tables\Servers`.
  */
-class AdminOrdersFilter extends Orders
+class OrdersFilter extends Orders
 {
     public $rate_name;
     public $user_email;
@@ -81,7 +81,7 @@ class AdminOrdersFilter extends Orders
             ->andFilterWhere(['like', Rates::tableName().'.name', $this->rate_name])
             ->andFilterWhere(['like', User::tableName().'.email', $this->user_email]);
 
-            if (\Yii::$app->controller->action->id === 'new'){
+            if (\Yii::$app->controller->action->id === 'index'){
                $query ->andFilterWhere(['status' => 0]); // Выводим заказы только новые заказы
             }
             else if (\Yii::$app->controller->action->id === 'confirmed'){
