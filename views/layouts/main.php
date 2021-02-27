@@ -36,10 +36,10 @@ AppAsset::register($this);
         ],
     ]);
     $items = [
-        ['label' => 'Главная', 'url' => ['/site/index']]
+        ['label' => '<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Главная', 'url' => ['/site/index']]
     ];
     if(Yii::$app->user->isGuest){
-        $items[]=['label' => 'Вход', 'url' => ['/site/login', 'login' => 'users']];
+        $items[]=['label' => '<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Вход', 'url' => ['/site/login', 'login' => 'users']];
         $items[]=['label' => 'Вход для адимнистратора', 'url' => ['/site/login', 'login' => 'admin']];
         $items[]=['label' => 'Регистрация', 'url' => ['/site/signup']];
     }
@@ -52,7 +52,7 @@ AppAsset::register($this);
         $items[]='<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
-                'Выход (' . Yii::$app->user->identity->name . ')',
+                '<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Выход (' . Yii::$app->user->identity->name . ')',
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()
@@ -62,6 +62,7 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $items,
+        'encodeLabels' => false
     ]);
     NavBar::end();
     ?>
