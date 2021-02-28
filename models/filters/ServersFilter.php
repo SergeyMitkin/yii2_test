@@ -12,7 +12,7 @@ use app\models\User;
 /**
  * AccountServersFilter represents the model behind the search form of `app\models\tables\Servers`.
  */
-class AdminServersFilter extends Servers
+class ServersFilter extends Servers
 {
     public $rate_name;
     public $order_id;

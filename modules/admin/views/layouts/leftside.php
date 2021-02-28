@@ -3,6 +3,7 @@
 use adminlte\widgets\Menu;
 use yii\helpers\Html;
 use yii\helpers\Url;
+
 ?>
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
@@ -39,23 +40,26 @@ use yii\helpers\Url;
                             'url' => ['/'], 'active' => $this->context->route == 'site/index'
                         ],
                         [
-                            'label' => 'Master',
+                            'label' => 'Заказы',
                             'icon' => 'fa fa-database',
-                            'url' => '#',
+                            'url' => '',
                             'items' => [
                                 [
-                                    'label' => 'Master1',
+                                    'label' => 'Новые',
                                     'icon' => 'fa fa-database',
-                                    'url' => '?r=master1/',
-				    'active' => $this->context->route == 'master1/index'
+                                    'url' => 'index',
+				    'active' => $this->context->route == 'admin/orders/index'
                                 ],
                                 [
-                                    'label' => 'Master2',
+                                    'label' => 'Подтверждённые',
                                     'icon' => 'fa fa-database',
-                                    'url' => '?r=master2/',
-				    'active' => $this->context->route == 'master2/index'
+                                    'url' => 'confirmed',
+				    'active' => $this->context->route == 'admin/orders/confirmed'
                                 ]
                             ]
+                        ],
+                        ['label' => 'Предоставленные серверы', 'icon' => 'fa fa-database',
+                            'url' => ['/admin/servers'], 'active' => $this->context->route == 'admin/servers/index'
                         ],
                         [
                             'label' => 'Users',

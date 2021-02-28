@@ -19,7 +19,7 @@ use yii\base\Event;
 
 class OrdersController extends Controller
 {
-
+    // Страница с новыми заказами
     public function actionIndex()
     {
         $request = Yii::$app->request;
@@ -80,6 +80,23 @@ class OrdersController extends Controller
         return $this->render('index', [
             'ordersSearchModel' => $ordersSearchModel,
             'ordersDataProvider' => $ordersDataProvider
+        ]);
+    }
+
+    // Страница принятых заказов
+    public function actionConfirmed(){
+
+       // $serversSearchModel = new ServersFilter();
+       // $serversDataProvider = $serversSearchModel->search(Yii::$app->request->queryParams);
+
+        $ordersSearchModel = new OrdersFilter();
+        $ordersDataProvider = $ordersSearchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('confirmed', [
+            // 'serversSearchModel' => $serversSearchModel,
+            // 'serversDataProvider' => $serversDataProvider,
+            'ordersSearchModel' => $ordersSearchModel,
+            'ordersDataProvider' => $ordersDataProvider,
         ]);
     }
 
