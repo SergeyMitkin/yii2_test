@@ -15,7 +15,7 @@ use yii\base\Event;
 use yii\web\Controller;
 use Yii;
 use app\models\filters\OrdersFilter;
-use app\models\filters\AdminServersFilter;
+use app\models\filters\ServersFilter;
 
 class AdminController extends Controller
 {
@@ -86,7 +86,7 @@ class AdminController extends Controller
     // Страница принятых заказов
     public function actionConfirmed(){
 
-        $serversSearchModel = new AdminServersFilter();
+        $serversSearchModel = new ServersFilter();
         $serversDataProvider = $serversSearchModel->search(Yii::$app->request->queryParams);
 
         $ordersSearchModel = new OrdersFilter();

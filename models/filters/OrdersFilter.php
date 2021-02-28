@@ -81,13 +81,14 @@ class OrdersFilter extends Orders
             ->andFilterWhere(['like', Rates::tableName().'.name', $this->rate_name])
             ->andFilterWhere(['like', User::tableName().'.email', $this->user_email]);
 
-            if (\Yii::$app->controller->action->id === 'index'){
-               $query ->andFilterWhere(['status' => 0]); // Выводим заказы только новые заказы
+            if (\Yii::$app->controller->module->id === 'admin'){
+                if (\Yii::$app->controller->action->id === 'index'){
+                    $query ->andFilterWhere(['status' => 0]); // Выводим заказы только новые заказы
+                }
+                else if (\Yii::$app->controller->action->id === 'confirmed'){
+                    $query ->andFilterWhere(['status' => 1]); // Выводим заказы только принятые
+                }
             }
-            else if (\Yii::$app->controller->action->id === 'confirmed'){
-                $query ->andFilterWhere(['status' => 1]); // Выводим заказы только принятые
-            }
-
         return $dataProvider;
     }
 }
