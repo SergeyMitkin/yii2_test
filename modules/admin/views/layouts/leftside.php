@@ -62,9 +62,9 @@ use yii\helpers\Url;
                             'url' => ['/admin/servers/index'], 'active' => $this->context->route == 'admin/servers/index'
                         ],
                         [
-                            'label' => 'Users',
+                            'label' => 'Пользователи',
                             'icon' => 'fa fa-users',
-                            'url' => ['/user'],
+                            'url' => ['/admin/users'],
                             'active' => $this->context->route == 'user/index',
                         ],
                         ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii'],],
