@@ -19,7 +19,7 @@ class m201019_030147_create_orders_table extends Migration
             'rate_id' => $this->integer(),
             'user_id' => $this->integer(),
             'status' => $this->tinyInteger(),
-            'date' => $this->dateTime()->defaultValue(new \yii\db\Expression('NOW()'))
+            'date' => $this->timestamp()->defaultValue(new \yii\db\Expression('NOW()'))
         ]);
 
         $this->addForeignKey("fk_orders_user", "orders", "user_id", "user", "id");

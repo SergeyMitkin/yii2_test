@@ -18,9 +18,6 @@ class m210226_182103_add_inique_index_to_order_id_column extends Migration
             'servers'
         );
 
-        // CREATE UNIQUE INDEX servers_order_id_uindex ON servers (order_id);
-//DROP INDEX servers_orders_id_fk ON servers;
-
         // creates index for column `author_id`
         $this->createIndex(
             'servers_order_id_uindex',
@@ -29,18 +26,9 @@ class m210226_182103_add_inique_index_to_order_id_column extends Migration
             $unique = true
         );
 
-        /*
-        $this->dropIndex(
-            'servers_orders_id_fk',
-            'servers'
-        );
-        */
-
         $this->addForeignKey(
             'servers_orders_id_fk', 'servers', 'order_id', 'orders', 'id'
         );
-        // DROP INDEX fk_servers_orders ON servers;
-        // CREATE UNIQUE INDEX fk_servers_orders ON servers (order_id)
     }
 
     /**
