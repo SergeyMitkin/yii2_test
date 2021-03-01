@@ -27,12 +27,6 @@ $this->title = 'Servers';
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             'id',
-            /*
-            [
-                'attribute' => 'id',
-                'label' => 'ID сервера',
-            ],
-            */
             [
                 'attribute' => 'order_id',
                 'label' => 'ID заказа',
