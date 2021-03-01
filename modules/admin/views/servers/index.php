@@ -26,11 +26,34 @@ $this->title = 'Servers';
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'id',
-            'rate_id',
-            'user_id',
-            'order_id',
+            /*
+            [
+                'attribute' => 'id',
+                'label' => 'ID сервера',
+            ],
+            */
+            [
+                'attribute' => 'order_id',
+                'label' => 'ID заказа',
+            ],
+            [
+                'attribute' => 'rate_name',
+                'label' => 'Тариф',
+                'format' => 'html',
+                'filter' => [ "1"=>"Тариф 1", "2"=>"Тариф 2", "3"=>"Тариф 3" ],
+                'value' => function($model){
+                    return Html::tag('span', $model->rate->name);
+                }
+            ],
+            [
+                'attribute' => 'user_email',
+                'label' => 'Email пользователя',
+                'format' => 'html',
+                'value' => function($model){
+                    return Html::tag('span', $model->user->email);
+                }
+            ],
             [
                 'attribute' => 'date',
                 'label' => 'Дата и время',
