@@ -53,24 +53,11 @@ class OrdersController extends Controller
                     $rate_id = $order->rate_id;
 
                     $model_servers->setServer($rate_id, $user_id, $order_id);
-
-                    if ($request->get('page') !== NULL){
-                        return $this->redirect( Yii::app()->createUrl('/admin/orders',array('page'=>$request->get('page'))));
-                    } else {
-                        return $this->redirect('/admin/orders');
-                    }
                 }
             }
             // Отменяем заказ
             else if ($request->get('action') === 'cancel'){
-
                 $model_orders->cancelOrder($order_id);
-
-                if ($request->get('page') !== NULL){
-                    return $this->redirect( Yii::app()->createUrl('/admin/orders',array('page'=>$request->get('page'))));
-                } else {
-                    return $this->redirect('/admin/orders');
-                }
             }
         }
 

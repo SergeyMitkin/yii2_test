@@ -20,7 +20,8 @@ $(document).ready(function() {
             $('#confirm-order-a_' + order_id).on('click', function (event) {
                 event.preventDefault();
                 modal.modal('hide');
-                console.log('conf');
+
+                console.log('pjax-conf');
 
                 $.pjax.reload({
                     container:'#admin-new-orders',
@@ -40,6 +41,7 @@ $(document).ready(function() {
                     '<button class="confirm-buttons btn btn-danger" data-dismiss="modal">Отмена</button>' +
                 '</div>');
 
+            console.log('pjax-cancel');
             // При клике на ссылку "Подтвердить", подтверждаем заказ и перезагружаем GridView
             $('#confirm-order-a_' + order_id).on('click', function (event) {
                 event.preventDefault();

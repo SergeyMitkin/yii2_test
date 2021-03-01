@@ -13,7 +13,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\Pjax;
 use yii\bootstrap\Modal;
-use dosamigos\datepicker\DatePicker; // Подключаем виджет для фильтра по дате
+use dosamigos\datepicker\DatePicker;
 
 // Регистрируем CSS file
 $this->registerCssFile('css/admin-orders-index.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
