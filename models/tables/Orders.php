@@ -89,4 +89,9 @@ class Orders extends \yii\db\ActiveRecord
         return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 
+    // Получаем сервер
+    public function getServer(){
+        return $this->hasOne(Servers::class, ['id' => 'server_id']);
+    }
+
 }

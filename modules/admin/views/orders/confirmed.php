@@ -15,18 +15,9 @@ use yii\widgets\Pjax;
 use dosamigos\datepicker\DatePicker; // Подключаем виджет для фильтра по дате
 
 // Регистрируем CSS file
-$this->registerCssFile('css/admin-confirmed.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
+$this->registerCssFile('css/admin-orders-confirmed.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
 
 $this->title = 'Подтверждённые Заказы';
-$this->params['breadcrumbs'][] = array(
-    'label'=> 'Новые Заказы',
-    'url'=>Url::toRoute('admin/new')
-);
-
-$this->params['breadcrumbs'][] = array(
-    'label'=> $this->title,
-    'url'=>Url::toRoute('admin/confirmed')
-);
 
 ?>
 <div class="admin-confirmed">
@@ -48,7 +39,7 @@ $this->params['breadcrumbs'][] = array(
                 'attribute' => 'id',
                 'format' => 'html',
                 'value' => function($model){
-                    return Html::tag('span', $model->id, ['class' => 'span-in-td']);
+                    return Html::tag('span', $model->id);
                 }
             ],
             [
@@ -56,7 +47,7 @@ $this->params['breadcrumbs'][] = array(
                 'label' => 'Email пользователя',
                 'format' => 'html',
                 'value' => function($model){
-                    return Html::tag('span', $model->user->email, ['class' => 'span-in-td']);
+                    return Html::tag('span', $model->user->email);
                 }
             ],
             [
@@ -65,7 +56,7 @@ $this->params['breadcrumbs'][] = array(
                 'filter' => [ "1"=>"Тариф 1", "2"=>"Тариф 2", "3"=>"Тариф 3" ],
                 'format' => 'html',
                 'value' => function($model){
-                    return Html::tag('span', $model->rate->name, ['class' => 'span-in-td']);
+                    return Html::tag('span', $model->rate->name);
                 },
             ],
             [
@@ -73,7 +64,7 @@ $this->params['breadcrumbs'][] = array(
                 'label' => 'Дата и время',
                 'format' => 'raw',
                 'value' => function($model){
-                    return Html::tag('span', $model->date, ['class' => 'span-in-td']);
+                    return Html::tag('span', $model->date);
                 },
                 'filter' => DatePicker::widget([
                     'model' => $ordersSearchModel,

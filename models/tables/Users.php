@@ -10,7 +10,6 @@ use Yii;
  * @property int $id
  * @property string $email
  * @property string $name
- * @property string $password
  */
 class Users extends \yii\db\ActiveRecord
 {
@@ -28,8 +27,8 @@ class Users extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['email', 'password'], 'required'],
-            [['email', 'name', 'password'], 'string', 'max' => 50],
+            [['email'], 'required'],
+            [['email', 'name'], 'string', 'max' => 50],
         ];
     }
 
@@ -42,7 +41,6 @@ class Users extends \yii\db\ActiveRecord
             'id' => 'ID',
             'email' => 'Email',
             'name' => 'Name',
-            'password' => 'Пароль'
         ];
     }
 }

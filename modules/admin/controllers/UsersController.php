@@ -2,6 +2,8 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\tables\Orders;
+use app\models\tables\Servers;
 use Yii;
 use app\models\tables\Users;
 use app\models\filters\UsersFilter as UsersSearch;
@@ -104,7 +106,15 @@ class UsersController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        // Удаляем заказы и серверы пользователя
+        $servers_model = new Servers();
+        $orders_model = new Orders();
+
+        if ($servers_model::deleteAll('user_id = ' . $id)){
+            if ($orders_model::deleteAll('user_id = ' . $id)){
+                $this->findModel($id)->delete();
+            }
+        }
 
         return $this->redirect(['index']);
     }

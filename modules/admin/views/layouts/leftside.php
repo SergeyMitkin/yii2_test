@@ -41,24 +41,24 @@ use yii\helpers\Url;
                         ],
                         [
                             'label' => 'Заказы',
-                            'icon' => 'fa fa-database',
+                            'icon' => 'fa fa-cart-plus',
                             'url' => '/#',
                             'items' => [
                                 [
                                     'label' => 'Новые',
-                                    'icon' => 'fa fa-database',
+                                    'icon' => '',
                                     'url' => Url::to(['/admin/orders']),
 				    'active' => $this->context->route == 'admin/orders/index'
                                 ],
                                 [
                                     'label' => 'Подтверждённые',
-                                    'icon' => 'fa fa-database',
+                                    'icon' => '',
                                     'url' => ['/admin/orders/confirmed'],
 				    'active' => $this->context->route == 'admin/orders/confirmed'
                                 ]
                             ]
                         ],
-                        ['label' => 'Предоставленные серверы', 'icon' => 'fa fa-database',
+                        ['label' => 'Предоставленные серверы', 'icon' => 'fa fa-server',
                             'url' => ['/admin/servers/index'], 'active' => $this->context->route == 'admin/servers/index'
                         ],
                         [

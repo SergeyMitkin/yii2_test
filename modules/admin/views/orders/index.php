@@ -16,17 +16,9 @@ use yii\bootstrap\Modal;
 use dosamigos\datepicker\DatePicker; // Подключаем виджет для фильтра по дате
 
 // Регистрируем CSS file
-$this->registerCssFile('css/admin-new.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
+$this->registerCssFile('css/admin-orders-index.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
 
 $this->title = 'Новые Заказы';
-$this->params['breadcrumbs'][] = array(
-    'label'=> $this->title,
-    'url'=>Url::toRoute('admin/new')
-);
-$this->params['breadcrumbs'][] = array(
-    'label'=> 'Подтверждённые Закзы',
-    'url'=>Url::toRoute('admin/confirmed')
-);
 
 ?>
 <div class="admin-new">
@@ -48,7 +40,7 @@ $this->params['breadcrumbs'][] = array(
                 'attribute' => 'id',
                 'format' => 'html',
                 'value' => function($model){
-                    return Html::tag('span', $model->id, ['class' => 'span-in-td']);
+                    return Html::tag('span', $model->id);
                 }
             ],
             [
@@ -56,16 +48,16 @@ $this->params['breadcrumbs'][] = array(
                 'label' => 'Email пользователя',
                 'format' => 'html',
                 'value' => function($model){
-                    return Html::tag('span', $model->user->email, ['class' => 'span-in-td']);
+                    return Html::tag('span', $model->user->email);
                 }
             ],
             [
                 'attribute' => 'rate_name',
                 'label' => 'Тариф',
                 'format' => 'html',
-                'filter' => [ "1"=>"Тариф 1", "14"=>"Тариф 14", "3"=>"Тариф 3" ],
+                'filter' => [ "1"=>"Тариф 1", "2"=>"Тариф 2", "3"=>"Тариф 3" ],
                 'value' => function($model){
-                    return Html::tag('span', $model->rate->name, ['class' => 'span-in-td']);
+                    return Html::tag('span', $model->rate->name);
                 }
             ],
             [
@@ -90,11 +82,10 @@ $this->params['breadcrumbs'][] = array(
                 'template' => '{confirm} {cancel}',
                 'buttons' => [
                     'confirm' => function ($url, $model_orders, $key) {
-
                         $options = [
                             'title' => 'Подтвердить',
                             'aria-label' => 'Подтвердить',
-                            'class' => 'accept-icons span-in-td',
+                            'class' => 'accept-icons',
                             'data-order-id' => $key,
                             'data-url' => $url,
                             'data-action' => 'confirm',
@@ -111,7 +102,7 @@ $this->params['breadcrumbs'][] = array(
                         $options = [
                             'title' => 'Отменить',
                             'aria-label' => 'Отменить',
-                            'class' => 'accept-icons span-in-td',
+                            'class' => 'accept-icons',
                             'data-order-id' => $key,
                             'data-url' => $url,
                             'data-action' => 'cancel',
@@ -160,4 +151,4 @@ echo 'Модальное окно';
 Modal::end();
 
 // Регистрируем JS file
-$this->registerJSFile(Yii::$app->request->baseUrl.'/js/admin-new.js',['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJSFile(Yii::$app->request->baseUrl.'/js/admin-orders-index.js',['depends' => [\yii\web\JqueryAsset::className()]]);

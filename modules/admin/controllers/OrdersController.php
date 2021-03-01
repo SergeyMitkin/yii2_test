@@ -55,9 +55,9 @@ class OrdersController extends Controller
                     $model_servers->setServer($rate_id, $user_id, $order_id);
 
                     if ($request->get('page') !== NULL){
-                        return $this->redirect( Yii::app()->createUrl('new',array('page'=>$request->get('page'))));
+                        return $this->redirect( Yii::app()->createUrl('/admin/orders',array('page'=>$request->get('page'))));
                     } else {
-                        return $this->redirect('index');
+                        return $this->redirect('/admin/orders');
                     }
                 }
             }
@@ -67,9 +67,9 @@ class OrdersController extends Controller
                 $model_orders->cancelOrder($order_id);
 
                 if ($request->get('page') !== NULL){
-                    return $this->redirect( Yii::app()->createUrl('new',array('page'=>$request->get('page'))));
+                    return $this->redirect( Yii::app()->createUrl('/admin/orders',array('page'=>$request->get('page'))));
                 } else {
-                    return $this->redirect('index');
+                    return $this->redirect('/admin/orders');
                 }
             }
         }
@@ -86,15 +86,10 @@ class OrdersController extends Controller
     // Страница принятых заказов
     public function actionConfirmed(){
 
-       // $serversSearchModel = new ServersFilter();
-       // $serversDataProvider = $serversSearchModel->search(Yii::$app->request->queryParams);
-
         $ordersSearchModel = new OrdersFilter();
         $ordersDataProvider = $ordersSearchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('confirmed', [
-            // 'serversSearchModel' => $serversSearchModel,
-            // 'serversDataProvider' => $serversDataProvider,
             'ordersSearchModel' => $ordersSearchModel,
             'ordersDataProvider' => $ordersDataProvider,
         ]);
