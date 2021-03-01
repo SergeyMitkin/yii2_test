@@ -25,14 +25,9 @@ class ServersController extends Controller
         $serversSearchModel = new ServersFilter();
         $serversDataProvider = $serversSearchModel->search(Yii::$app->request->queryParams);
 
-        // $ordersSearchModel = new OrdersFilter();
-        // $ordersDataProvider = $ordersSearchModel->search(Yii::$app->request->queryParams);
-
         return $this->render('index', [
             'serversSearchModel' => $serversSearchModel,
             'serversDataProvider' => $serversDataProvider,
-            // 'ordersSearchModel' => $ordersSearchModel,
-            // 'ordersDataProvider' => $ordersDataProvider,
         ]);
     }
 }

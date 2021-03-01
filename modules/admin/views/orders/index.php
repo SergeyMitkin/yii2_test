@@ -65,7 +65,7 @@ $this->title = 'Новые Заказы';
                 'label' => 'Дата и время',
                 'format' => 'raw',
                 'value' => function($model){
-                    return Html::tag('span', $model->date, ['class' => 'span-in-td']);
+                    return Html::tag('span', $model->date);
                 },
                 'filter' => DatePicker::widget([
                     'model' => $ordersSearchModel,

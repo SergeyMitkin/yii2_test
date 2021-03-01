@@ -7,7 +7,6 @@ use app\models\User;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\tables\Orders;
-use yii\helpers\Url;
 
 /**
  * AccountServersFilter represents the model behind the search form of `app\models\tables\Servers`.
@@ -51,9 +50,26 @@ class OrdersFilter extends Orders
         $query->joinWith(['user']);
 
         // add conditions that should always apply here
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        ]);
+
+        // Порядок вывода заказов
+            // Новые заказы
+        if (\Yii::$app->controller->module->id === 'admin'){
+            if (\Yii::$app->controller->action->id === 'index'){
+                $dataProvider = new ActiveDataProvider([
+                    'query' => $query,
+                    'sort'=> ['defaultOrder' => ['date' => SORT_ASC]]
+                ]);
+
+            }
+            // Принятые заказы
+            else if (\Yii::$app->controller->action->id === 'confirmed'){
+                // Выводим заказы только принятые
+                $dataProvider = new ActiveDataProvider([
+                    'query' => $query,
+                    'sort'=> ['defaultOrder' => ['date' => SORT_DESC]]
+                ]);
+            }
+        }
 
         $dataProvider->sort->attributes['rate_name'] = [
             'asc' => [Rates::tableName().'.name' => SORT_ASC],
