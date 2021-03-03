@@ -36,8 +36,8 @@ class LoginForm extends Model
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
             // Проверка логина администратора
-            ['username', 'in', 'range' => ['admin@test.ru'], 'not' => true, 'message' => 'Войдите через вход для адиминстраторов', 'on' => self::SCENARIO_LOGIN_USERS],
-            ['username', 'in', 'range' => ['admin@test.ru'], 'message' => 'Войдите через вход для пользователей', 'on' => self::SCENARIO_LOGIN_ADMIN]
+            //['username', 'in', 'range' => ['admin@test.ru'], 'not' => true, 'message' => 'Войдите через вход для адиминстраторов', 'on' => self::SCENARIO_LOGIN_USERS],
+            ['username', 'in', 'range' => ['admin@test.ru'], 'message' => 'Неверный логин администратора', 'on' => self::SCENARIO_LOGIN_ADMIN]
         ];
     }
 

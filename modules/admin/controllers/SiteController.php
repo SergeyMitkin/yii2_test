@@ -26,14 +26,18 @@ class SiteController extends Controller
             }
         }
 
+        // Проверяем логин администратора
         $model = new LoginForm();
+        $login = 'admin@test.ru';
+        $model->scenario = $model::SCENARIO_LOGIN_ADMIN;
 
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return Yii::$app->response->redirect(['/admin/orders']);
         }
 
         return $this->render('login', [
-            'model' => $model
+            'model' => $model,
+            'login' => $login
         ]);
     }
 }

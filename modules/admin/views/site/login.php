@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 </span>
                                 {input}
                             </div>{error}{hint}
-                        </div>'])->textInput(['autofocus' => true])
+                        </div>'])->textInput(['autofocus' => true, 'value' => $login])
                                 ->input('text', ['placeholder'=>'Username']) ?>
 
                 <?= $form->field($model, 'password', ['template' => '
