@@ -14,7 +14,6 @@ use yii\base\Model;
 class LoginForm extends Model
 {
     const SCENARIO_LOGIN_ADMIN = 'login_admin';
-    const SCENARIO_LOGIN_USERS = 'login_users';
 
     public $username;
     public $password;
@@ -36,7 +35,6 @@ class LoginForm extends Model
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
             // Проверка логина администратора
-            //['username', 'in', 'range' => ['admin@test.ru'], 'not' => true, 'message' => 'Войдите через вход для адиминстраторов', 'on' => self::SCENARIO_LOGIN_USERS],
             ['username', 'in', 'range' => ['admin@test.ru'], 'message' => 'Неверный логин администратора', 'on' => self::SCENARIO_LOGIN_ADMIN]
         ];
     }

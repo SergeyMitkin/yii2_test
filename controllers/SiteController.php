@@ -100,41 +100,17 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        $login = Yii::$app->request->get()['login'];
-
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
         $model = new LoginForm();
 
-        // Админ заходит через форму входа для адиминистратора
-        if ($login == 'users'){
-            $model->scenario = $model::SCENARIO_LOGIN_USERS;
-            $title = 'Вход';
-            $login = '';
-            $login_label = 'Логин (email)';
-
-            if ($model->load(Yii::$app->request->post()) && $model->login()) {
-                return Yii::$app->response->redirect(['account/index']);
-            }
-
-        } else if ($login == 'admin'){
-            $model->scenario = $model::SCENARIO_LOGIN_ADMIN;
-            $title = 'Вход для администратора';
-            $login = 'admin@test.ru';
-            $login_label = 'Логин админа (email)';
-
-            if ($model->load(Yii::$app->request->post()) && $model->login()) {
-                return Yii::$app->response->redirect(['admin/new']);
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            return Yii::$app->response->redirect(['account/index']);
         }
 
-        $model->password = '';
         return $this->render('login', [
-            'model' => $model,
-            'title' => $title,
-            'login' => $login,
-            'login_label' => $login_label
+            'model' => $model
         ]);
     }
 

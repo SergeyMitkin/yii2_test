@@ -40,15 +40,10 @@ AppAsset::register($this);
     ];
     if(Yii::$app->user->isGuest){
         $items[]=['label' => '<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Вход', 'url' => ['/site/login', 'login' => 'users']];
-        $items[]=['label' => 'Вход для адимнистратора', 'url' => ['/site/login', 'login' => 'admin']];
         $items[]=['label' => 'Регистрация', 'url' => ['/site/signup']];
     }
     else{
-        if (Yii::$app->user->identity->email == 'admin@test.ru'){
-            $items[]=['label' => 'Админка', 'url' => ['/admin/new']];
-        } else {
-            $items[]=['label' => 'Личный кабинет', 'url' => ['/account/index']];
-        }
+        $items[]=['label' => '<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Личный кабинет', 'url' => ['/account/index']];
         $items[]='<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
@@ -58,7 +53,7 @@ AppAsset::register($this);
             . Html::endForm()
             . '</li>';
     }
-    $items[]=['label' => 'Галерея', 'url' => ['/gallery/']];
+    $items[]=['label' => '<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Галерея', 'url' => ['/gallery/']];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $items,
