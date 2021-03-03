@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\tables\Users;
 use Yii;
 use app\models\LoginForm;
 use yii\web\Controller;
@@ -17,15 +18,22 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        // Если admin авторизован, переходим на страницу заказов
+        if(!Yii::$app->user->isGuest){
+            $user = new Users();
+            if ($user->isAdmin()){
+                $this->redirect(['/admin/orders']);
+            }
+        }
+
         $model = new LoginForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return Yii::$app->response->redirect(['admin/orders']);
+            return Yii::$app->response->redirect(['/admin/orders']);
         }
 
         return $this->render('login', [
             'model' => $model
         ]);
     }
-
 }

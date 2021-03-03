@@ -8,6 +8,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\tables\Users;
 use Yii;
 use app\models\tables\Orders;
 use app\models\filters\OrdersFilter;
@@ -22,6 +23,9 @@ class OrdersController extends Controller
     // Страница с новыми заказами
     public function actionIndex()
     {
+        $user = new Users();
+        $user->isAdmin();
+
         $request = Yii::$app->request;
         $order_id = $request->get()["id"];
         $model_orders = new Orders();

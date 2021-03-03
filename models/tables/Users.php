@@ -29,6 +29,7 @@ class Users extends \yii\db\ActiveRecord
         return [
             [['email'], 'required'],
             [['email', 'name'], 'string', 'max' => 50],
+            [['id'], 'integer']
         ];
     }
 
@@ -42,5 +43,14 @@ class Users extends \yii\db\ActiveRecord
             'email' => 'Email',
             'name' => 'Name',
         ];
+    }
+
+    public function isAdmin()
+    {
+        if (Yii::$app->user->identity->getId() === 3){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
