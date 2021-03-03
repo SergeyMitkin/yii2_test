@@ -26,6 +26,11 @@ $config = [
             ],
         ],
         'db' => $db,
+        'authManager' => [
+            'class' => \yii\rbac\DbManager::className(),
+            // uncomment if you want to cache RBAC items hierarchy
+            // 'cache' => 'cache',
+        ],
     ],
     'params' => $params,
     /*

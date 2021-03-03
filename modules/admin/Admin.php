@@ -23,4 +23,22 @@ class Admin extends \yii\base\Module
 
         // custom initialization code goes here
     }
+
+    public function behaviors(){
+        return [
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['adminAccess'],
+                    ],
+                    [
+                        'allow' => true,
+                        'controllers' => ['admin/site'],
+                    ],
+                ],
+            ],
+        ];
+    }
 }

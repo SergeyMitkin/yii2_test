@@ -16,7 +16,7 @@ $config = [
     'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Admin',
-            'layout' => 'main'
+            'layout' => 'main',
         ],
         'gallery' => [
             'class' => 'onmotion\gallery\Module',
@@ -70,6 +70,11 @@ $config = [
                     '@vendor/onmotion/yii2-gallery/views' => '@app/views/gallery', // example: @app/views/gallery/default/index.php
                 ],
             ],
+        ],
+        'authManager' => [
+            'class' => \yii\rbac\DbManager::className(),
+            // uncomment if you want to cache RBAC items hierarchy
+            // 'cache' => 'cache',
         ],
     ],
     'params' => $params,

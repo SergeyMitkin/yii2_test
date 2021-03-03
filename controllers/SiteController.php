@@ -31,6 +31,7 @@ class SiteController extends Controller
                     ],
                 ],
             ],
+
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -54,6 +55,29 @@ class SiteController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
+    }
+
+    public function actionRbac()
+    {
+        /*
+        $am = Yii::$app->authManager;
+
+        $admin = $am->createRole('admin');
+        $admin->description = 'Администратор';
+
+        $am->add($admin);
+
+        $permission_admin_access = $am->createPermission('adminAccess');
+        $permission_signup_access = $am->createPermission('signupAccess');
+
+        $am->add($permission_admin_access);
+        $am->add($permission_signup_access);
+
+        $am->addChild($admin, $permission_admin_access);
+        $am->addChild($admin, $permission_signup_access);
+
+        $am->assign($admin, 3);
+         */
     }
 
     /**
