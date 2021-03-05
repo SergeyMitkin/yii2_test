@@ -42,7 +42,7 @@ use yii\helpers\Url;
                         [
                             'label' => 'Заказы',
                             'icon' => 'fa fa-cart-plus',
-                            'url' => '/#',
+                            'url' => '/admin/orders',
                             'items' => [
                                 [
                                     'label' => 'Новые',
