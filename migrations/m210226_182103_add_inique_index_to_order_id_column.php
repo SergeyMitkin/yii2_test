@@ -13,7 +13,14 @@ class m210226_182103_add_inique_index_to_order_id_column extends Migration
     public function Up()
     {
 
+
         $this->dropForeignKey(
+            'servers_orders_id_fk',
+            'servers'
+        );
+
+
+        $this->dropIndex(
             'servers_orders_id_fk',
             'servers'
         );
