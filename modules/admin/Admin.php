@@ -24,6 +24,12 @@ class Admin extends \yii\base\Module
         // custom initialization code goes here
     }
 
+    /*
+     * Поведение для доступа к админке:
+     * Полный доступ имеет пользователь с ролью adminAccess,
+     * остальные имеют доступ только к форме авторизации админки.
+     * На неё перенаправляются все запросы от неавторизованного админа
+     */
     public function behaviors(){
         return [
             'access' => [
