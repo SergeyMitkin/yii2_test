@@ -9,14 +9,14 @@
 namespace app\commands;
 
 
-use yii\web\Controller;
+use yii\console\Controller;
 
 class RbacController extends Controller
 {
-
+    // Создаём роль администратора и прикрепляем её к пользователю
     public function actionInit()
     {
-        $am = Yii::$app->authManager;
+        $am = \Yii::$app->authManager;
 
         $admin = $am->createRole('admin');
         $admin->description = 'Администратор';
@@ -24,13 +24,10 @@ class RbacController extends Controller
         $am->add($admin);
 
         $permission_admin_access = $am->createPermission('adminAccess');
-        $permission_signup_access = $am->createPermission('signupAccess');
 
         $am->add($permission_admin_access);
-        $am->add($permission_signup_access);
 
         $am->addChild($admin, $permission_admin_access);
-        $am->addChild($admin, $permission_signup_access);
 
         $am->assign($admin, 3);
     }
