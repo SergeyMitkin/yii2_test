@@ -38,6 +38,9 @@ class Admin extends \yii\base\Module
                         'controllers' => ['admin/site'],
                     ],
                 ],
+                'denyCallback' => function($rule, $action) {
+                    \Yii::$app->response->redirect(['admin']);
+                },
             ],
         ];
     }
