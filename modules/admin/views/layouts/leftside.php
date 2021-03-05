@@ -61,6 +61,9 @@ use yii\helpers\Url;
                         ['label' => 'Предоставленные серверы', 'icon' => 'fa fa-server',
                             'url' => ['/admin/servers/index'], 'active' => $this->context->route == 'admin/servers/index'
                         ],
+                        ['label' => 'Тарифы', 'icon' => 'glyphicon glyphicon-stats',
+                            'url' => ['/admin/rates/index'], 'active' => $this->context->route == 'admin/rates/index'
+                        ],
                         [
                             'label' => 'Пользователи',
                             'icon' => 'fa fa-users',
