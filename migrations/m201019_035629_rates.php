@@ -13,9 +13,16 @@ class m201019_035629_rates extends Migration
      */
     public function safeUp()
     {
+
+        $this->dropForeignKey('fk_orders_rates', 'orders');
+        $this->dropForeignKey('fk_servers_rates', 'servers');
+
         $this->insert($this->table, array('name'=>'Тариф 1','price'=>'1'));
         $this->insert($this->table, array('name'=>'Тариф 2','price'=>'2'));
         $this->insert($this->table, array('name'=>'Тариф 3','price'=>'3'));
+
+        $this->addForeignKey('fk_orders_rates', 'orders', 'rate_id', 'rates', 'id');
+        $this->addForeignKey('fk_servers_rates', 'servers', 'rate_id', 'rates', 'id');
 
     }
 
@@ -25,6 +32,8 @@ class m201019_035629_rates extends Migration
      */
     public function safeDown()
     {
+        $this->dropForeignKey('fk_orders_rates', 'orders');
+        $this->dropForeignKey('fk_servers_rates', 'servers');
         $this->truncateTable($this->table);
     }
 

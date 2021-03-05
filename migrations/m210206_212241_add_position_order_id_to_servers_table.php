@@ -15,7 +15,7 @@ class m210206_212241_add_position_order_id_to_servers_table extends Migration
         $this->addColumn('servers', 'order_id', $this->integer(11));
         // add foreign key for table `servers`
         $this->addForeignKey(
-            'fk_servers_orders',
+            'servers_orders_id_fk',
             'servers',
             'order_id',
             'orders',
@@ -29,7 +29,7 @@ class m210206_212241_add_position_order_id_to_servers_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropForeignKey('fk_servers_orders', 'servers');
+        $this->dropForeignKey('servers_orders_id_fk', 'servers');
         $this->dropColumn('servers', 'order_id');
     }
 
