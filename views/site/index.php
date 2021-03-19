@@ -6,8 +6,7 @@ use yii\helpers\Html;
 use yii\widgets\Pjax;
 use yii\bootstrap\Modal;
 
-// Регистрируем CSS file
-$this->registerCssFile('css/site-index.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
+\app\assets\IndexAsset::register($this);
 
 /* @var $this yii\web\View */
 $this->title = 'Аренда выделеных серверов';
@@ -122,7 +121,3 @@ Modal::end();
         }
     ?>"
 </script>
-
-<?
-// Регистрируем JS file
-$this->registerJSFile(Yii::$app->request->baseUrl.'/js/index.js',['depends' => [\yii\web\JqueryAsset::className()]]);
