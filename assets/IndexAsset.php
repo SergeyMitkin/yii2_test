@@ -16,7 +16,8 @@ class IndexAsset extends AssetBundle
     public $baseUrl = '@web';
 
     public $css = [
-        'css/site-index.css',
+        //'css/site-index.css',
+        'css/Главная.css'
     ];
     public $js = [
         'js/index.js'
