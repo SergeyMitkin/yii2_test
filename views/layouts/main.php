@@ -25,9 +25,6 @@ AppAsset::register($this);
 
         <title><?= Html::encode($this->title) ?></title>
 
-        <link rel="stylesheet" href="<?=Yii::getAlias('@web/css/nicepage.css')?>" media="screen">
-        <link rel="stylesheet" href="<?=Yii::getAlias('@web/css/Главная.css')?>" media="screen">
-
         <script class="u-script" type="text/javascript" src="<?=Yii::getAlias('@web/js/jquery.js')?>" defer=""></script>
         <script class="u-script" type="text/javascript" src="<?=Yii::getAlias('@web/js/nicepage.js')?>" defer=""></script>
 

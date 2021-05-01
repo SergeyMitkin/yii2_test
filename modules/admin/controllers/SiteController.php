@@ -40,4 +40,11 @@ class SiteController extends Controller
             'login' => $login
         ]);
     }
+
+    public function actionLogout()
+    {
+        Yii::$app->user->logout();
+
+        return Yii::$app->response->redirect(['/admin/']);
+    }
 }
