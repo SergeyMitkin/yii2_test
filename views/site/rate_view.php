@@ -1,6 +1,6 @@
 
 <div class="u-container-layout u-similar-container u-container-layout-1">
-    <h4 class="u-custom-font u-font-lato u-text u-text-palette-1-dark-3 u-text-1">Strategy</h4>
+    <h4 class="u-custom-font u-font-lato u-text u-text-palette-1-dark-3 u-text-1"><? echo $model->name; ?></h4>
     <span class="u-border-2 u-border-grey-90 u-icon u-icon-circle u-text-grey-90 u-icon-1">
          <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 36 36" style="">
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-7da8">

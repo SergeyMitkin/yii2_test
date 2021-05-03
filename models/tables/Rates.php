@@ -28,7 +28,7 @@ class Rates extends \yii\db\ActiveRecord
     {
         return [
             [['price'], 'number'],
-            [['name'], 'string', 'max' => 255],
+            [['name', 'description'], 'string', 'max' => 255],
         ];
     }
 
@@ -39,6 +39,7 @@ class Rates extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'description' => 'Описание',
             'name' => 'Тариф',
             'price' => 'Цена',
         ];
