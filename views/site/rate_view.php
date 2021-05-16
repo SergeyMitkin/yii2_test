@@ -29,5 +29,5 @@
               </g>
               </svg>
          </span>
-    <p class="u-text u-text-palette-1-dark-3 u-text-2">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
+    <p class="u-text u-text-palette-1-dark-3 u-text-2"><? echo $model->description; ?></p>
 </div>

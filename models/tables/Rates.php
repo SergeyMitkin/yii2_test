@@ -28,7 +28,8 @@ class Rates extends \yii\db\ActiveRecord
     {
         return [
             [['price'], 'number'],
-            [['name', 'description'], 'string', 'max' => 255],
+            [['name'], 'string', 'max' => 50],
+            [['description'], 'string', 'max' => 250],
         ];
     }
 
