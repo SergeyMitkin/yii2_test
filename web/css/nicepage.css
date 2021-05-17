@@ -14202,6 +14202,7 @@ section.u-image,
 .u-icon-circle,
 .u-icon-circle img {
   border-radius: 50%;
+    cursor: pointer;
 }
 .u-icon-rounded,
 .u-icon-rounded img {

@@ -18,7 +18,7 @@ AppAsset::register($this);
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="<?= Yii::$app->charset ?>">
-      <!--  <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+        <!--  <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
         <meta name="keywords" content="Аренда выде​ленных серверов​">
         <meta name="description" content="">
         <meta name="page_type" content="np-template-header-footer-from-plugin">
@@ -95,21 +95,26 @@ AppAsset::register($this);
 
     <?= $content ?>
 
-    <footer class="u-align-left u-clearfix u-footer u-grey-80 u-footer" id="sec-aed1"><div class="u-clearfix u-sheet u-sheet-1">
+    <footer class="u-align-left u-clearfix u-footer u-grey-80 u-footer" id="sec-aed1">
+
+        <div class="u-clearfix u-sheet u-sheet-1">
             <p class="u-text u-text-1">Images ​from <a href="https://www.freepik.com/photos/people" class="u-border-1 u-border-white u-btn u-button-link u-button-style u-none u-text-body-alt-color u-btn-1" target="_blank">Freepik</a>
             </p>
-        </div></footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-        <a class="u-link" href="https://nicepage.com/website-mockup" target="_blank">
-            <span>Website Mockup</span>
-        </a>
-        <p class="u-text">
-            <span>created with</span>
-        </p>
-        <a class="u-link" href="https://nicepage.com/" target="_blank">
-            <span>Website Builder Software</span>
-        </a>.
-    </section>
+        </div>
+
+        <section class="u-backlink u-clearfix u-grey-80">
+            <a class="u-link" href="https://nicepage.com/website-mockup" target="_blank">
+                <span>Website Mockup</span>
+            </a>
+            <p class="u-text">
+                <span>created with</span>
+            </p>
+            <a class="u-link" href="https://nicepage.com/" target="_blank">
+                <span>Website Builder Software</span>
+            </a>.
+        </section>
+    </footer>
+
 
     <?php $this->endBody() ?>
     </body>
