@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     // Обработка клика на иконку заказа тарифа
-    $('.rate-order-buttons').on('click', function (event) {
+    $('.u-icon-circle').on('click', function (event) {
         event.preventDefault();
 
         // Если пользователь неавторизовн, просим авторизваться

@@ -52,7 +52,6 @@ AppAsset::register($this);
     </head>
     <body data-home-page="Главная.html" data-home-page-title="Главная" class="u-body">
     <?php $this->beginBody() ?>
-
     <header class="u-clearfix u-header u-header" id="sec-ded9">
         <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
             <a href="https://nicepage.com" class="u-image u-logo u-image-1">

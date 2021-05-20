@@ -65,6 +65,15 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $model = new Rates();
+
+        if(Yii::$app->user->isGuest){
+            $is_guest = 'guest';
+        }else{
+            $is_guest =  'authorized';
+        }
+
+        $this->view->registerJsVar('is_guest', $is_guest);
+
         return $this->render('index', [
             'model' => $model
         ]);
@@ -149,6 +158,5 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
-
 
 }
