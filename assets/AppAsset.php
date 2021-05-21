@@ -24,6 +24,7 @@ class AppAsset extends AssetBundle
         'css/nicepage.css',
     ];
     public $js = [
+        'js/layout-main.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -66,6 +66,7 @@ class SiteController extends Controller
     {
         $model = new Rates();
 
+        // Передаём в переменную js иныормацию о статуче пользователя
         if(Yii::$app->user->isGuest){
             $is_guest = 'guest';
         }else{
