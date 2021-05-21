@@ -1,5 +1,7 @@
 <?php
 use yii\data\ActiveDataProvider;
+use yii\bootstrap\Modal;
+
 \app\assets\IndexAsset::register($this);
 ?>
 
@@ -33,5 +35,26 @@ use yii\data\ActiveDataProvider;
 
         ?>
     </div>
-
 </section>
+
+<?php
+// Модальное окно заказа тарифа
+Modal::begin([
+    'headerOptions' => [
+        'style' => 'display:none;'
+    ],
+
+    'footerOptions' => [
+        'style' => 'display:none;'
+    ],
+
+    'options' => [
+        'id' => 'rate-order-modal'
+    ],
+    'size' => Modal::SIZE_DEFAULT,
+]);
+
+echo 'Модальное окно';
+
+Modal::end();
+?>
