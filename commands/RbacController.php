@@ -29,6 +29,6 @@ class RbacController extends Controller
 
         $am->addChild($admin, $permission_admin_access);
 
-        $am->assign($admin, 3);
+        $am->assign($admin, 1);
     }
 }

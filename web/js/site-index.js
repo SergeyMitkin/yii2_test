@@ -1,12 +1,13 @@
 $(document).ready(function() {
 
     // Проверяем есть ли тариф в заказе
+    /*
     if (typeof (getUrlVars()["order"]) != "undefined" && getUrlVars()["order"] !== null && getUrlVars()["order"] == "refuse")
     {
         alert("Тариф уже есть в заказе");
         window.history.replaceState({}, document.title, "/site/index" );
     }
-
+    */
 
     // Обработка клика на иконку заказа тарифа
     $('.u-svg-link').on('click', function (event) {
@@ -37,6 +38,7 @@ $(document).ready(function() {
 })
 
 // Считывает GET переменные из URL страницы и возвращает их как ассоциативный массив.
+/*
 function getUrlVars()
 {
     var vars = [], hash;
@@ -49,3 +51,4 @@ function getUrlVars()
     }
     return vars;
 }
+*/

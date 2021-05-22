@@ -17,9 +17,9 @@ class m201019_035629_rates extends Migration
         $this->dropForeignKey('fk_orders_rates', 'orders');
         $this->dropForeignKey('fk_servers_rates', 'servers');
 
-        $this->insert($this->table, array('name'=>'Тариф 1','price'=>'1'));
-        $this->insert($this->table, array('name'=>'Тариф 2','price'=>'2'));
-        $this->insert($this->table, array('name'=>'Тариф 3','price'=>'3'));
+        $this->insert($this->table, array('name'=>'Тариф 1','price'=>'1', 'description' => 'Описание 1'));
+        $this->insert($this->table, array('name'=>'Тариф 2','price'=>'2', 'description' => 'Описание 2'));
+        $this->insert($this->table, array('name'=>'Тариф 3','price'=>'3', 'description' => 'Описание 3'));
 
         $this->addForeignKey('fk_orders_rates', 'orders', 'rate_id', 'rates', 'id');
         $this->addForeignKey('fk_servers_rates', 'servers', 'rate_id', 'rates', 'id');

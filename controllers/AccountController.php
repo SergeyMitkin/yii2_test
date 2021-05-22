@@ -50,37 +50,33 @@ class AccountController extends Controller
 
         // Если пришли по ссылке с заказа тарифа, добавляем заказ
         if ($rate_id != null){
-            try {
-                // Событие после добавления заказа
-                Event::on(Orders::class, Orders::EVENT_AFTER_INSERT, function ($event){
 
-                    $order_id = $event->sender->id;
-                    $user = $event->sender->user;
-                    $email = $user->email;
-                    $username = $user->name;
-                    $rate = $event->sender->rate;
-                    $rate_name = $rate->name;
-                    $rate_price = $rate->price;
+            // Событие после добавления заказа
+            Event::on(Orders::class, Orders::EVENT_AFTER_INSERT, function ($event){
 
-                    // Отправляем email пользователю
-                    $subject = 'Заказ сервера';
-                    $body = 'Уважаемый ' . $username . ', Вы заказали ' . $rate_name .
-                        ' за ' . $rate_price . ' $. Номер заказа ' . $order_id . '.
+                $order_id = $event->sender->id;
+                $user = $event->sender->user;
+                $email = $user->email;
+                $username = $user->name;
+                $rate = $event->sender->rate;
+                $rate_name = $rate->name;
+                $rate_price = $rate->price;
+
+                // Отправляем email пользователю
+                $subject = 'Заказ сервера';
+                $body = 'Уважаемый ' . $username . ', Вы заказали ' . $rate_name .
+                    ' за ' . $rate_price . ' $. Номер заказа ' . $order_id . '.
                 Дождитесь подтверждения администратором';
 
-                    $model_email = new Email();
-                    $model_email->contact($email, $subject, $body);
-                });
+                $model_email = new Email();
+                $model_email->contact($email, $subject, $body);
+            });
 
-                // Добавляем заказ
-                $model_orders->setOrder($rate_id, $user_id);
-                // Переходим на вкладку заказов
-                $this->redirect(['index', array('active_li' => 'orders')]);
+            // Добавляем заказ
+            $model_orders->setOrder($rate_id, $user_id);
+            // Переходим на вкладку заказов
+            $this->redirect(['index', array('active_li' => 'orders')]);
 
-            } catch (Exception $exception) {
-                // Если тариф, уже есть в заказе, отправляем на главную
-                $this->redirect(array('/site/index', 'order' => 'refuse'));
-            }
         };
 
         $serversSearchModel = new AccountServersFilter();
