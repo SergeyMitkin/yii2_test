@@ -22,6 +22,7 @@ class AppAsset extends AssetBundle
 
     public $css = [
         'css/nicepage.css',
+        'css/site.css',
     ];
     public $js = [
         'js/layout-main.js'

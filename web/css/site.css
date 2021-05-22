@@ -153,3 +153,8 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+/* Удаляем фокус с иконки заказа тарифа */
+.u-svg-link:focus{
+    outline: none;
+}

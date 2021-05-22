@@ -23,7 +23,7 @@ AppAsset::register($this);
 
         <title><?= Html::encode($this->title) ?></title>
 
-        <script class="u-script" type="text/javascript" src="<?=Yii::getAlias('@web/js/jquery.js')?>" defer=""></script>
+
         <script class="u-script" type="text/javascript" src="<?=Yii::getAlias('@web/js/nicepage.js')?>" defer=""></script>
 
         <meta name="generator" content="Nicepage 3.12.1, nicepage.com">
