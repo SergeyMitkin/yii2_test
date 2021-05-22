@@ -62,7 +62,7 @@ $this->params['breadcrumbs'][] = array(
                         [
                             'attribute' => 'rate_name',
                             'label' => 'Тариф',
-                            'filter' => [ "1"=>"Тариф 1", "14"=>"Тариф 14", "3"=>"Тариф 3" ],
+                            'filter' => \yii\helpers\ArrayHelper::map($model_rates::find()->all(),'id', 'name'),
                             'format' => 'html',
                             'value' => function($model){
                                 return Html::tag('span', $model->rate->name, ['class' => 'span-in-td']);

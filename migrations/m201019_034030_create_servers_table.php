@@ -14,7 +14,7 @@ class m201019_034030_create_servers_table extends Migration
     {
         $this->createTable('{{%servers}}', [
             'id' => $this->primaryKey(),
-            'rate_id' => $this->integer(),
+            'rate_id' => $this->integer()->unique(),
             'user_id' => $this->integer(),
             'date' => $this->timestamp()->defaultValue(new \yii\db\Expression('NOW()'))
         ]);

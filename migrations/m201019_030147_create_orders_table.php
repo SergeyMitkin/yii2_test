@@ -13,10 +13,9 @@ class m201019_030147_create_orders_table extends Migration
     public function safeUp()
     {
 
-
         $this->createTable('{{%orders}}', [
             'id' => $this->primaryKey(),
-            'rate_id' => $this->integer(),
+            'rate_id' => $this->integer()->unique(),
             'user_id' => $this->integer(),
             'status' => $this->tinyInteger(),
             'date' => $this->timestamp()->defaultValue(new \yii\db\Expression('NOW()'))
