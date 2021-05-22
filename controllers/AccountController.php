@@ -10,6 +10,7 @@ namespace app\controllers;
 
 use app\models\filters\AccountOrdersFilter;
 use app\models\filters\AccountServersFilter;
+use app\models\tables\Rates;
 use Yii;
 use yii\web\Controller;
 use app\models\tables\Orders;
@@ -38,6 +39,7 @@ class AccountController extends Controller
     // Главная страница личного кабинета
     public function actionIndex()
     {
+        $model_rates = new Rates();
         $model_orders = new Orders();
 
         $request = Yii::$app->request;
@@ -87,6 +89,7 @@ class AccountController extends Controller
             'ordersSearchModel' => $ordersSearchModel,
             'ordersDataProvider' => $ordersDataProvider,
             'username' => $username,
+            'model_rates' => $model_rates,
             'model_orders' => $model_orders,
         ]);
     }
