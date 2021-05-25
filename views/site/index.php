@@ -39,6 +39,7 @@ use yii\bootstrap\Modal;
 
 <?php
 // Модальное окно заказа тарифа
+/*
 Modal::begin([
     'headerOptions' => [
         'style' => 'display:none;'
@@ -57,4 +58,5 @@ Modal::begin([
 echo 'Модальное окно';
 
 Modal::end();
+*/
 ?>

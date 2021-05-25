@@ -1,54 +1,49 @@
 $(document).ready(function() {
 
-    // Проверяем есть ли тариф в заказе
-    /*
-    if (typeof (getUrlVars()["order"]) != "undefined" && getUrlVars()["order"] !== null && getUrlVars()["order"] == "refuse")
-    {
-        alert("Тариф уже есть в заказе");
-        window.history.replaceState({}, document.title, "/site/index" );
-    }
-    */
-
     // Обработка клика на иконку заказа тарифа
     $('.u-svg-link').on('click', function (event) {
-        event.preventDefault();
+        var icon = $(event.currentTarget);
+        var rate_id = icon.attr('data-rate-id');
+        var rate_name = icon.attr('data-rate-name');
+        var price = icon.attr('data-price');
+        var url = icon.data('data-url');
 
-        // Если пользователь неавторизовн, просим авторизваться
-        // Иначе показываем модальное окно
+        // Если пользователь неавторизован, просим авторизваться
+        // Иначе просим подтвердить заказ тарифа
         if (is_guest == "guest"){
+
             $(this).attr("data-toggle", "none"); // Предотвращаем появление модального окна
             alert("Для заказа тарифа авторизуйтесь");
-        } else {
-            // Показываем модальное окно
-            $('#rate-order-modal').on('show.bs.modal', function (event) {
-                var icon = $(event.relatedTarget);
-                var rate_id = icon.data('rate-id');
-                var price = icon.data('price');
-                var url = icon.data('url');
-                var modal = $(this);
 
-                modal.find('.modal-body').html('<h3 align="center">Заказать Тариф ' + rate_id + ' за ' + price + ' $? </h3>' +
-                    '<div align="center" class="div-confirm-buttons">' +
-                        '<a href="' + url + '" class="confirm-buttons btn btn-success" id="rate-order-a_' + rate_id + '">Подтвердить</a>' +
-                        '<button class="confirm-buttons btn btn-danger" data-dismiss="modal">Отмена</button>' +
-                    '</div>');
-            })
+        } else {
+
+            var question = 'Заказать' + rate_name + ' за ' + price + ' $?';
+            const result = confirm(question);
+
+            if (result === true){
+                var action = "adOrder";
+
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    data: {
+                        ajax: action,
+                        rate_id: rate_id,
+                        rate_name: rate_name
+                    },
+                    error: function () {
+                        alert('Что-то пошло не так!');
+                    },
+                    success: function (res) {
+                        var obj = jQuery.parseJSON(res);
+                        var order = obj['order'];
+                        
+                        if (order === 'created'){
+                            alert(obj['rate_name'] + ' добавлен в заказ')
+                        }
+                    }
+                })
+            }
         }
     })
 })
-
-// Считывает GET переменные из URL страницы и возвращает их как ассоциативный массив.
-/*
-function getUrlVars()
-{
-    var vars = [], hash;
-    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for(var i = 0; i < hashes.length; i++)
-    {
-        hash = hashes[i].split('=');
-        vars.push(hash[0]);
-        vars[hash[0]] = hash[1];
-    }
-    return vars;
-}
-*/

@@ -9,11 +9,12 @@ use yii\helpers\Url;
     <span class="u-border-2 u-border-grey-90 u-icon u-icon-circle u-text-grey-90 u-icon-1">
 
          <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 36 36"
-             data-rate-id="<? echo $model->id ?>"
-             data-price="<? echo $model->price ?>"
-             data-url="<? echo Url::toRoute(['account/index', 'id' => $model->id])?>"
-             data-toggle="modal"
-             data-target="#rate-order-modal"
+              data-rate-id="<? echo $model->id ?>"
+              data-rate-name="<? echo $model->name ?>"
+              data-price="<? echo $model->price ?>"
+              data-url="<? echo Url::toRoute(['site/index'])?>"
+             <!-- data-toggle="modal"
+              data-target="#rate-order-modal" -->
          >
              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-7da8_<? echo $model->id ?>">
              </use>

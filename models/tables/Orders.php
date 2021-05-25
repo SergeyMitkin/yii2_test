@@ -4,6 +4,8 @@ namespace app\models\tables;
 
 use app\models\User;
 use Yii;
+use yii\base\ExitException;
+use yii\db\Exception;
 use yii\db\Query;
 
 /**

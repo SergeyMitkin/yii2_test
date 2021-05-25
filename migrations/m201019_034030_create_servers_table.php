@@ -14,13 +14,15 @@ class m201019_034030_create_servers_table extends Migration
     {
         $this->createTable('{{%servers}}', [
             'id' => $this->primaryKey(),
-            'rate_id' => $this->integer()->unique(),
+            'rate_id' => $this->integer(),
             'user_id' => $this->integer(),
+            'order_id' => $this->integer()->unique(),
             'date' => $this->timestamp()->defaultValue(new \yii\db\Expression('NOW()'))
         ]);
 
         $this->addForeignKey("fk_servers_user", "servers", "user_id", "user", "id");
         $this->addForeignKey("fk_servers_rates", "servers", "rate_id", "rates", "id");
+        $this->addForeignKey("fk_servers_orders", "servers", "order_id", "orders", "id");
 
     }
 

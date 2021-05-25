@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use yii\db\Exception;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
@@ -11,6 +12,9 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\SignupForm;
 use app\models\tables\Rates;
+use app\models\tables\Orders;
+use app\models\Email;
+use yii\base\Event;
 
 class SiteController extends Controller
 {
@@ -65,8 +69,9 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $model = new Rates();
+        $model_orders = new Orders();
 
-        // Передаём в переменную js информацию о статусе пользователя
+        // Передаём в переменные js информацию о пользователе
         if(Yii::$app->user->isGuest){
             $is_guest = 'guest';
         }else{
@@ -74,6 +79,47 @@ class SiteController extends Controller
         }
 
         $this->view->registerJsVar('is_guest', $is_guest);
+
+        if(\Yii::$app->request->isAjax){
+            $rate_id = $_GET['rate_id'];
+            $rate_name = $_GET['rate_name'];
+            $user_id = Yii::$app->user->identity->getId();
+
+            // Событие после добавления заказа
+            Event::on(Orders::class, Orders::EVENT_AFTER_INSERT, function ($event){
+
+                $order_id = $event->sender->id;
+                $user = $event->sender->user;
+                $email = $user->email;
+                $username = $user->name;
+                $rate = $event->sender->rate;
+                $rate_name = $rate->name;
+                $rate_price = $rate->price;
+
+                // Отправляем email пользователю
+                $subject = 'Заказ сервера';
+                $body = 'Уважаемый ' . $username . ', Вы заказали ' . $rate_name .
+                    ' за ' . $rate_price . ' $. Номер заказа ' . $order_id . '.
+                Дождитесь подтверждения администратором';
+
+                $model_email = new Email();
+                $model_email->contact($email, $subject, $body);
+            });
+
+            // Добавляем заказ
+            try{
+                $model_orders->setOrder($rate_id, $user_id);
+
+                $res['order'] = 'created';
+                $res['rate_name'] = $rate_name;
+                return json_encode($res);
+
+            }catch (Exception $e){
+                $res['order'] = 'refused';
+                $res['message'] = $e->getName();
+                return json_encode($res);
+            }
+        }
 
         return $this->render('index', [
             'model' => $model
