@@ -23,7 +23,6 @@ AppAsset::register($this);
 
         <title><?= Html::encode($this->title) ?></title>
 
-
         <script class="u-script" type="text/javascript" src="<?=Yii::getAlias('@web/js/nicepage.js')?>" defer=""></script>
 
         <meta name="generator" content="Nicepage 3.12.1, nicepage.com">
@@ -143,8 +142,7 @@ AppAsset::register($this);
 
                                             )
                                             . Html::endForm();
-
-                                      '</li>';
+                                        '</li>';
                                     }
                                     ?>
                                 </ul>
@@ -153,11 +151,21 @@ AppAsset::register($this);
                         <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
                     </div>
                 </nav>
-
             </div>
         </header>
 
-        <?= $content ?>
+        <section class="u-border-2 u-border-grey-75 u-clearfix u-grey-90 u-valign-top-xl u-section-1" id="carousel_baa4">
+            <img class="u-image u-image-1" src="<?=Yii::getAlias("@web/images/80706e8709156a71eff417a4b5353bb19db3491e5f2a1c1dbd49e0f4a254a5b858124bfb19e6ab4f08a4620d99780d576d8c687380d2a245cd9fa1_12801.jpg")?>" data-image-width="1280" data-image-height="853">
+
+            <div class="u-align-right u-container-style u-group u-palette-2-base u-shape-rectangle u-group-1">
+                <div class="u-container-layout u-valign-middle-sm u-container-layout-4">
+                    <h2 class="u-align-center u-custom-font u-text u-text-7">Аренда выде​ленных серверов </h2>
+                </div>
+            </div>
+
+            <?= $content ?>
+
+        </section>
 
         <footer class="u-align-left u-clearfix u-footer u-grey-80 u-footer" id="sec-aed1">
 

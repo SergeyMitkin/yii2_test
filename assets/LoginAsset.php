@@ -8,23 +8,24 @@
 
 namespace app\assets;
 use yii\web\AssetBundle;
-use yii\web\JqueryAsset;
+//use yii\web\JqueryAsset;
 
-class IndexAsset extends AssetBundle
+class LoginAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
 
     public $css = [
-        'css/index.css'
+        'css/login.css'
     ];
     public $js = [
-        'js/site-index.js'
+        //'js/site-index.js'
     ];
 
     public $depends = [
-        'yii\web\YiiAsset',
-        JqueryAsset::class
+        'yii\bootstrap\BootstrapAsset'
+        //'yii\web\YiiAsset',
+        //JqueryAsset::class
     ];
 
 }

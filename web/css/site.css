@@ -1,160 +1,125 @@
-html,
-body {
-    height: 100%;
+.u-section-1 {
+    background-image: none;
+    min-height: 1338px;
 }
 
-.wrap {
-    min-height: 100%;
-    height: auto;
-    margin: 0 auto -60px;
-    padding: 0 0 110px;
+.u-section-1 .u-image-1 {
+    width: 1008px;
+    height: 820px;
+    margin: -2px auto 0 0;
 }
 
-.wrap > .container {
-    padding: 70px 15px 20px;
+.u-section-1 .u-group-1 {
+    background-image: none;
+    width: 740px;
+    min-height: 109px;
+    margin: -650px 0 60px auto;
 }
 
-.jumbotron {
-    text-align: center;
-    background-color: rgba(245,245,245,0.9);
+.u-section-1 .u-container-layout-4 {
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
-.jumbotron h1{
-    color: #0a0a0a;
-    opacity: 1;
+.u-section-1 .u-text-7 {
+    font-size: 3rem;
+    font-weight: 700;
+    font-family: Chenla;
+    margin: 24px 0 0;
 }
 
-.jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-}
 
-.body-content h1{
-    text-align: center;
-    color: #f5f5f5;
-    margin-bottom: 25px;
-}
+@media (max-width: 1199px) {
+    .u-section-1 {
+        min-height: 1307px;
+    }
 
-.breadcrumb{
-    background-color: rgba(245, 245, 245, 1);
-}
+    .u-section-1 .u-image-1 {
+        width: 935px;
+        height: 764px;
+    }
 
-.rates-row{
-    color: #f5f5f5;
-    font-size: 21px;
-}
+    .u-section-1 .u-group-1 {
+        width: 738px;
+        margin-top: -650px;
+    }
 
-.rate-name-td{
-    margin-left: 10%;
-}
-
-.header-row{
-    background-color: rgb(249, 249, 249);
-}
-
-.span-in-td{
-    padding: 2px 8px;
-    background-color: rgb(249, 249, 249);
-    border-radius: 2px;
-}
-
-.confirm-buttons{
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-.footer {
-    height: 110px;
-    background-color: #f5f5f5;
-    border-top: 1px solid #ddd;
-    padding-top: 20px;
-}
-
-.not-set {
-    color: #c55;
-    font-style: italic;
-}
-
-/* add sorting icons to gridview sort links */
-a.asc:after, a.desc:after {
-    position: relative;
-    top: 1px;
-    display: inline-block;
-    font-family: 'Glyphicons Halflings';
-    font-style: normal;
-    font-weight: normal;
-    line-height: 1;
-    padding-left: 5px;
-}
-
-a.asc:after {
-    content: /*"\e113"*/ "\e151";
-}
-
-a.desc:after {
-    content: /*"\e114"*/ "\e152";
-}
-
-.sort-numerical a.asc:after {
-    content: "\e153";
-}
-
-.sort-numerical a.desc:after {
-    content: "\e154";
-}
-
-.sort-ordinal a.asc:after {
-    content: "\e155";
-}
-
-.sort-ordinal a.desc:after {
-    content: "\e156";
-}
-
-.grid-view th {
-    white-space: nowrap;
-}
-
-.hint-block {
-    display: block;
-    margin-top: 5px;
-    color: #999;
-}
-
-.error-summary {
-    color: #a94442;
-    background: #fdf7f7;
-    border-left: 3px solid #eed3d7;
-    padding: 10px 20px;
-    margin: 0 0 15px 0;
-}
-
-/* align the logout "link" (button in form) of the navbar */
-.nav li > form > button.logout {
-    padding: 15px;
-    border: none;
-}
-
-@media(max-width:767px) {
-    .nav li > form > button.logout {
-        display:block;
-        text-align: left;
-        width: 100%;
-        padding: 10px 15px;
+    .u-section-1 .u-container-layout-4 {
+        padding-top: 0;
+        padding-bottom: 0;
     }
 }
 
-.nav > li > form > button.logout:focus,
-.nav > li > form > button.logout:hover {
-    text-decoration: none;
+
+@media (max-width: 991px) {
+    .u-section-1 {
+        min-height: 1642px;
+    }
+
+    .u-section-1 .u-image-1 {
+        width: 720px;
+        height: 816px;
+    }
+
+    .u-section-1 .u-group-1 {
+        width: 620px;
+        min-height: 129px;
+        margin-top: -670px;
+        margin-right: calc(((100% - 720px) / 2) + -48px);
+    }
+
+    .u-section-1 .u-container-layout-4 {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .u-section-1 .u-text-7 {
+        width: auto;
+        margin-top: 3px;
+    }
 }
 
-.nav > li > form > button.logout:focus {
-    outline: none;
+@media (max-width: 767px) {
+    .u-section-1 {
+        min-height: 1075px;
+    }
+
+    .u-section-1 .u-image-1 {
+        width: 540px;
+        height: 612px;
+    }
+
+    .u-section-1 .u-group-1 {
+        width: 536px;
+        min-height: 119px;
+        margin-top: -500px;
+        margin-right: calc(((100% - 540px) / 2) + -48px);
+    }
+
+    .u-section-1 .u-text-7 {
+        margin-top: 0;
+    }
 }
 
-/* Удаляем фокус с иконки заказа тарифа */
-.u-svg-link:focus{
-    outline: none;
+@media (max-width: 575px) {
+    .u-section-1 {
+        min-height: 1356px;
+    }
+
+    .u-section-1 .u-image-1 {
+        width: 436px;
+        height: 474px;
+        margin-right: 0;
+    }
+
+    .u-section-1 .u-group-1 {
+        width: 436px;
+        min-height: 127px;
+        margin-top: -400px;
+        margin-right: auto;
+    }
+
+    .u-section-1 .u-text-7 {
+        margin-top: 11px;
+    }
 }

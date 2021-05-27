@@ -1,14 +1,3 @@
-.u-section-1 {
-  background-image: none;
-  min-height: 1338px;
-}
-
-.u-section-1 .u-image-1 {
-  width: 1008px;
-  height: 820px;
-  margin: -2px auto 0 0;
-}
-
 .u-section-1 .u-list-1 {
   min-height: 599px;
   width: 893px;
@@ -67,35 +56,8 @@
   padding: 0;
 }
 
-.u-section-1 .u-group-1 {
-  background-image: none;
-  width: 740px;
-  min-height: 109px;
-  margin: -650px 0 60px auto;
-}
-
-.u-section-1 .u-container-layout-4 {
-  padding-left: 40px;
-  padding-right: 40px;
-}
-
-.u-section-1 .u-text-7 {
-  font-size: 3rem;
-  font-weight: 700;
-  font-family: Chenla;
-  margin: 24px 0 0;
-}
-
 
 @media (max-width: 1199px) {
-  .u-section-1 {
-    min-height: 1307px;
-  }
-
-  .u-section-1 .u-image-1 {
-    width: 935px;
-    height: 764px;
-  }
 
   .u-section-1 .u-list-1 {
     width: 807px;
@@ -122,28 +84,10 @@
     margin-top: -46px;
     margin-left: 97px;
   }
-
-  .u-section-1 .u-group-1 {
-    width: 738px;
-    margin-top: -650px;
-  }
-
-  .u-section-1 .u-container-layout-4 {
-    padding-top: 0;
-    padding-bottom: 0;
-  }
 }
 
 
 @media (max-width: 991px) {
-  .u-section-1 {
-    min-height: 1642px;
-  }
-
-  .u-section-1 .u-image-1 {
-    width: 720px;
-    height: 816px;
-  }
 
   .u-section-1 .u-list-1 {
     min-height: 710px;
@@ -167,35 +111,9 @@
     margin-right: 55px;
     margin-left: 108px;
   }
-
-  .u-section-1 .u-group-1 {
-    width: 620px;
-    min-height: 129px;
-    margin-top: -670px;
-    margin-right: calc(((100% - 720px) / 2) + -48px);
-  }
-
-  .u-section-1 .u-container-layout-4 {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-
-  .u-section-1 .u-text-7 {
-    width: auto;
-    margin-top: 3px;
-  }
 }
 
 @media (max-width: 767px) {
-  .u-section-1 {
-    min-height: 1075px;
-  }
-
-  .u-section-1 .u-image-1 {
-    width: 540px;
-    height: 612px;
-  }
-
   .u-section-1 .u-list-1 {
     min-height: 517px;
     width: 540px;
@@ -231,30 +149,9 @@
     margin-right: 23px;
     margin-left: 0;
   }
-
-  .u-section-1 .u-group-1 {
-    width: 536px;
-    min-height: 119px;
-    margin-top: -500px;
-    margin-right: calc(((100% - 540px) / 2) + -48px);
-  }
-
-  .u-section-1 .u-text-7 {
-    margin-top: 0;
-  }
 }
 
 @media (max-width: 575px) {
-  .u-section-1 {
-    min-height: 1356px;
-  }
-
-  .u-section-1 .u-image-1 {
-    width: 436px;
-    height: 474px;
-    margin-right: 0;
-  }
-
   .u-section-1 .u-list-1 {
     min-height: 645px;
     width: 340px;
@@ -285,15 +182,9 @@
     margin-right: -2px;
     margin-left: 2px;
   }
+}
 
-  .u-section-1 .u-group-1 {
-    width: 436px;
-    min-height: 127px;
-    margin-top: -400px;
-    margin-right: auto;
-  }
-
-  .u-section-1 .u-text-7 {
-    margin-top: 11px;
-  }
+/* Удаляем фокус с иконки заказа тарифа */
+.u-svg-link:focus{
+  outline: none;
 }
