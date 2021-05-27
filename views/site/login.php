@@ -9,17 +9,14 @@ use yii\bootstrap\ActiveForm;
 
 \app\assets\LoginAsset::register($this);
 
-// Регистрируем CSS file
-//$this->registerCssFile('css/login.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
-
-$this->title = $title;
-$this->params['breadcrumbs'][] = $this->title;
+//$this->title = $title;
+//$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="site-login">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p><span class="fill-form-request">Заполните поля, чтобы авторизоваться:</span></p>
+    <div class="title-p"><span class="fill-form-request">Заполните поля, чтобы авторизоваться:</span></div>
 
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',

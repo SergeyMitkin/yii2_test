@@ -1,16 +1,24 @@
-.wrap{
-    background: url("../images/network-2402637.jpg") no-repeat;
+.site-login{
+    margin: 80px 160px;
+    padding: 10px 40px;
+    border: 2px solid whitesmoke;
+    border-radius: 5px;
+    background-color: whitesmoke;
 }
 
 .site-login h1{
     color: #f5f5f5;
 }
 
+.title-p{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
 .fill-form-request{
     color: #f5f5f5;
     background-color: rgb(34,34,34);
     padding: 10px;
-    margin-left: -10px;
     border-radius: 5px;
 }
 
