@@ -163,7 +163,9 @@ AppAsset::register($this);
                 </div>
             </div>
 
-            <?= $content ?>
+            <div class="page-content">
+                <?= $content ?>
+            </div>
 
         </section>
 

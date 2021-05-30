@@ -13,31 +13,30 @@ use yii\bootstrap\ActiveForm;
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="site-login col-lg-6 col-xl-4 col-md-6 col-sm-8 col-xs-10">
 
-    <div class="title-p"><span class="fill-form-request">Заполните поля, чтобы авторизоваться:</span></div>
+    <div class="title-div"><h2 class="title-span">ВХОД</h2></div>
 
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',
         'layout' => 'horizontal',
         'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
+            'template' => "<div class=\"col-lg-8\">{label}</div>\n<div class=\"col-lg-12\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
+            'labelOptions' => ['class' => 'login-label'],
         ],
     ]); ?>
 
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true])->label('Логин (Email)') ?>
+        <?= $form->field($model, 'username')->textInput(['autofocus' => true])->label('Логин (email)') ?>
 
-        <?= $form->field($model, 'password')->passwordInput() ->label('Пароль') ?>
+        <?= $form->field($model, 'password')->passwordInput()->label('Пароль') ?>
 
         <?= $form->field($model, 'rememberMe')->checkbox([
-            'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
+            'template' => "<div class=\"login-group col-lg-12\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
         ]) ?>
 
         <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
-                <?= Html::submitButton('Вход', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+            <div class="login-group col-lg-12">
+                <?= Html::submitButton('Вход', ['class' => 'btn btn-primary login-button', 'name' => 'login-button']) ?>
             </div>
         </div>
 
