@@ -15,7 +15,7 @@ use yii\bootstrap\ActiveForm;
 
 <div class="site-login col-lg-6 col-xl-4 col-md-6 col-sm-8 col-xs-10">
 
-    <div class="title-div"><h2 class="title-span">ВХОД</h2></div>
+    <div class="title-div"><h2 class="title-h">ВХОД</h2></div>
 
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',
@@ -26,16 +26,16 @@ use yii\bootstrap\ActiveForm;
         ],
     ]); ?>
 
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true])->label('Логин (email)') ?>
+        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
-        <?= $form->field($model, 'password')->passwordInput()->label('Пароль') ?>
+        <?= $form->field($model, 'password')->passwordInput() ?>
 
         <?= $form->field($model, 'rememberMe')->checkbox([
             'template' => "<div class=\"login-group col-lg-12\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
         ]) ?>
 
         <div class="form-group">
-            <div class="login-group col-lg-12">
+            <div class="col-lg-12">
                 <?= Html::submitButton('Вход', ['class' => 'btn btn-primary login-button', 'name' => 'login-button']) ?>
             </div>
         </div>

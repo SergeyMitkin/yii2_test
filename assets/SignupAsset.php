@@ -2,20 +2,20 @@
 /**
  * Created by PhpStorm.
  * User: Sergey
- * Date: 19.03.2021
- * Time: 16:21
+ * Date: 31.05.2021
+ * Time: 22:32
  */
 
 namespace app\assets;
 use yii\web\AssetBundle;
 
-class LoginAsset extends AssetBundle
+class SignupAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
 
     public $css = [
-        'css/login.css',
+        'css/signup.css',
     ];
 
     public $js = [

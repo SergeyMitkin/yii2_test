@@ -13,7 +13,7 @@
     margin-bottom: 40px;
 }
 
-.title-span{
+.title-h{
     color: rgb(34,34,34);
     padding: 10px;
     border-radius: 5px;
@@ -26,15 +26,6 @@
 .has-error .control-label{
     color: rgb(34,34,34);
 }
-
-.has-success .control-label{
-    color: #00e600;
-}
-
-.col-lg-8 .help-block-error{
-    color: red;
-}
-
 
 .login-group label{
     font-weight: normal;
@@ -52,18 +43,6 @@
 */
 
 /* nicepage */
-
-.u-section-1 .u-container-layout-1 {
-    padding-left: 40px;
-    padding-right: 40px;
-}
-
-.u-section-1 .u-text-1 {
-    font-size: 3rem;
-    font-weight: 700;
-    font-family: Chenla;
-    margin: 24px 0 0;
-}
 
 @media (max-width: 1199px) {
     .u-section-1 .u-container-layout-1 {

@@ -79,9 +79,15 @@ AppAsset::register($this);
                             <li class="u-nav-item">
                                 <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/site/index" style="padding: 10px 20px;">Главная</a>
                             </li>
-                            <li class="u-nav-item">
-                                <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/account/index" style="padding: 10px 20px;">Личный кабинет</a>
-                            </li>
+                            <?
+                            if (!Yii::$app->user->isGuest){
+                                echo '
+                                    <li class="u-nav-item">
+                                        <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/account/index" style="padding: 10px 20px;">Личный кабинет</a>
+                                    </li>
+                                ';
+                            }
+                            ?>
                             <li class="u-nav-item">
                                 <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/gallery/" style="padding: 10px 20px;">Галерея</a>
                             </li>
@@ -94,7 +100,7 @@ AppAsset::register($this);
                                       <li class="u-nav-item">
                                            <a class="u-button-style u-nav-link" href="/site/signup">Регистрация</a>
                                       </li>                                                          
-                                      ';
+                                ';
                             } else {
                                 echo '<li class="u-nav-item">'
                                     . Html::beginForm(['/site/logout'], 'post')
@@ -118,9 +124,15 @@ AppAsset::register($this);
                                     <li class="u-nav-item">
                                         <a class="u-button-style u-nav-link" href="/site/index">Главная</a>
                                     </li>
-                                    <li class="u-nav-item">
-                                        <a class="u-button-style u-nav-link" href="/account/index">Личный кабинет</a>
-                                    </li>
+                                    <?
+                                    if (!Yii::$app->user->isGuest){
+                                        echo '
+                                            <li class="u-nav-item">
+                                                <a class="u-button-style u-nav-link" href="/account/index">Личный кабинет</a>
+                                            </li>
+                                        ';
+                                    }
+                                    ?>
                                     <li class="u-nav-item">
                                         <a class="u-button-style u-nav-link" href="/gallery/">Галерея</a>
                                     </li>
