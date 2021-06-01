@@ -24,4 +24,22 @@ class Email extends Model
             ->setTextBody($body)
             ->send();
     }
+
+    public function sendEmail($event){
+        $order_id = $event->sender->id;
+        $user = $event->sender->user;
+        $email = $user->email;
+        $username = $user->name;
+        $rate = $event->sender->rate;
+        $rate_name = $rate->name;
+        $rate_price = $rate->price;
+
+        // Отправляем email пользователю
+        $subject = 'Заказ сервера';
+        $body = 'Уважаемый ' . $username . ', Вы заказали ' . $rate_name .
+            ' за ' . $rate_price . ' $. Номер заказа ' . $order_id . '.
+                Дождитесь подтверждения администратором';
+
+        $this->contact($email, $subject, $body);
+    }
 }

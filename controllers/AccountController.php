@@ -43,12 +43,15 @@ class AccountController extends Controller
         $request = Yii::$app->request;
         $username = Yii::$app->user->identity->name;
 
-
         $serversSearchModel = new AccountServersFilter();
         $serversDataProvider = $serversSearchModel->search(Yii::$app->request->queryParams);
 
         $ordersSearchModel = new AccountOrdersFilter();
         $ordersDataProvider = $ordersSearchModel->search(Yii::$app->request->queryParams);
+
+        // Определяем активную вкладку
+        $active_li = ($request->get()['active_li'] !== NULL) ? $request->get()['active_li'] : 'servers';
+        $this->view->registerJsVar('active_li', $active_li);
 
         return $this->render('index', [
             'serversSearchModel' => $serversSearchModel,

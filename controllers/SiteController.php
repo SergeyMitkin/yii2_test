@@ -88,22 +88,9 @@ class SiteController extends Controller
             // Событие после добавления заказа
             Event::on(Orders::class, Orders::EVENT_AFTER_INSERT, function ($event){
 
-                $order_id = $event->sender->id;
-                $user = $event->sender->user;
-                $email = $user->email;
-                $username = $user->name;
-                $rate = $event->sender->rate;
-                $rate_name = $rate->name;
-                $rate_price = $rate->price;
-
-                // Отправляем email пользователю
-                $subject = 'Заказ сервера';
-                $body = 'Уважаемый ' . $username . ', Вы заказали ' . $rate_name .
-                    ' за ' . $rate_price . ' $. Номер заказа ' . $order_id . '.
-                Дождитесь подтверждения администратором';
-
+                // Отправляем сообщение на почту
                 $model_email = new Email();
-                $model_email->contact($email, $subject, $body);
+                $model_email->sendEmail($event);
             });
 
             // Добавляем заказ

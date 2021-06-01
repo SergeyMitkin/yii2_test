@@ -14,8 +14,7 @@ use yii\helpers\Url;
 use yii\widgets\Pjax;
 use dosamigos\datepicker\DatePicker; // Подключаем виджет для фильтра по дате
 
-// Регистрируем CSS file
-$this->registerCssFile('css/account-index.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
+\app\assets\AccountIndexAsset::register($this);
 
 $this->title = 'Личный кабинет';
 $this->params['breadcrumbs'][] = array(
@@ -157,16 +156,3 @@ $this->params['breadcrumbs'][] = array(
         </div>
     </div>
 </div>
-
-<?
-// Определяем аткивную вкладку личного кабинета
-$active = 'servers';
-$request = Yii::$app->request;
-$active = ($request->get()[1]['active_li'] !== NULL) ? $request->get()[1]['active_li'] : 'servers';
-?>
-<script>
-    var active = "<?php echo $active?>";
-</script>
-<?
-// Регистрируем JS file
-$this->registerJSFile(Yii::$app->request->baseUrl.'/js/account-index.js',['depends' => [\yii\web\JqueryAsset::className()]]);
