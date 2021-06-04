@@ -11,9 +11,6 @@ use yii\bootstrap\ActiveForm;
 
 \app\assets\SignupAsset::register($this);
 
-// Регистрируем CSS file
-//$this->registerCssFile('css/signup.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
-
 /*
 $this->title = 'Регистрация';
 $this->params['breadcrumbs'][] = $this->title;
