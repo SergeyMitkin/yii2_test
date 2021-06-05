@@ -69,6 +69,10 @@
 }
 
 /* GridView */
+.header-row{
+    background: rgb(249,249,249)
+}
+
 .header-row > th a{
     color: #007cad;
 }
