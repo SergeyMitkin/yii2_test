@@ -1,4 +1,3 @@
-
 .account-index {
     margin: 10% 5%;
     padding: 1%;
@@ -7,34 +6,23 @@
     color: rgb(34,34,34);;
 }
 
+/* Tabs */
 .active > a{
     background: rgb(233,242,250) !important;
 }
 
 .nav-item{
     background: rgb(255,255,255) !important;
-}
-
-.nav-item ~ .nav-item {
-    border-radius: 0px 3px 0px 0px;
-    border: none;
+    border-radius: 3px 3px 0px 0px;
 }
 
 .nav-item > a {
     margin: 0 !important;
 }
 
-.nav-item > a ~ .nav-item > a{
-    margin-right: -1px !important;
-}
-
 .tab-content {
     background-color: rgb(233,242,250);
-}
-
-.tab-content {
     margin-top: -20px;
-    padding-top: 20px;
 }
 
 .title-div{
@@ -49,10 +37,22 @@
     color: rgb(219,84,90);
 }
 
-.nav-tabs > li.active > a{
-    color: rgb(112,138,201) !important;
+.tab-title-div{
+    padding-top: 15px;
+    text-align: center;
 }
 
+.tab-title-h{
+    margin-top: 5px;
+}
+
+.nav-tabs{
+    border-bottom: none !important;
+}
+
+.nav-tabs > li.active > a{
+    color: #007cad !important;
+}
 
 .nav-tabs > li > a{
     color: rgb(17,17,17);
@@ -61,4 +61,14 @@
 .nav-tabs > li:not(.active) > a:hover{
     background-color: rgb(249,249,249) !important;
     color: rgb(219,84,90);
+}
+
+.tab-content{
+    border-radius: 0px 5px 5px 5px !important;
+    border: 1px solid rgb(233,242,250);
+}
+
+/* GridView */
+.header-row > th a{
+    color: #007cad;
 }

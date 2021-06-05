@@ -34,23 +34,20 @@ $this->params['breadcrumbs'][] = array(
 
         <div class="tabs-ul">
             <ul id="ul-account-index" class="nav nav-tabs" role="tablist">
+                <li id="servers_li" class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#servers_content" role="tab">Серверы</a>
+                </li>
 
-                    <li id="servers_li" class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#servers_content" role="tab">Серверы</a>
-                    </li>
-
-
-                    <li id="orders_li" class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#orders_content" role="tab">Заказы</a>
-                    </li>
-
+                <li id="orders_li" class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#orders_content" role="tab">Заказы</a>
+                </li>
             </ul>
         </div>
 
         <div class="tab-content">
             <div class="tab-pane" id="servers_content" role="tabpanel">
                 <div class="div-user-servers">
-                    <div class="subtitle-div"><h3 class="subtitle-h">Предоставленные серверы</h3></div>
+                    <div class="tab-title-div"><h3 class="tab-title-h">Предоставленные серверы</h3></div>
                     <?php
                     Pjax::begin();
                     echo GridView::widget([
@@ -104,7 +101,7 @@ $this->params['breadcrumbs'][] = array(
 
             <div class="tab-pane" id="orders_content" role="tabpanel">
                 <div class="div-user-orders">
-                    <div class="subtitle-div"><h3 class="subtitle-h">Мои заказы</h3></div>
+                    <div class="tab-title-div"><h3 class="tab-title-h">Мои заказы</h3></div>
                     <?php
                     Pjax::begin();
                     echo GridView::widget([
