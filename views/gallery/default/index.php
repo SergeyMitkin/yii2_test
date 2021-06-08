@@ -20,9 +20,13 @@ $dataProvider->pagination->pageSize = 20;
 
 <div class="gallery-index">
 
+    <div class="tab-title-div">
+        <h3 class="tab-title-h">Альбомы:</h3>
+    </div>
+
     <?php
     echo Html::a('<i class="glyphicon glyphicon-plus"></i>', ['create'],
-        ['title' => 'Create Gallery', 'class' => 'btn btn-default',
+        ['title' => 'Создать альбом', 'class' => 'btn btn-default',
             'method' => 'get',
             'role' => 'modal-toggle',
             'data-modal-title'=>'Create Gallery',

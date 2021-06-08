@@ -49,7 +49,11 @@ $this->params['breadcrumbs'][] = array(
         <div class="tab-content">
             <div class="tab-pane" id="servers_content" role="tabpanel">
                 <div class="div-user-servers">
-                    <div class="tab-title-div"><h3 class="tab-title-h">Предоставленные серверы</h3></div>
+
+                    <div class="tab-title-div">
+                        <h3 class="tab-title-h">Предоставленные серверы</h3>
+                    </div>
+
                     <?php
                     Pjax::begin();
                     echo GridView::widget([

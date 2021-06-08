@@ -2,7 +2,24 @@
     margin: 70px 5%;
     padding: 1%;
     border: 2px solid rgb(233,242,250);
-    color: rgb(34,34,34);;
+    color: rgb(34,34,34);
+    //background-color: rgb(233,242,250);
+}
+
+.tab-title-div{
+    background-color: rgb(233,242,250);
+    margin-bottom: 1%;
+    padding: 5px 5px;
+    text-align: center;
+}
+
+.tab-title-h{
+   margin: 5px 0px;
+}
+
+.btn-default{
+    background-color: rgb(233,242,250) !important;
+    color: #83b2de !important;
 }
 
 .name {
