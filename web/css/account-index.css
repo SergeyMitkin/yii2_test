@@ -1,9 +1,8 @@
 .account-index {
-    margin: 10% 5%;
+    margin: 0% 5%;
     padding: 1%;
-    border: 2px solid rgb(233,242,250);
     border-radius: 5px;
-    color: rgb(34,34,34);;
+    color: rgb(34,34,34);
 }
 
 /* Tabs */
@@ -23,18 +22,6 @@
 .tab-content {
     background-color: rgb(233,242,250);
     margin-top: -20px;
-}
-
-.title-div{
-    text-align: center;
-    margin-bottom: 40px;
-    background-color: rgb(255,255,255);
-    padding: 1px;
-    border-radius: 5px;
-}
-
-.title-h{
-    color: rgb(219,84,90);
 }
 
 .tab-title-div{

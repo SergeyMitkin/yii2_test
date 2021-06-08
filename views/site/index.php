@@ -1,8 +1,16 @@
 <?php
+
+use yii\helpers\Html;
 use yii\data\ActiveDataProvider;
 
 \app\assets\IndexAsset::register($this);
+
+$this->title = 'Доступные серверы';
 ?>
+
+<div class="title-div">
+    <h2 class="title-h"><?= Html::encode($this->title) ?></h2>
+</div>
 
 <!-- Список серверов из БД -->
 <div class="u-layout-grid u-list u-list-1">

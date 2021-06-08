@@ -3,19 +3,24 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\bootstrap\Modal;
 
-// Регистрируем CSS file
-$this->registerCssFile('css/gallery-index.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
+\app\assets\GalleryIndexAsset::register($this);
+
 /* @var $this yii\web\View */
 /* @var $searchModel onmotion\gallery\models\GallerySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Photo-gallery';
+$this->title = 'Фотогалерея';
 $dataProvider->pagination->pageSize = 20;
 
 ?>
+
+<div class="title-div">
+    <h1 class="title-h"><?= Html::encode($this->title) ?></h1>
+</div>
+
 <div class="gallery-index">
 
-            <?php
+    <?php
     echo Html::a('<i class="glyphicon glyphicon-plus"></i>', ['create'],
         ['title' => 'Create Gallery', 'class' => 'btn btn-default',
             'method' => 'get',

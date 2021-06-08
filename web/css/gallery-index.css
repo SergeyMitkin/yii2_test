@@ -1,5 +1,8 @@
-.wrap {
-    background: url("../images/network-2402637.jpg");
+.gallery-index {
+    margin: 70px 5%;
+    padding: 1%;
+    border: 2px solid rgb(233,242,250);
+    color: rgb(34,34,34);;
 }
 
 .name {

@@ -16,7 +16,6 @@ use dosamigos\datepicker\DatePicker; // Подключаем виджет для
 
 \app\assets\AccountIndexAsset::register($this);
 
-
 $this->title = 'Личный кабинет';
 
 /*
@@ -27,8 +26,11 @@ $this->params['breadcrumbs'][] = array(
 */
 ?>
 
+<div class="title-div">
+    <h2 class="title-h"><?= Html::encode($this->title) ?> (<?=$username?>)</h2>
+</div>
+
 <div class="account-index">
-    <div class="title-div"><h1 class="title-h"><?= Html::encode($this->title) ?> (<?=$username?>)</h1></div>
 
     <div class="tabs">
 
