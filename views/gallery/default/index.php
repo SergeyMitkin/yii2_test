@@ -12,6 +12,8 @@ use yii\bootstrap\Modal;
 $this->title = 'Фотогалерея';
 $dataProvider->pagination->pageSize = 20;
 
+
+
 ?>
 
 <div class="title-div">
@@ -29,7 +31,7 @@ $dataProvider->pagination->pageSize = 20;
         ['title' => 'Создать альбом', 'class' => 'btn btn-default',
             'method' => 'get',
             'role' => 'modal-toggle',
-            'data-modal-title'=>'Create Gallery',
+            'data-modal-title'=>'Создать альбом',
         ]);
             
     echo \yii\widgets\ListView::widget([
