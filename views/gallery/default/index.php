@@ -12,8 +12,6 @@ use yii\bootstrap\Modal;
 $this->title = 'Фотогалерея';
 $dataProvider->pagination->pageSize = 20;
 
-
-
 ?>
 
 <div class="title-div">
@@ -37,7 +35,7 @@ $dataProvider->pagination->pageSize = 20;
     echo \yii\widgets\ListView::widget([
         'id' => 'gallery-listview',
         'dataProvider' => $dataProvider,
-        'layout' => "{items}\n{pager}\n{summary}",
+        'layout' => "{items}\n{pager}\n<div>{summary}</div>",
         'itemView' => function ($model) {
             return $this->render('galleryItem',['model' => $model]);
         },
