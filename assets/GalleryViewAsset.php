@@ -2,26 +2,25 @@
 /**
  * Created by PhpStorm.
  * User: Sergey
- * Date: 07.06.2021
- * Time: 0:13
+ * Date: 14.06.2021
+ * Time: 2:13
  */
 
 namespace app\assets;
 use yii\web\AssetBundle;
 use yii\web\JqueryAsset;
 
-class GalleryIndexAsset extends AssetBundle
+class GalleryViewAsset extends AssetBundle
 {
-
     public $basePath = '@webroot';
     public $baseUrl = '@web';
 
     public $css = [
-        'css/gallery-index.css'
+        'css/gallery-view.css'
     ];
 
     public $js = [
-        //'js/gallery-index.js'
+        //'js/gallery-view.js'
     ];
 
     public $depends = [

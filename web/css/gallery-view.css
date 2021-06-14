@@ -1,3 +1,27 @@
+.gallery-view{
+    margin: 20px 5%;
+    padding: 1%;
+    border: 2px solid rgb(255,255,255);
+    color: rgb(34,34,34);
+}
+
 .panel{
-    border: none;
+    border: none !important;
+    border-radius: 0px !important;
+}
+
+.panel-heading {
+    background: rgb(255,255,255) !important;
+}
+
+.panel-title a{
+    color: #5b99d4 !important;
+}
+
+#w1{
+    margin-bottom: 1%;
+}
+
+.btn-default{
+    color: #83b2de !important;
 }

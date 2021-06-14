@@ -64,3 +64,7 @@
 .header-row > th a{
     color: #5b99d4;
 }
+
+.header-row > th a:hover{
+    color: #5b99d4;
+}

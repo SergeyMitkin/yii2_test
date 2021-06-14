@@ -9,9 +9,9 @@ use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use onmotion\helpers\Translator;
 
+\app\assets\GalleryViewAsset::register($this);
 
-// Регистрируем CSS file
-$this->registerCssFile('css/gallery-view.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
+$this->title = 'Фотогалерея::' . $model->name;
 
 /* @var $this yii\web\View */
 /* @var $model onmotion\gallery\models\Gallery */
