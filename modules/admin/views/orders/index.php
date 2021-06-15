@@ -19,7 +19,7 @@ use dosamigos\datepicker\DatePicker;
 \app\assets\AdminOrdersIndexAsset::register($this);
 
 $this->title = 'Новые Заказы';
-
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="admin-new">
     <h1><?= Html::encode($this->title) ?></h1>

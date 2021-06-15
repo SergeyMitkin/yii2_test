@@ -85,12 +85,11 @@ class SiteController extends Controller
             $rate_name = $_GET['rate_name'];
             $user_id = Yii::$app->user->identity->getId();
 
-            // Событие после добавления заказа
+            // При обновлении выборе тарифа пользователем, отправляем email о создании заказа
             Event::on(Orders::class, Orders::EVENT_AFTER_INSERT, function ($event){
 
-                // Отправляем сообщение на почту
                 $model_email = new Email();
-                $model_email->sendEmail($event);
+                $model_email->orderRateEmail($event);
             });
 
             // Добавляем заказ

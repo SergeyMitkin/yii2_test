@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\filters\Rates */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Rates';
+$this->title = 'Тарифы';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="rates-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Rate', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать тариф', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

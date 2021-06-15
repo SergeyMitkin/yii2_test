@@ -10,6 +10,7 @@ use yii\bootstrap\Modal;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Фотогалерея';
+$this->params['breadcrumbs'][] = $this->title;
 $dataProvider->pagination->pageSize = 20;
 
 ?>

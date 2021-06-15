@@ -30,20 +30,11 @@ class OrdersController extends Controller
         $order_id = $request->get()["id"];
         $model_orders = new Orders();
 
-        // Событие при обновлении статуса заказа
+        // При обновлении статуса заказа, отправляем пользователю email
         Event::on(Orders::class, Orders::EVENT_AFTER_UPDATE, function ($event){
 
-            $order_id = $event->sender->id;
-            $user = $event->sender->user;
-            $email = $user->email;
-            $username = $user->name;
-
-            // Отправляем email пользователю
-            $subject = 'Подтверждение заказа';
-            $body = 'Уважаемый ' . $username . ', Ваш заказ № ' . $order_id . ' подтверждён.';
-
             $model_email = new Email();
-            $model_email->contact($email, $subject, $body);
+            $model_email->confirmOrderEmail($event);
         });
 
         if ($request->isPjax){
