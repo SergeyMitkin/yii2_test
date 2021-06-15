@@ -31,6 +31,16 @@ class AccountController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            // Разрешаем доступ к контроллеру только авторизованным пользователям
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
         ];
     }
 

@@ -3,9 +3,11 @@
 namespace app\models\filters;
 
 use app\models\tables\Rates;
+use phpDocumentor\Reflection\Types\Null_;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\tables\Servers;
+use Yii;
 
 /**
  * AccountServersFilter represents the model behind the search form of `app\models\tables\Servers`.
@@ -45,6 +47,7 @@ class AccountServersFilter extends Servers
     {
 
         $query = Servers::find();
+
         $query->joinWith(['rate']);
         // add conditions that should always apply here
 
@@ -70,10 +73,8 @@ class AccountServersFilter extends Servers
             'servers.id' => $this->id,
         ])
         ->andFilterWhere(['like', 'date', $this->date])
-        ->andFilterWhere(['like', Rates::tableName().'.name', $this->rate_name]);
-
-        // Выводим серверы для авторизованного пользователя
-        $query->andFilterWhere(['user_id' => \Yii::$app->user->identity->id]);
+        ->andFilterWhere(['like', Rates::tableName().'.name', $this->rate_name])
+        ->andFilterWhere(['user_id' => \Yii::$app->user->identity->id]);
 
         return $dataProvider;
     }
