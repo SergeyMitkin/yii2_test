@@ -15,8 +15,8 @@ use yii\widgets\Pjax;
 use yii\bootstrap\Modal;
 use dosamigos\datepicker\DatePicker;
 
-// Регистрируем CSS file
-$this->registerCssFile('css/admin-orders-index.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
+// Подключаем ассет
+\app\assets\AdminOrdersIndexAsset::register($this);
 
 $this->title = 'Новые Заказы';
 
@@ -149,6 +149,3 @@ Modal::begin([
 echo 'Модальное окно';
 
 Modal::end();
-
-// Регистрируем JS file
-$this->registerJSFile(Yii::$app->request->baseUrl.'/js/admin-orders-index.js',['depends' => [\yii\web\JqueryAsset::className()]]);
