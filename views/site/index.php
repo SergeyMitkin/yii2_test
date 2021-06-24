@@ -5,8 +5,14 @@ use yii\data\ActiveDataProvider;
 
 \app\assets\IndexAsset::register($this);
 
-$this->title = 'Доступные серверы';
+$this->title = 'Доступные тарифы';
 ?>
+
+
+    <?
+    $this->params['breadcrumbs'][] = '';
+    ?>
+
 
 <div class="title-div">
     <h2 class="title-h"><?= Html::encode($this->title) ?></h2>

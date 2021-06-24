@@ -16,7 +16,7 @@ $dataProvider->pagination->pageSize = 20;
 ?>
 
 <div class="title-div">
-    <h1 class="title-h"><?= Html::encode($this->title) ?></h1>
+    <h2 class="title-h"><?= Html::encode($this->title) ?></h2>
 </div>
 
 <div class="gallery-index">

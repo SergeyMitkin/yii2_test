@@ -89,7 +89,7 @@ AppAsset::register($this);
                             }
                             ?>
                             <li class="u-nav-item">
-                                <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/gallery/" style="padding: 10px 20px;">Галерея</a>
+                                <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/gallery" style="padding: 10px 20px;">Фотогалерея</a>
                             </li>
                             <?
                             if (Yii::$app->user->isGuest){
@@ -134,7 +134,7 @@ AppAsset::register($this);
                                     }
                                     ?>
                                     <li class="u-nav-item">
-                                        <a class="u-button-style u-nav-link" href="/gallery/">Галерея</a>
+                                        <a class="u-button-style u-nav-link" href="/gallery">Галерея</a>
                                     </li>
                                     <?
                                     if (Yii::$app->user->isGuest){
@@ -166,8 +166,15 @@ AppAsset::register($this);
             </div>
         </header>
 
-        <section class="u-border-2 u-border-grey-75 u-clearfix u-grey-90 u-valign-top-xl u-section-1" id="carousel_baa4">
+        <section class="u-border-2 u-border-grey-75 u-clearfix u-grey-90 u-valign-top u-section-1" id="carousel_baa4">
+
             <img class="u-image u-image-1" src="<?=Yii::getAlias("@web/images/80706e8709156a71eff417a4b5353bb19db3491e5f2a1c1dbd49e0f4a254a5b858124bfb19e6ab4f08a4620d99780d576d8c687380d2a245cd9fa1_12801.jpg")?>" data-image-width="1280" data-image-height="853">
+
+            <div class="breadcrumb-div">
+                <?= Breadcrumbs::widget([
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ]) ?>
+            </div>
 
             <div class="u-align-right u-container-style u-group u-palette-2-base u-shape-rectangle u-group-1">
                 <div class="u-container-layout u-valign-middle-sm u-container-layout-4">

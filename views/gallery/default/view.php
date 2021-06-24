@@ -11,7 +11,7 @@ use onmotion\helpers\Translator;
 
 \app\assets\GalleryViewAsset::register($this);
 
-$this->title = 'Фотогалерея::' . $model->name;
+$this->title = 'Фотогалерея';
 
 /* @var $this yii\web\View */
 /* @var $model onmotion\gallery\models\Gallery */
@@ -20,8 +20,7 @@ $this->title = 'Фотогалерея::' . $model->name;
 set_time_limit(60);
 ini_set('memory_limit', '512M');
 
-$this->params['breadcrumbs'][] = ['label' => 'Gallery', 'url' => ['/gallery']];
-$this->params['breadcrumbs'][] = $model->name;
+
 
 $this->registerJs(<<<JS
 $('#preloader').show();
@@ -33,6 +32,17 @@ window.onload = function() {
    $("[data-toggle='tooltip']").tooltip();
 JS
 );
+?>
+
+    <div class="title-div">
+        <h2 class="title-h"><?= Html::encode($this->title) ?></h2>
+    </div>
+
+<?
+
+$this->params['breadcrumbs'][] = ['label' => 'Фотогаллерея', 'url' => ['/gallery']];
+$this->params['breadcrumbs'][] = $model->name;
+
             echo Html::beginTag('div', ['class' => 'gallery-view']);
             echo \yii\bootstrap\Collapse::widget([
                 'items' => [
