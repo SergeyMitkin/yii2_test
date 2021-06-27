@@ -52,7 +52,7 @@ AppAsset::register($this);
         <header class="u-clearfix u-header u-header" id="sec-ded9">
             <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
 
-                <a href="https://nicepage.com" class="u-image u-logo u-image-1">
+                <a href="/" class="u-image u-logo u-image-1">
                     <img src="<?=Yii::getAlias("@web/images/default-logo.png")?>" class="u-logo-image u-logo-image-1">
                 </a>
 

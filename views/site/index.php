@@ -9,9 +9,9 @@ $this->title = 'Доступные тарифы';
 ?>
 
 
-    <?
-    $this->params['breadcrumbs'][] = '';
-    ?>
+<?
+$this->params['breadcrumbs'][] = '';
+?>
 
 
 <div class="title-div">

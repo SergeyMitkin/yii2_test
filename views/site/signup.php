@@ -11,11 +11,10 @@ use yii\bootstrap\ActiveForm;
 
 \app\assets\SignupAsset::register($this);
 
-/*
 $this->title = 'Регистрация';
 $this->params['breadcrumbs'][] = $this->title;
-*/
 ?>
+
 <div class="site-signup col-lg-6 col-xl-4 col-md-6 col-sm-8 col-xs-10">
 
     <div class="signup-title-div"><h2 class="signup-title-h">Регистрация</h2></div>

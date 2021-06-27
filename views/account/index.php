@@ -17,13 +17,8 @@ use dosamigos\datepicker\DatePicker; // Подключаем виджет для
 \app\assets\AccountIndexAsset::register($this);
 
 $this->title = 'Личный кабинет';
+$this->params['breadcrumbs'][] = $this->title;
 
-/*
-$this->params['breadcrumbs'][] = array(
-    'label'=> $this->title,
-    'url'=>Url::toRoute('account/index')
-);
-*/
 ?>
 
 <div class="title-div">

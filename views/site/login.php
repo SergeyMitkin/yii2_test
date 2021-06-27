@@ -9,8 +9,8 @@ use yii\bootstrap\ActiveForm;
 
 \app\assets\LoginAsset::register($this);
 
-//$this->title = $title;
-//$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Вход';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="site-login col-lg-6 col-xl-4 col-md-6 col-sm-8 col-xs-10">
