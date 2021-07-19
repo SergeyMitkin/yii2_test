@@ -68,6 +68,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        /* Для интернационализации
+        Yii::$app->language = 'en-UK';
+        echo Yii::t("app", "error");
+        exit;
+        */
+
         $model = new Rates();
         $model_orders = new Orders();
 

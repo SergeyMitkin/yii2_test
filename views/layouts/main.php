@@ -178,7 +178,7 @@ AppAsset::register($this);
 
             <div class="u-align-right u-container-style u-group u-palette-2-base u-shape-rectangle u-group-1">
                 <div class="u-container-layout u-valign-middle-sm u-container-layout-4">
-                    <h2 class="u-align-center u-custom-font u-text u-text-7">Аренда выде​ленных серверов </h2>
+                    <h2 class="u-align-center u-custom-font u-text u-text-7"><?= Yii::t("app", "site title"); ?></h2>
                 </div>
             </div>
 
