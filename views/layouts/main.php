@@ -77,35 +77,36 @@ AppAsset::register($this);
                     <div class="u-nav-container">
                         <ul class="u-nav u-unstyled u-nav-1">
                             <li class="u-nav-item">
-                                <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/site/index" style="padding: 10px 20px;">Главная</a>
+                                <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/site/index" style="padding: 10px 20px;"><?= Yii::t("app", "menu home"); ?></a>
                             </li>
                             <?
                             if (!Yii::$app->user->isGuest){
                                 echo '
                                     <li class="u-nav-item">
-                                        <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/account/index" style="padding: 10px 20px;">Личный кабинет</a>
+                                        <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/account/index" style="padding: 10px 20px;">' . Yii::t("app", "menu account") . '</a>
                                     </li>
                                 ';
                             }
                             ?>
                             <li class="u-nav-item">
-                                <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/gallery" style="padding: 10px 20px;">Фотогалерея</a>
+                                <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/gallery" style="padding: 10px 20px;"><?= Yii::t("app", "menu gallery"); ?></a>
                             </li>
                             <?
                             if (Yii::$app->user->isGuest){
                                 echo '
                                       <li class="u-nav-item">
-                                           <a class="u-button-style u-nav-link" href="/site/login">Вход</a>
+                                           <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/site/login">' . Yii::t("app", "menu login") . '</a>
                                       </li>
                                       <li class="u-nav-item">
-                                           <a class="u-button-style u-nav-link" href="/site/signup">Регистрация</a>
+                                           <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/site/signup">' .
+                                           Yii::t("app", "menu signup") . '</a>
                                       </li>                                                          
                                 ';
                             } else {
                                 echo '<li class="u-nav-item">'
                                     . Html::beginForm(['/site/logout'], 'post')
                                     . Html::submitButton(
-                                        '<a class="u-button-style u-nav-link"></a>Выход (' . Yii::$app->user->identity->name . ')'
+                                        '<a class="u-button-style u-nav-link"></a>' . Yii::t("app", "menu logout") . '(' . Yii::$app->user->identity->name . ')'
 
                                     )
                                     . Html::endForm();
