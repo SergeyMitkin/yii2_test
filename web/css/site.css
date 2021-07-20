@@ -30,6 +30,7 @@
 
 .breadcrumb-div {
     position: absolute;
+    left: 1px;
 }
 
 .breadcrumb{
@@ -43,6 +44,26 @@
 
 .breadcrumb:last-child li{
     color: #5b99d4 !important;
+}
+
+.language-div{
+    position: absolute;
+    background: grey;
+    padding: 5px;
+    top: 15px;
+    right: 1px;
+}
+.language-div a{
+    color: rgb(255,255,255);
+}
+
+.language-div a:hover{
+    color: rgb(255,255,255);
+}
+
+.img-lang{
+    width: 20px;
+    height: 20px;
 }
 
 .title-div{

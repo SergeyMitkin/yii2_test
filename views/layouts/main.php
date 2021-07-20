@@ -3,8 +3,8 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use app\widgets\Alert;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
@@ -107,8 +107,7 @@ AppAsset::register($this);
                                     . Html::beginForm(['/site/logout'], 'post')
                                     . Html::submitButton(
                                         '<a class="u-button-style u-nav-link"></a>' . Yii::t("app", "menu logout") . '(' . Yii::$app->user->identity->name . ')'
-
-                                    )
+                                        )
                                     . Html::endForm();
                                 '</li>';
                             }
@@ -152,8 +151,7 @@ AppAsset::register($this);
                                             . Html::beginForm(['/site/logout'], 'post')
                                             . Html::submitButton(
                                                 '<a class="u-button-style u-nav-link"></a>' . Yii::t("app", "menu logout") . '(' . Yii::$app->user->identity->name . ')'
-
-                                            )
+                                                )
                                             . Html::endForm();
                                         '</li>';
                                     }
@@ -177,6 +175,18 @@ AppAsset::register($this);
                 ]) ?>
             </div>
 
+            <div class="language-div">
+                <?php if(Yii::$app->language == 'ru-RU') : ?>
+
+                    <a href="<?= Url::to(['/site/language', 'language' => 'en-US']) ?>" ><img src="../images/united-kingdom.png" class="img-lang" alt="English"> English</a>
+
+                <?php else: ?>
+
+                    <a href="<?= Url::to(['/site/language', 'language' => 'ru-RU']) ?>" ><img src="../images/russia.png" class="img-lang" alt="Русский"> Русский</a>
+
+                <?php endif; ?>
+            </div>
+
             <div class="u-align-right u-container-style u-group u-palette-2-base u-shape-rectangle u-group-1">
                 <div class="u-container-layout u-valign-middle-sm u-container-layout-4">
                     <h2 class="u-align-center u-custom-font u-text u-text-7"><?= Yii::t("app", "site title"); ?></h2>
@@ -192,7 +202,7 @@ AppAsset::register($this);
         <footer class="u-align-left u-clearfix u-footer u-grey-80 u-footer" id="sec-aed1">
 
             <div class="u-clearfix u-sheet u-sheet-1">
-                <p class="u-text u-text-1">Images ​from <a href="https://www.freepik.com/photos/people" class="u-border-1 u-border-white u-btn u-button-link u-button-style u-none u-text-body-alt-color u-btn-1" target="_blank">Freepik</a>
+                <p class="u-text u-text-1"><?= Yii::t("app", "images ​from") ?> <a href="https://www.freepik.com/photos/people" class="u-border-1 u-border-white u-btn u-button-link u-button-style u-none u-text-body-alt-color u-btn-1" target="_blank">Freepik</a>
                 </p>
             </div>
 
@@ -201,7 +211,7 @@ AppAsset::register($this);
                     <span>Website Mockup</span>
                 </a>
                 <p class="u-text">
-                    <span>created with</span>
+                    <span><?= Yii::t("app", "created with") ?></span>
                 </p>
                 <a class="u-link" href="https://nicepage.com/" target="_blank">
                     <span>Website Builder Software</span>

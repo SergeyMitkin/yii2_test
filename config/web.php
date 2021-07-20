@@ -7,7 +7,13 @@ $config = [
     'id' => 'basic',
     'name' => 'My Company',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+        'log',
+        // Класс для подключения языка
+        [
+            'class' => 'app\components\LanguageSelector'
+        ],
+    ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -29,12 +35,11 @@ $config = [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'basePath' => '@app/messages',
                     // 'sourceLanguage' => 'en-US',
-                    /*
+
                     'fileMap' => [
                         'app'       => 'app.php',
                         'app/error' => 'error.php',
                     ],
-                    */
                 ],
             ],
         ],
@@ -93,7 +98,7 @@ $config = [
         ],
     ],
     'params' => $params,
-    'language' => 'ru-RU', // язык приложения
+    'language' => $app->request->cookies['language'] ? $app->request->cookies['language'] : 'ru-RU', //'ru-RU', // язык приложения
 ];
 
 if (YII_ENV_DEV) {
