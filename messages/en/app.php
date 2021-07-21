@@ -16,6 +16,16 @@ return [
     'main title' => 'Affordable rates',
     'price' => 'Price',
 
+    // Личный кабинет
+    'account title' => 'My account',
+    'servers' => 'Servers',
+    'provided servers' => 'Provided servers',
+    'orders' => 'Orders',
+    'my orders' => 'My Orders',
+    'rate' => 'Rate',
+    'date and time' => 'Date and time',
+    'status' => 'Status',
+
     // Футер
     'images ​from' => 'Images from',
     'created with' => 'created with',

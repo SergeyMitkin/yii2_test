@@ -16,9 +16,8 @@ use dosamigos\datepicker\DatePicker; // Подключаем виджет для
 // Подключаем ассет
 \app\assets\AccountIndexAsset::register($this);
 
-$this->title = 'Личный кабинет';
+$this->title = Yii::t("app", "account title");
 $this->params['breadcrumbs'][] = $this->title;
-
 ?>
 
 <div class="title-div">
@@ -32,11 +31,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="tabs-ul">
             <ul id="ul-account-index" class="nav nav-tabs" role="tablist">
                 <li id="servers_li" class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#servers_content" role="tab">Серверы</a>
+                    <a class="nav-link" data-toggle="tab" href="#servers_content" role="tab"><?= Yii::t("app", "servers") ?></a>
                 </li>
 
                 <li id="orders_li" class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#orders_content" role="tab">Заказы</a>
+                    <a class="nav-link" data-toggle="tab" href="#orders_content" role="tab"><?= Yii::t("app", "orders") ?></a>
                 </li>
             </ul>
         </div>
@@ -46,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="div-user-servers">
 
                     <div class="tab-title-div">
-                        <h3 class="tab-title-h">Предоставленные серверы</h3>
+                        <h3 class="tab-title-h"><?= Yii::t("app", "provided servers") ?></h3>
                     </div>
 
                     <?php
@@ -71,7 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                             [
                                 'attribute' => 'rate_name',
-                                'label' => 'Тариф',
+                                'label' => Yii::t("app", "rate"),
                                 'filter' => \yii\helpers\ArrayHelper::map($model_rates::find()->all(),'id', 'name'),
                                 'format' => 'html',
                                 'value' => function($model){
@@ -80,6 +79,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                             [
                                 'attribute' => 'date',
+                                'label' => Yii::t("app", "date and time"),
                                 'format' => 'raw',
                                 'value' => function($model){
                                     return Html::tag('span', $model->date, ['class' => 'span-in-td']);
@@ -102,7 +102,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <div class="tab-pane" id="orders_content" role="tabpanel">
                 <div class="div-user-orders">
-                    <div class="tab-title-div"><h3 class="tab-title-h">Мои заказы</h3></div>
+                    <div class="tab-title-div"><h3 class="tab-title-h"><?= Yii::t("app", "my orders") ?></h3></div>
                     <?php
                     Pjax::begin();
                     echo GridView::widget([
@@ -125,7 +125,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                             [
                                 'attribute' => 'rate_name',
-                                'label' => 'Тариф',
+                                'label' => Yii::t("app", "rate"),
                                 'filter' => \yii\helpers\ArrayHelper::map($model_rates::find()->all(),'id', 'name'),
                                 'format' => 'html',
                                 'value' => function($model){
@@ -134,6 +134,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                             [
                                 'attribute' => 'date',
+                                'label' => Yii::t("app", "date and time"),
                                 'format' => 'raw',
                                 'value' => function($model){
                                     return Html::tag('span', $model->date, ['class' => 'span-in-td']);
@@ -149,7 +150,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                             [
                                 'attribute' => 'status',
-                                'label' => 'Статус',
+                                'label' => Yii::t("app", "status"),
                                 'filter' => [ "0"=>"Новый", "1"=>"Подтверждён"],
                                 // Вывадим статус заказа
                                 'format' => 'html',
@@ -165,6 +166,5 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
         </div>
-
     </div>
 </div>
