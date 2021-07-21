@@ -14,7 +14,7 @@ class LanguageSelector implements BootstrapInterface
 
 {
 
-    public $supportedLanguages = ['en-US', 'ru-RU' ];
+    public $supportedLanguages = ['en-UK', 'ru-RU' ];
 
     public function bootstrap($app){
 

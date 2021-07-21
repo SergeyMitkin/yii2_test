@@ -201,7 +201,7 @@ class SiteController extends Controller
 
         $language = Yii::$app->request->get('language');
 
-        if(!$language == 'ru-RU' || !$language == 'en-US'){
+        if(!$language == 'ru-RU' || !$language == 'en-UK'){
 
             return $this->redirect(Yii::$app->request->referrer);
 

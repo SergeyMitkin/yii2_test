@@ -120,45 +120,45 @@ AppAsset::register($this);
                             <div class="u-sidenav-overflow">
                                 <div class="u-menu-close"></div>
 
-                                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
-                                    <li class="u-nav-item">
-                                        <a class="u-button-style u-nav-link" href="/site/index"><?= Yii::t("app", "menu home") ?></a>
-                                    </li>
-                                    <?
-                                    if (!Yii::$app->user->isGuest){
-                                        echo '
-                                            <li class="u-nav-item">
-                                                <a class="u-button-style u-nav-link" href="/account/index">' . Yii::t("app", "menu account") . '</a>
-                                            </li>
-                                        ';
-                                    }
-                                    ?>
-                                    <li class="u-nav-item">
-                                        <a class="u-button-style u-nav-link" href="/gallery"><?= Yii::t("app", "menu gallery") ?></a>
-                                    </li>
-                                    <?
-                                    if (Yii::$app->user->isGuest){
-                                        echo '
-                                      <li class="u-nav-item">
-                                           <a class="u-button-style u-nav-link" href="/site/login">' . Yii::t("app", "menu login") . '</a>
-                                      </li>
-                                      <li class="u-nav-item">
-                                           <a class="u-button-style u-nav-link" href="/site/signup">' . Yii::t("app", "menu signup") . '</a>
-                                      </li>                                                          
-                                      ';
-                                    } else {
-                                        echo '<li class="u-nav-item">'
-                                            . Html::beginForm(['/site/logout'], 'post')
-                                            . Html::submitButton(
-                                                '<a class="u-button-style u-nav-link"></a>' . Yii::t("app", "menu logout") . '(' . Yii::$app->user->identity->name . ')'
+                                    <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
+                                        <li class="u-nav-item">
+                                            <a class="u-button-style u-nav-link" href="/site/index"><?= Yii::t("app", "menu home") ?></a>
+                                        </li>
+                                        <?
+                                        if (!Yii::$app->user->isGuest){
+                                            echo '
+                                                <li class="u-nav-item">
+                                                    <a class="u-button-style u-nav-link" href="/account/index">' . Yii::t("app", "menu account") . '</a>
+                                                </li>
+                                            ';
+                                        }
+                                        ?>
+                                        <li class="u-nav-item">
+                                            <a class="u-button-style u-nav-link" href="/gallery"><?= Yii::t("app", "menu gallery") ?></a>
+                                        </li>
+                                        <?
+                                        if (Yii::$app->user->isGuest){
+                                            echo '
+                                          <li class="u-nav-item">
+                                               <a class="u-button-style u-nav-link" href="/site/login">' . Yii::t("app", "menu login") . '</a>
+                                          </li>
+                                          <li class="u-nav-item">
+                                               <a class="u-button-style u-nav-link" href="/site/signup">' . Yii::t("app", "menu signup") . '</a>
+                                          </li>                                                          
+                                          ';
+                                        } else {
+                                            echo '<li class="u-nav-item">'
+                                                . Html::beginForm(['/site/logout'], 'post')
+                                                . Html::submitButton(
+                                                    '<a class="u-button-style u-nav-link"></a>' . Yii::t("app", "menu logout") . '(' . Yii::$app->user->identity->name . ')'
                                                 )
-                                            . Html::endForm();
-                                        '</li>';
-                                    }
-                                    ?>
-                                </ul>
+                                                . Html::endForm();
+                                            '</li>';
+                                        }
+                                        ?>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
                         <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
                     </div>
                 </nav>
@@ -178,7 +178,7 @@ AppAsset::register($this);
             <div class="language-div">
                 <?php if(Yii::$app->language == 'ru-RU') : ?>
 
-                    <a href="<?= Url::to(['/site/language', 'language' => 'en-US']) ?>" ><img src="../images/united-kingdom.png" class="img-lang" alt="English"> English</a>
+                    <a href="<?= Url::to(['/site/language', 'language' => 'en-UK']) ?>" ><img src="../images/united-kingdom.png" class="img-lang" alt="English"> English</a>
 
                 <?php else: ?>
 

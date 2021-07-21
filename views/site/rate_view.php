@@ -41,5 +41,5 @@ use yii\helpers\Url;
         </svg>
     </span>
     <p class="u-text u-text-palette-1-dark-3 u-text-2"><? echo $model->description; ?></p>
-    <p class="u-text u-text-palette-1-dark-3 u-text-3">Цена: <? echo $model->price; ?> $</b></p>
+    <p class="u-text u-text-palette-1-dark-3 u-text-3"><?= Yii::t("app", "price") ?>: <? echo $model->price; ?> $</b></p>
 </div>

@@ -5,7 +5,7 @@ use yii\data\ActiveDataProvider;
 
 \app\assets\IndexAsset::register($this);
 
-$this->title = 'Доступные тарифы';
+$this->title = Yii::t("app", "main title");
 ?>
 
 
