@@ -9,7 +9,7 @@ use yii\bootstrap\Modal;
 /* @var $searchModel onmotion\gallery\models\GallerySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Фотогалерея';
+$this->title = Yii::t("app", "gallery title");
 $this->params['breadcrumbs'][] = $this->title;
 $dataProvider->pagination->pageSize = 20;
 
@@ -22,15 +22,15 @@ $dataProvider->pagination->pageSize = 20;
 <div class="gallery-index">
 
     <div class="tab-title-div">
-        <h3 class="tab-title-h">Альбомы:</h3>
+        <h3 class="tab-title-h"><?= Yii::t("app", "albums") ?>:</h3>
     </div>
 
     <?php
     echo Html::a('<i class="glyphicon glyphicon-plus"></i>', ['create'],
-        ['title' => 'Создать альбом', 'class' => 'btn btn-default',
+        ['title' => Yii::t("app", "add album"), 'class' => 'btn btn-default',
             'method' => 'get',
             'role' => 'modal-toggle',
-            'data-modal-title'=>'Создать альбом',
+            'data-modal-title'=> Yii::t("app", "add album"),
         ]);
             
     echo \yii\widgets\ListView::widget([
@@ -57,9 +57,9 @@ Modal::begin([
     "id" => "gallery-modal",
     'header' => '<h4 class="modal-title"></h4>',
     "footer" =>
-        Html::a('Close', ['#'],
+        Html::a(Yii::t('app', 'close'), ['#'],
             ['title' => 'Cancel', 'class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
-        Html::a('ОК', Url::to('#'),
+        Html::a('Оk', Url::to('#'),
             ['title' => '', 'class' => 'btn btn-primary', 'id' => 'modal-confirm-btn']),
 ]);
 

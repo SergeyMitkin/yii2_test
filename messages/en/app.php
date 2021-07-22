@@ -26,6 +26,15 @@ return [
     'date and time' => 'Date and time',
     'status' => 'Status',
 
+    // Фотогаллерея
+    'gallery title' => 'Gallery',
+    'albums' => 'Albums',
+    'add album' => 'Add album',
+    'close' => 'Close',
+    'name' => 'Name',
+    'description' => 'Description',
+    'upload photo' => 'Upload photo',
+
     // Футер
     'images ​from' => 'Images from',
     'created with' => 'created with',

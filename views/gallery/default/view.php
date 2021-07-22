@@ -6,12 +6,11 @@ use yii\bootstrap\Collapse;
 use yii\bootstrap\Modal;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\widgets\Breadcrumbs;
 use onmotion\helpers\Translator;
 
 \app\assets\GalleryViewAsset::register($this);
 
-$this->title = 'Фотогалерея';
+$this->title = Yii::t("app", "gallery title");
 
 /* @var $this yii\web\View */
 /* @var $model onmotion\gallery\models\Gallery */
@@ -19,8 +18,6 @@ $this->title = 'Фотогалерея';
 
 set_time_limit(60);
 ini_set('memory_limit', '512M');
-
-
 
 $this->registerJs(<<<JS
 $('#preloader').show();
@@ -40,7 +37,7 @@ JS
 
 <?
 
-$this->params['breadcrumbs'][] = ['label' => 'Фотогаллерея', 'url' => ['/gallery']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t("app", "gallery title"), 'url' => ['/gallery']];
 $this->params['breadcrumbs'][] = $model->name;
 
             echo Html::beginTag('div', ['class' => 'gallery-view']);
@@ -94,7 +91,7 @@ $this->params['breadcrumbs'][] = $model->name;
             echo Collapse::widget([
                 'items' => [
                     [
-                        'label' => 'Upload photo',
+                        'label' => Yii::t('app', 'upload photo'),
                         'content' => '<input id="input-1a" name="image[]" type="file"  class="file-loading" multiple>' .
                             ' <div id="errorBlock"><ul class="alert-warning-message"></ul></div>'
                     ]

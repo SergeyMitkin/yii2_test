@@ -8,11 +8,9 @@ use yii\data\ActiveDataProvider;
 $this->title = Yii::t("app", "main title");
 ?>
 
-
 <?
 $this->params['breadcrumbs'][] = '';
 ?>
-
 
 <div class="title-div">
     <h2 class="title-h"><?= Html::encode($this->title) ?></h2>
