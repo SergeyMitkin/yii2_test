@@ -34,6 +34,7 @@ return [
     'name' => 'Name',
     'description' => 'Description',
     'upload photo' => 'Upload photo',
+    'photos count' => '{n, plural, =0{photos} =1{photo} other{photos}}', // Задаём правило для склонения
 
     // Футер
     'images ​from' => 'Images from',
