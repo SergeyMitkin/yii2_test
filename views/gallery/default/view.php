@@ -11,6 +11,7 @@ use onmotion\helpers\Translator;
 \app\assets\GalleryViewAsset::register($this);
 
 $this->title = Yii::t("app", "gallery title");
+$photos_count = count((array)$photos);
 
 /* @var $this yii\web\View */
 /* @var $model onmotion\gallery\models\Gallery */
@@ -18,6 +19,7 @@ $this->title = Yii::t("app", "gallery title");
 
 set_time_limit(60);
 ini_set('memory_limit', '512M');
+
 
 $this->registerJs(<<<JS
 $('#preloader').show();
@@ -44,7 +46,7 @@ $this->params['breadcrumbs'][] = $model->name;
             echo \yii\bootstrap\Collapse::widget([
                 'items' => [
                     [
-                        'label' => $model->name . ' (' . count((array)$photos) . ' photos)',
+                        'label' => $model->name . ' (' . $photos_count . ' ' . Yii::t('app', '{n, plural, =0{photos} =1{photo} other{photos}}', ['n' => $photos_count]) . ')',
                         'content' => !empty($model->descr) ? $model->descr : ''
                     ]
                 ],
