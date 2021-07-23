@@ -58,7 +58,7 @@ Modal::begin([
     'header' => '<h4 class="modal-title"></h4>',
     "footer" =>
         Html::a(Yii::t('app', 'close'), ['#'],
-            ['title' => 'Cancel', 'class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
+            ['title' => Yii::t("app", "cancel"), 'class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
         Html::a('Оk', Url::to('#'),
             ['title' => '', 'class' => 'btn btn-primary', 'id' => 'modal-confirm-btn']),
 ]);

@@ -106,7 +106,7 @@ AppAsset::register($this);
                                 echo '<li class="u-nav-item">'
                                     . Html::beginForm(['/site/logout'], 'post')
                                     . Html::submitButton(
-                                        '<a class="u-button-style u-nav-link"></a>' . Yii::t("app", "menu logout") . '(' . Yii::$app->user->identity->name . ')'
+                                        '<a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base">' . Yii::t("app", "menu logout") . '(' . Yii::$app->user->identity->name . ')' . '</a>', ['class' => 'btn-menu']
                                         )
                                     . Html::endForm();
                                 '</li>';

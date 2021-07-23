@@ -19,18 +19,18 @@ $date = new DateTime($model->date);
         <?php
             echo Html::beginTag('div', ['class' => 'change-btns']);
             echo Html::a('<i class="glyphicon glyphicon-trash"></i>', Url::toRoute(["delete", 'id'=>$model->gallery_id]),
-                ['title' => 'Delete',
+                ['title' => Yii::t('app', 'delete'),
                     'class' => 'update-btn',
                     'role' => 'modal-toggle',
-                    'data-modal-title'=>'Are you sure?',
-                    'data-modal-body'=>'This will permanently delete all the pictures are in the gallery.',
+                    'data-modal-title'=>Yii::t('app', 'are you sure?'),
+                    'data-modal-body'=>Yii::t('app', 'delete warning'),
                 ]);
             echo Html::a('<i class="glyphicon glyphicon-pencil"></i>', Url::toRoute(["update", 'id'=>$model->gallery_id]), [
-                'title' => 'Update',
+                'title' => Yii::t('app', 'update'),
                 'method' => 'get',
                 'class'=>"update-btn",
                 'role'=>"modal-toggle",
-                'data-modal-title'=>'Update',
+                'data-modal-title'=>Yii::t('app', 'update'),
             ]);
             echo Html::endTag('div');
         ?>

@@ -103,21 +103,21 @@ $this->params['breadcrumbs'][] = $model->name;
                 ]
             ]);
                 echo Html::a('<i class="glyphicon glyphicon-pencil"></i>', ['#'],
-                    ['title' => 'Edit mode', 'class' => 'btn btn-default', 'id' => 'check-toggle',
+                    ['title' => Yii::t('app', 'edit mode'), 'class' => 'btn btn-default', 'id' => 'check-toggle',
                         'data-toggle' => "tooltip", 'data-placement' => "top", 'data-trigger' => "hover"]);
                 echo Html::a('<i class="glyphicon glyphicon-check"></i>', ['#'],
-                    ['title' => 'Check all', 'class' => 'btn btn-default', 'style' => "display:none", 'id' => 'check-all',
+                    ['title' => Yii::t('app', 'check all'), 'class' => 'btn btn-default', 'style' => "display:none", 'id' => 'check-all',
                         'data-toggle' => "tooltip", 'data-placement' => "top", 'data-trigger' => "hover"]);
 
                 echo Html::a('<i class="glyphicon glyphicon-repeat"></i>', ['#'],
-                    ['title' => 'Reset', 'class' => 'btn btn-default', 'style' => "display:none", 'id' => 'reset-all',
+                    ['title' => Yii::t('app', 'reset'), 'class' => 'btn btn-default', 'style' => "display:none", 'id' => 'reset-all',
                         'data-toggle' => "tooltip", 'data-placement' => "top", 'data-trigger' => "hover"]);
                 echo Html::a('<i class="glyphicon glyphicon-trash"></i>', Url::toRoute('photos-delete'),
-                    ['title' => 'Delete photos', 'class' => 'btn btn-danger', 'style' => "display:none", 'id' => 'photos-delete-btn',
+                    ['title' => Yii::t('app', 'delete photos'), 'class' => 'btn btn-danger', 'style' => "display:none", 'id' => 'photos-delete-btn',
                         'data-toggle' => "tooltip", 'data-placement' => "top", 'data-trigger' => "hover",
                         'role' => 'modal-toggle',
-                        'data-modal-title'=>'Delete photos',
-                        'data-modal-body'=>'Are you sure?',
+                        'data-modal-title'=>Yii::t('app', 'delete photos'),
+                        'data-modal-body'=>Yii::t('app', 'are you sure?'),
                     ]);
 echo Html::endTag('div');
 
@@ -125,8 +125,8 @@ Modal::begin([
     "id" => "gallery-modal",
     'header' => '<h4 class="modal-title"></h4>',
     "footer" =>
-        Html::a('Close', ['#'],
-            ['title' => 'Cancel', 'class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
+        Html::a(Yii::t('app', 'close'), ['#'],
+            ['title' => Yii::t('app', 'cancel'), 'class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
         Html::a('ОК', Url::toRoute('photos-delete'),
             ['title' => '', 'class' => 'btn btn-primary', 'id' => 'photos-delete-confirm-btn']),
 ]);

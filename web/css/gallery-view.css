@@ -23,11 +23,15 @@
 }
 
 .btn-default{
-    color: #83b2de !important;
+    color: #5b99d4 !important;
 }
 
 .no-photos{
     background-color: rgb(34,34,34);
     color: whitesmoke;
     padding: 5px;
+}
+
+.modal-content{
+    color: rgb(34,34,34);
 }

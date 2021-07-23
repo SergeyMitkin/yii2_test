@@ -21,10 +21,6 @@
     color: rgb(34,34,34);
 }
 
-.btn-default{
-    color: #83b2de !important;
-}
-
 .name {
     background-color: rgb(255,255,255) ;
     padding-bottom: 10px;
@@ -43,4 +39,8 @@
     display: inline-block;
     background: rgb(26,26,26);
     color: rgb(245,245,245);
+}
+
+.btn-default{
+    color: #5b99d4 !important;
 }

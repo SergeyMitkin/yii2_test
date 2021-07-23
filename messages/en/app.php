@@ -31,11 +31,16 @@ return [
     'albums' => 'Albums',
     'add album' => 'Add album',
     'close' => 'Close',
+    'cancel'=> 'Cancel',
     'name' => 'Name',
     'description' => 'Description',
     'upload photo' => 'Upload photo',
     'photos count' => '{n, plural, =0{photos} =1{photo} other{photos}}', // Задаём правило для склонения
     'no photos' => 'There is no photos yet...',
+    'update' => 'Update',
+    'delete' => 'Delete',
+    'are you sure?' => 'Are you sure?',
+    'delete warning' => 'This will permanently delete all the pictures are in the gallery.',
 
     // Футер
     'images ​from' => 'Images from',
