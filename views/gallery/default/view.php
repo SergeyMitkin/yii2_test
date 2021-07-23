@@ -69,7 +69,7 @@ $this->params['breadcrumbs'][] = $model->name;
                         ];
                 };
             } else {
-                echo 'There is no photos yet...';
+                echo '<span class="no-photos">' . Yii::t("app", "no photos") . '</span>';
             }
             ?>
             <div class="row">

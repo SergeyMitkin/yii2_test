@@ -35,6 +35,7 @@ return [
     'description' => 'Description',
     'upload photo' => 'Upload photo',
     'photos count' => '{n, plural, =0{photos} =1{photo} other{photos}}', // Задаём правило для склонения
+    'no photos' => 'There is no photos yet...',
 
     // Футер
     'images ​from' => 'Images from',
