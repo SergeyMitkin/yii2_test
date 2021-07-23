@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $model->name;
             echo \yii\bootstrap\Collapse::widget([
                 'items' => [
                     [
-                        'label' => $model->name . ' (' . $photos_count . ' ' . Yii::t('app', '{n, plural, =0{photos} =1{photo} other{photos}}', ['n' => $photos_count]) . ')',
+                        'label' => $model->name . ' (' . $photos_count . ' ' . Yii::t('app', '{n, plural, =0{photos} =1{photo} other{photos}}', ['n' => $photos_count]) . ')', //
                         'content' => !empty($model->descr) ? $model->descr : ''
                     ]
                 ],
