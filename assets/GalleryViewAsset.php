@@ -19,7 +19,7 @@ class GalleryViewAsset extends AssetBundle
     ];
 
     public $js = [
-        //'js/gallery-view.js'
+        'js/ru.js', // подключаем файл с русской локализацией инпута загрузки файлов
     ];
 
     public $depends = [

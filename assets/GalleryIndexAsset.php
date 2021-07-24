@@ -8,7 +8,6 @@
 
 namespace app\assets;
 use yii\web\AssetBundle;
-use yii\web\JqueryAsset;
 
 class GalleryIndexAsset extends AssetBundle
 {

@@ -94,7 +94,8 @@ $this->params['breadcrumbs'][] = $model->name;
                 'items' => [
                     [
                         'label' => Yii::t('app', 'upload photo'),
-                        'content' => '<input id="input-1a" name="image[]" type="file"  class="file-loading" multiple>' .
+                        'content' =>
+                            '<input id="input-1a" name="image[]" type="file" class="file-loading" data-language="' . Yii::t('app', 'language') .'" multiple>' .
                             ' <div id="errorBlock"><ul class="alert-warning-message"></ul></div>'
                     ]
                 ],

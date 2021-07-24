@@ -44,6 +44,7 @@ return [
     'check all' => 'Выбрать все',
     'reset' => 'Обновить',
     'delete photos' => 'Удалить фотографии',
+    'language' => 'ru',
 
     // Футер
     'images ​from' => 'Изображения от',

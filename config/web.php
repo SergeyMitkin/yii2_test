@@ -98,7 +98,7 @@ $config = [
         ],
     ],
     'params' => $params,
-    'language' => $app->request->cookies['language'] ? $app->request->cookies['language'] : 'ru-RU', //'ru-RU', // язык приложения
+    'language' => $app->request->cookies['language'] ? $app->request->cookies['language'] : 'ru', //'ru-RU', // язык приложения
 ];
 
 if (YII_ENV_DEV) {
