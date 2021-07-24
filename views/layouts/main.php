@@ -176,13 +176,13 @@ AppAsset::register($this);
             </div>
 
             <div class="language-div">
-                <?php if(Yii::$app->language == 'ru') : ?>
+                <?php if(Yii::$app->language == 'ru-RU') : ?>
 
                     <a href="<?= Url::to(['/site/language', 'language' => 'en-UK']) ?>" ><img src="<?=Yii::getAlias('@web/images/united-kingdom.png')?>" class="img-lang" alt="English"> English</a>
 
                 <?php else: ?>
 
-                    <a href="<?= Url::to(['/site/language', 'language' => 'ru']) ?>" ><img src="<?=Yii::getAlias('@web/images/russia.png')?>" class="img-lang" alt="Русский"> Русский</a>
+                    <a href="<?= Url::to(['/site/language', 'language' => 'ru-RU']) ?>" ><img src="<?=Yii::getAlias('@web/images/russia.png')?>" class="img-lang" alt="Русский"> Русский</a>
 
                 <?php endif; ?>
             </div>
