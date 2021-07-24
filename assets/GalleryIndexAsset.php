@@ -25,8 +25,7 @@ class GalleryIndexAsset extends AssetBundle
     ];
 
     public $depends = [
-        'yii\web\YiiAsset',
-        JqueryAsset::class
+        'yii\web\YiiAsset'
     ];
 
 }

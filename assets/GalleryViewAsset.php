@@ -8,7 +8,6 @@
 
 namespace app\assets;
 use yii\web\AssetBundle;
-use yii\web\JqueryAsset;
 
 class GalleryViewAsset extends AssetBundle
 {
@@ -24,8 +23,7 @@ class GalleryViewAsset extends AssetBundle
     ];
 
     public $depends = [
-        'yii\web\YiiAsset',
-        JqueryAsset::class
+        GalleryIndexAsset::class
     ];
 
 }
