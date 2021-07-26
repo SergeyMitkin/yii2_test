@@ -7,9 +7,10 @@
  */
 
 namespace app\assets;
+use onmotion\gallery\ModuleAsset;
 use yii\web\AssetBundle;
 
-class GalleryViewAsset extends AssetBundle
+class GalleryViewAsset extends ModuleAsset
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
@@ -19,7 +20,8 @@ class GalleryViewAsset extends AssetBundle
     ];
 
     public $js = [
-        'js/ru.js', // подключаем файл с русской локализацией инпута загрузки файлов
+        'js/ru.js', // Подключаем файл с русской локализацией инпута загрузки файлов
+        'js/onmotion-gallery-language.js' // Подключаем файл для переключения языков в модальном окне удаления изображений
     ];
 
     public $depends = [
