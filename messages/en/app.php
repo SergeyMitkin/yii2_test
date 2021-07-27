@@ -43,6 +43,8 @@ return [
     'delete warning' => 'This will permanently delete all the pictures are in the gallery.',
     'language' => 'en',
     'success' => 'Success!',
+    'something went wrong' => 'Something went wrong... Error: ',
+    'deleting gallery' => 'Deleting gallery',
 
     // Футер
     'images ​from' => 'Images from',
