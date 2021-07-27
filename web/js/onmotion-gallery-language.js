@@ -1,6 +1,7 @@
 /**
  * Created by kozhevnikov on 01.04.2016.
  */
+
 var onmotion = {};
 onmotion.gallery = function (id, extOptions) {
     document.getElementById('gallery-links').onclick = function (event) {
@@ -90,7 +91,7 @@ $(document).ready(function () {
                 $modal.find('.modal-body').html('<div class="progress"><div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%"><span class="sr-only">100</span></div></div>');
             },
             success: function (data, textStatus, xhr) {
-                $modal.find('.modal-body').html('Готово!');
+                $modal.find('.modal-body').html(success);
                 $(this).hide();
                 location.reload();
             },

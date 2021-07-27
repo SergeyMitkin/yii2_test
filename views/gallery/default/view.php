@@ -20,7 +20,7 @@ $photos_count = count((array)$photos);
 set_time_limit(60);
 ini_set('memory_limit', '512M');
 
-
+$this->registerJsVar('success', Yii::t("app", "success"));
 $this->registerJs(<<<JS
 $('#preloader').show();
 $('body').css('overflow', 'hidden');

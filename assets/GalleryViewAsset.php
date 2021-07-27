@@ -7,10 +7,9 @@
  */
 
 namespace app\assets;
-use onmotion\gallery\ModuleAsset;
 use yii\web\AssetBundle;
 
-class GalleryViewAsset extends ModuleAsset
+class GalleryViewAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';

@@ -42,6 +42,7 @@ return [
     'are you sure?' => 'Are you sure?',
     'delete warning' => 'This will permanently delete all the pictures are in the gallery.',
     'language' => 'en',
+    'success' => 'Success!',
 
     // Футер
     'images ​from' => 'Images from',

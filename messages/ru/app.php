@@ -45,6 +45,7 @@ return [
     'reset' => 'Обновить',
     'delete photos' => 'Удалить фотографии',
     'language' => 'ru',
+    'success' => 'Готово!',
 
     // Футер
     'images ​from' => 'Изображения от',
