@@ -18,7 +18,7 @@ $date = new DateTime($model->date);
     <div class="image">
         <?php
             echo Html::beginTag('div', ['class' => 'change-btns']);
-            echo Html::a('<i class="glyphicon glyphicon-trash"></i>', Url::toRoute(["/gallerylang/delete", 'id'=>$model->gallery_id]),
+            echo Html::a('<i class="glyphicon glyphicon-trash"></i>', Url::toRoute(['/gallery_language/delete', 'id'=>$model->gallery_id]),
                 ['title' => Yii::t('app', 'delete'),
                     'class' => 'update-btn',
                     'role' => 'modal-toggle',
