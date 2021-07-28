@@ -46,6 +46,7 @@ return [
     'delete photos' => 'Удалить фотографии',
     'language' => 'ru',
     'success' => 'Готово!',
+    'create gallery' => 'Создать альбом',
     'something went wrong' => 'Что-то пошло не так... Ошибка: ',
     'deleting gallery' => 'Удаление галереи',
 

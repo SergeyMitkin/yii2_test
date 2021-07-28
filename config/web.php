@@ -17,7 +17,8 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
-        '@adminlte/widgets'=>'@vendor/adminlte/yii2-widgets'
+        '@adminlte/widgets'=>'@vendor/adminlte/yii2-widgets',
+        '@gallery-views'=> '@app/views/gallery/default'
     ],
     'modules' => [
         'admin' => [

@@ -43,6 +43,7 @@ return [
     'delete warning' => 'This will permanently delete all the pictures are in the gallery.',
     'language' => 'en',
     'success' => 'Success!',
+    'create gallery' => 'Create Gallery',
     'something went wrong' => 'Something went wrong... Error: ',
     'deleting gallery' => 'Deleting gallery',
 
