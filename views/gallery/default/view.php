@@ -9,6 +9,7 @@ use yii\helpers\Url;
 use onmotion\helpers\Translator;
 
 \app\assets\GalleryViewAsset::register($this);
+\app\assets\FileInputAssetLanguage::register($this);
 
 $this->title = Yii::t("app", "gallery title");
 $photos_count = count((array)$photos);
@@ -20,7 +21,7 @@ $photos_count = count((array)$photos);
 set_time_limit(60);
 ini_set('memory_limit', '512M');
 
-$this->registerJsVar('success', Yii::t("app", "success"));
+
 $this->registerJs(<<<JS
 $('#preloader').show();
 $('body').css('overflow', 'hidden');
@@ -113,9 +114,9 @@ $this->params['breadcrumbs'][] = $model->name;
                 echo Html::a('<i class="glyphicon glyphicon-repeat"></i>', ['#'],
                     ['title' => Yii::t('app', 'reset'), 'class' => 'btn btn-default', 'style' => "display:none", 'id' => 'reset-all',
                         'data-toggle' => "tooltip", 'data-placement' => "top", 'data-trigger' => "hover"]);
-                echo Html::a('<i class="glyphicon glyphicon-trash"></i>', Url::toRoute('photos-delete'),
+                echo Html::a('<i class="glyphicon glyphicon-trash"></i>', Url::toRoute('gallery_language/photos-delete'),
                     ['title' => Yii::t('app', 'delete photos'), 'class' => 'btn btn-danger', 'style' => "display:none", 'id' => 'photos-delete-btn',
-                        'data-toggle' => "tooltip", 'data-placement' => "top", 'data-trigger' => "hover",
+                        'data-toggle' => "tooltip", 'data-placement' => "top", 'data-trigger' => "hover", 'data-method' => 'post',
                         'role' => 'modal-toggle',
                         'data-modal-title'=>Yii::t('app', 'delete photos'),
                         'data-modal-body'=>Yii::t('app', 'are you sure?'),

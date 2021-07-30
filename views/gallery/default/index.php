@@ -26,7 +26,7 @@ $dataProvider->pagination->pageSize = 20;
     </div>
 
     <?php
-    echo Html::a('<i class="glyphicon glyphicon-plus"></i>', ['/gallery_language/create'],
+    echo Html::a('<i class="glyphicon glyphicon-plus"></i>', ['create'],
         ['title' => Yii::t("app", "add album"), 'class' => 'btn btn-default',
             'method' => 'get',
             'role' => 'modal-toggle',
