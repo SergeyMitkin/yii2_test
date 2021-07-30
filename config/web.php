@@ -85,6 +85,11 @@ $config = [
                 'action' => yii\web\UrlNormalizer::ACTION_REDIRECT_PERMANENT
             ]
         ],
+        'assetManager' => [
+            'bundles' => [
+                'onmotion\gallery\ModuleAsset'=> ['js' => ['js/onmotion-bootstrap-modal.js']] // Оставляем в расширении галереи файл js, не требующий перевода. Другой, переведённый подключим в GalleryViewAsset.
+            ],
+        ],
         'view' => [
             'theme' => [
                 'pathMap' => [

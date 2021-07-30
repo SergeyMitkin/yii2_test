@@ -79,7 +79,7 @@ class SiteController extends Controller
             $is_guest =  'authorized';
         }
 
-        $this->view->registerJsVar('is_guest', $is_guest);
+        $this->view->registerJsVar('is_guest', $is_guest, 2);
 
         if(\Yii::$app->request->isAjax){
             $rate_id = $_GET['rate_id'];

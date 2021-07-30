@@ -19,6 +19,7 @@ class GalleryViewAsset extends AssetBundle
     ];
 
     public $js = [
+        'js/onmotion-gallery-language.js'
     ];
 
     public $depends = [

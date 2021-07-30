@@ -11,6 +11,8 @@ use onmotion\helpers\Translator;
 \app\assets\GalleryViewAsset::register($this);
 \app\assets\FileInputAssetLanguage::register($this);
 
+$this->registerJsVar('success', Yii::t("app", "success"), 2);
+
 $this->title = Yii::t("app", "gallery title");
 $photos_count = count((array)$photos);
 
