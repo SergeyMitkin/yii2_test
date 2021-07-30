@@ -27,6 +27,7 @@ return [
 
     // Фотогалерея
     'gallery title' => 'Фотогалерея',
+    'gallery' => 'Альбом',
     'albums' => 'Альбомы',
     'add album' => 'Создать альбом',
     'close' => 'Закрыть',
@@ -48,6 +49,8 @@ return [
     'success' => 'Готово!',
     'create gallery' => 'Создать альбом',
     'failed to create directory' => 'Не удалось создать дирректорию',
+    'failed to rename directory' => 'Не удалось переименовать дирректорию',
+    'update gallery' => 'Редактировать альбом',
     'something went wrong' => 'Что-то пошло не так... Ошибка: ',
     'deleting gallery' => 'Удаление галереи',
 

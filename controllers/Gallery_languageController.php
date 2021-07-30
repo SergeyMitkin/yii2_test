@@ -91,7 +91,76 @@ class Gallery_languageController extends DefaultController
                 ]);
             }
         }
+    }
 
+    public function actionUpdate($id)
+    {
+        $request = Yii::$app->request;
+        $model = $this->findModel($id);
+        $oldName = $model->name;
+
+        if ($request->isAjax) {
+            /*
+            *   Process for ajax request
+            */
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            if ($request->isGet) {
+                return [
+                    'title' => Yii::t('app', 'update gallery'),
+                    'content' => $this->renderPartial('@gallery-views/update', [
+                        'model' => $model,
+                    ]),
+                ];
+            } else if ($model->load($request->post()) && $model->validate()) {
+                $model->name = Html::encode($model->name);
+                if ($model->save()) {
+                    $oldAlias = Yii::getAlias('@app/web/img/gallery/' . Translator::rus2translit($oldName));
+                    $newAlias = Yii::getAlias('@app/web/img/gallery/' . Translator::rus2translit($model->name));
+                    if($oldAlias != $newAlias) {
+                        try {
+                            rename($oldAlias, $newAlias);
+                        } catch (\Exception $e) {
+                            return(Yii::t('app', 'failed to rename directory') . ' ' . $oldAlias . ' - ' . $e->getMessage());
+                        }
+                    }
+                    return [
+                        'forceReload' => true,
+                        'hideActionButton' => true,
+                        'title' => Yii::t('app', 'gallery') . ' - ' . $model->name,
+                        'content' => '<span class="text-success">' . Yii::t('app', 'success') . '</span>',
+                    ];
+                } else{
+                    return [
+                        'title' => "Редактирование Галереи - " . $model->name,
+                        'content' => $this->renderPartial('@gallery-views/update', [
+                            'model' => $model,
+                        ]),
+                        'footer' => Html::button('Закрыть', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
+                            Html::button('Сохранить', ['class' => 'btn btn-primary', 'type' => "submit"])
+                    ];
+                }
+            }else {
+                return [
+                    'title' => "Gallery Edit - " . $model->name,
+                    'content' => $this->renderPartial('@gallery-views/update', [
+                        'model' => $this->findModel($id),
+                    ]),
+                    'footer' => Html::button('Закрыть', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
+                        Html::button('Сохранить', ['class' => 'btn btn-primary', 'type' => "submit"])
+                ];
+            }
+        } else {
+            /*
+            *   Process for non-ajax request
+            */
+            if ($model->load($request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->gallery_id]);
+            } else {
+                return $this->render('@gallery-views/update', [
+                    'model' => $model,
+                ]);
+            }
+        }
     }
 
     public function actionDelete($id)

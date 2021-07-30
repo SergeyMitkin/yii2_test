@@ -25,7 +25,7 @@ $date = new DateTime($model->date);
                     'data-modal-title'=>Yii::t('app', 'are you sure?'),
                     'data-modal-body'=>Yii::t('app', 'delete warning'),
                 ]);
-            echo Html::a('<i class="glyphicon glyphicon-pencil"></i>', Url::toRoute(['update', 'id'=>$model->gallery_id]), [
+            echo Html::a('<i class="glyphicon glyphicon-pencil"></i>', Url::toRoute(['/gallery_language/update', 'id'=>$model->gallery_id]), [
                 'title' => Yii::t('app', 'update'),
                 'method' => 'get',
                 'class'=>"update-btn",

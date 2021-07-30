@@ -28,6 +28,7 @@ return [
 
     // Фотогаллерея
     'gallery title' => 'Gallery',
+    'gallery' => 'Gallery',
     'albums' => 'Albums',
     'add album' => 'Add album',
     'close' => 'Close',
@@ -44,7 +45,9 @@ return [
     'language' => 'en',
     'success' => 'Success!',
     'create gallery' => 'Create Gallery',
+    'update gallery' => 'Update Gallery',
     'failed to create directory' => 'Failed to create directory',
+    'failed to rename directory' => 'Failed to rename directory',
     'something went wrong' => 'Something went wrong... Error: ',
     'deleting gallery' => 'Deleting gallery',
 
