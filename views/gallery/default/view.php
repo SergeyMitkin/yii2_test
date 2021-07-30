@@ -78,7 +78,7 @@ $this->params['breadcrumbs'][] = $model->name;
                 <div class="col-md-10">
                     <?php
                     if (!empty($items))
-                        echo Gallery::widget([
+                        echo \app\widgets\GalleryLanguage::widget([
                             'id' => 'gallery-links',
                             'items' => $items,
                             'pluginOptions' => [

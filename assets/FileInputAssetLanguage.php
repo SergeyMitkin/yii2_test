@@ -8,13 +8,12 @@
 
 namespace app\assets;
 
-
 use onmotion\gallery\FileInputAsset;
 
+// Переводим на русский язык процесс загружки файлов
 class FileInputAssetLanguage extends FileInputAsset
 {
     public $js = [
-        'js/fileinput.min.js',
         'js/locales/ru.js' // Подключаем файл для перевода на русский
     ];
 }
