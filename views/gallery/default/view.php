@@ -1,7 +1,6 @@
 <?php
 
 use kartik\file\FileInput;
-use onmotion\gallery\Gallery;
 use yii\bootstrap\Collapse;
 use yii\bootstrap\Modal;
 use yii\helpers\Html;
@@ -11,6 +10,7 @@ use onmotion\helpers\Translator;
 \app\assets\GalleryViewAsset::register($this);
 \app\assets\FileInputAssetLanguage::register($this);
 
+// Сообщение, выводимое при успешном удалении фотографий
 $this->registerJsVar('success', Yii::t("app", "success"), 2);
 
 $this->title = Yii::t("app", "gallery title");

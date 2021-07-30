@@ -47,6 +47,7 @@ return [
     'language' => 'ru',
     'success' => 'Готово!',
     'create gallery' => 'Создать альбом',
+    'failed to create directory' => 'Не удалось создать дирректорию',
     'something went wrong' => 'Что-то пошло не так... Ошибка: ',
     'deleting gallery' => 'Удаление галереи',
 

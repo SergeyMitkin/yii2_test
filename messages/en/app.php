@@ -44,6 +44,7 @@ return [
     'language' => 'en',
     'success' => 'Success!',
     'create gallery' => 'Create Gallery',
+    'failed to create directory' => 'Failed to create directory',
     'something went wrong' => 'Something went wrong... Error: ',
     'deleting gallery' => 'Deleting gallery',
 
