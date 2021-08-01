@@ -17,7 +17,7 @@ class m201019_030147_create_orders_table extends Migration
             'id' => $this->primaryKey(),
             'rate_id' => $this->integer(),
             'user_id' => $this->integer(),
-            'status' => $this->tinyInteger(),
+            'status' => $this->tinyInteger(4)->defaultValue(0),
             'date' => $this->timestamp()->defaultValue(new \yii\db\Expression('NOW()'))
         ]);
 
