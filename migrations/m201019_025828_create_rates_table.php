@@ -16,6 +16,8 @@ class m201019_025828_create_rates_table extends Migration
             'id' => $this->primaryKey(),
             'name' => $this->string(),
             'description' => $this->text(),
+            'en_name' => $this->string(),
+            'en_description' => $this->text(),
             'price' => $this->decimal(10,2)
         ]);
     }

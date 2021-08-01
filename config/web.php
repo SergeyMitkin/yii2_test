@@ -94,6 +94,7 @@ $config = [
             'theme' => [
                 'pathMap' => [
                     '@vendor/onmotion/yii2-gallery/views' => '@app/views/gallery',
+                    '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-basic-app',
                 ],
             ],
         ],
