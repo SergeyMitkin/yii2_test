@@ -18,7 +18,7 @@ class Rates extends RatesModel
     {
         return [
             [['id'], 'integer'],
-            [['name', 'description'], 'string'],
+            [['name', 'description', 'en_name', 'en_description'], 'string'],
             [['price'], 'number'],
         ];
     }
@@ -65,6 +65,8 @@ class Rates extends RatesModel
 
         $query->andFilterWhere(['like', 'name', $this->name]);
         $query->andFilterWhere(['like', 'description', $this->description]);
+        $query->andFilterWhere(['like', 'en_name', $this->en_name]);
+        $query->andFilterWhere(['like', 'en_description', $this->en_description]);
 
         return $dataProvider;
     }

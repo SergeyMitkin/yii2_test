@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\tables\Rates */
 
-$this->title = 'Create Rate';
+$this->title = 'Создать тариф';
 $this->params['breadcrumbs'][] = ['label' => 'Rates', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

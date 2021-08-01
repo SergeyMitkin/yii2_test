@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\tables\Servers */
 
-$this->title = 'Update Server: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Servers', 'url' => ['index']];
+$this->title = 'Редактировать сервер: ' . $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Серверы', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Редактировать';
 ?>
 <div class="servers-update">
 

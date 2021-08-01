@@ -6,7 +6,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-$this->title = 'Login';
+$this->title = 'Вход';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 {input}
                             </div>{error}{hint}
                         </div>'])->textInput(['autofocus' => true, 'value' => $login])
-                                ->input('text', ['placeholder'=>'Username']) ?>
+                                ->input('text', ['placeholder'=>'Login (email)']) ?>
 
                 <?= $form->field($model, 'password', ['template' => '
                         <div class="col-sm-12" style="margin-top:15px;">
@@ -36,12 +36,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                 {input}
                             </div>{error}{hint}
                         </div>'])->passwordInput()
-                                ->input('password', ['placeholder'=>'Password'])?>
+                                ->input('password', ['placeholder'=>'Пароль'])?>
 
                 <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                    <?= Html::submitButton('Вход', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
                 </div>
 
             <?php ActiveForm::end(); ?>

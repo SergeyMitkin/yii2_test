@@ -8,7 +8,7 @@ use dosamigos\datepicker\DatePicker;
 /* @var $searchModel app\models\filters\ServersFilter */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Servers';
+$this->title = 'Серверы';
 
 ?>
 <div class="servers-index">

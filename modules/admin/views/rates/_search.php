@@ -21,6 +21,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description') ?>
 
+    <?= $form->field($model, 'en_name') ?>
+
+    <?= $form->field($model, 'en_description') ?>
+
     <?= $form->field($model, 'price') ?>
 
     <div class="form-group">
