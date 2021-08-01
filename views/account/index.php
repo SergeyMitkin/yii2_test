@@ -12,7 +12,6 @@ use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\Pjax;
 use dosamigos\datepicker\DatePicker; // Подключаем виджет для фильтра по дате
-
 // Подключаем ассет
 \app\assets\AccountIndexAsset::register($this);
 
@@ -71,11 +70,14 @@ $this->params['breadcrumbs'][] = $this->title;
                             [
                                 'attribute' => 'rate_name',
                                 'label' => Yii::t("app", "rate"),
-                                'filter' => \yii\helpers\ArrayHelper::map($model_rates::find()->all(),'id', 'name'),
+                                'filter' => \yii\helpers\ArrayHelper::map($model_rates::find()->all(),'id', substr(\Yii::$app->request->cookies['language'], 0, 2) . '_name'),
                                 'format' => 'html',
                                 'value' => function($model){
-                                    return Html::tag('span', $model->rate->name, ['class' => 'span-in-td']);
-                                }
+                                    if (\Yii::$app->request->cookies['language'] == 'ru-RU'){
+                                        return Html::tag('span', $model->rate->ru_name, ['class' => 'span-in-td']);
+                                    } else if (\Yii::$app->request->cookies['language'] == 'en-UK')
+                                        return Html::tag('span', $model->rate->en_name, ['class' => 'span-in-td']);
+                                    }
                             ],
                             [
                                 'attribute' => 'date',
@@ -126,10 +128,13 @@ $this->params['breadcrumbs'][] = $this->title;
                             [
                                 'attribute' => 'rate_name',
                                 'label' => Yii::t("app", "rate"),
-                                'filter' => \yii\helpers\ArrayHelper::map($model_rates::find()->all(),'id', 'name'),
+                                'filter' => \yii\helpers\ArrayHelper::map($model_rates::find()->all(),'id', substr(\Yii::$app->request->cookies['language'], 0, 2) . '_name'),
                                 'format' => 'html',
                                 'value' => function($model){
-                                    return Html::tag('span', $model->rate->name, ['class' => 'span-in-td']);
+                                    if (\Yii::$app->request->cookies['language'] == 'ru-RU'){
+                                        return Html::tag('span', $model->rate->ru_name, ['class' => 'span-in-td']);
+                                    } else if (\Yii::$app->request->cookies['language'] == 'en-UK')
+                                        return Html::tag('span', $model->rate->en_name, ['class' => 'span-in-td']);
                                 }
                             ],
                             [

@@ -28,8 +28,8 @@ class Rates extends \yii\db\ActiveRecord
     {
         return [
             [['price'], 'number'],
-            [['name'], 'string', 'max' => 50],
-            [['description'], 'string', 'max' => 250],
+            [['ru_name'], 'string', 'max' => 50],
+            [['ru_description'], 'string', 'max' => 250],
             [['en_name'], 'string', 'max' => 50],
             [['en_description'], 'string', 'max' => 250],
         ];
@@ -42,8 +42,8 @@ class Rates extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Тариф',
-            'description' => 'Описание',
+            'ru_name' => 'Тариф',
+            'ru_description' => 'Описание',
             'en_name' => 'Name (English)',
             'en_description' => 'Description (English)',
             'price' => 'Цена',

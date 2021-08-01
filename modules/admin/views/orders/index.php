@@ -17,6 +17,7 @@ use dosamigos\datepicker\DatePicker;
 
 $this->title = 'Новые Заказы';
 $this->params['breadcrumbs'][] = $this->title;
+echo substr(Yii::$app->request->cookies['language'], 0, 2);
 ?>
 <div class="admin-new">
     <h1><?= Html::encode($this->title) ?></h1>
@@ -52,9 +53,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'rate_name',
                 'label' => 'Тариф',
                 'format' => 'html',
-                'filter' => [ "1"=>"Тариф 1", "2"=>"Тариф 2", "3"=>"Тариф 3" ],
+                'filter' => \yii\helpers\ArrayHelper::map(\app\models\tables\Rates::find()->all(), 'id', 'name'),
                 'value' => function($model){
-                    return Html::tag('span', $model->rate->name);
+                    return Html::tag('span', $model->rate->ru_name);
                 }
             ],
             [
