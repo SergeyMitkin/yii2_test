@@ -30,8 +30,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'rate_id',
-            'user_id',
+            [
+                'attribute' => 'rate_id',
+                'label' => 'Тариф'
+            ],
+            [
+                'attribute' => 'user_id',
+                'label' => 'Логин(email) пользовтаеля'
+            ],
             'order_id',
             'date',
         ],

@@ -13,9 +13,9 @@ use dosamigos\datetimepicker\DateTimePicker;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'rate_id')->dropDownList($rate_list) ?>
+    <?= $form->field($model, 'rate_id')->label('Тариф')->dropDownList($rate_list) ?>
 
-    <?= $form->field($model, 'user_id')->dropDownList($user_list) ?>
+    <?= $form->field($model, 'user_id')->label('Логин(email) пользователя')->dropDownList($user_list) ?>
 
     <?= $form->field($model, 'date')->widget(DateTimePicker::className(), [
             'language' => 'ru',
@@ -29,7 +29,7 @@ use dosamigos\datetimepicker\DateTimePicker;
     ]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

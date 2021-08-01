@@ -5,9 +5,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\tables\Rates */
 
-$this->title = 'Редактировать тариф: ' . $model->name;
+$this->title = 'Редактировать тариф: ' . $model->ru_name;
 $this->params['breadcrumbs'][] = ['label' => 'Тарифы', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->ru_name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Редактировать';
 ?>
 <div class="rates-update">

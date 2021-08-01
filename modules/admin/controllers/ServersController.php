@@ -99,7 +99,7 @@ class ServersController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        $rate_list = ArrayHelper::map(Rates::find()->all(), 'id', 'name');
+        $rate_list = ArrayHelper::map(Rates::find()->all(), 'id', 'ru_name');
         $user_list = ArrayHelper::map(Users::find()->all(), 'id', 'email');
 
         return $this->render('update', [

@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\tables\Rates */
 
-$this->title = $model->name;
+$this->title = $model->ru_name;
 $this->params['breadcrumbs'][] = ['label' => 'Тарифы', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
