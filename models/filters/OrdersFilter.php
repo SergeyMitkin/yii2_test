@@ -94,7 +94,7 @@ class OrdersFilter extends Orders
             'orders.id' => $this->id,
         ])
             ->andFilterWhere(['like', 'date', $this->date])
-            ->andFilterWhere(['like', Rates::tableName().'.name', $this->rate_name])
+            ->andFilterWhere(['like', Rates::tableName().'.ru_name', $this->rate_name])
             ->andFilterWhere(['like', User::tableName().'.email', $this->user_email]);
 
             if (\Yii::$app->controller->module->id === 'admin'){

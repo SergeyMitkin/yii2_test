@@ -25,9 +25,23 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'ru_name',
+            [
+                'attribute' => 'ru_name',
+                'format' => 'html',
+                'filter' => \yii\helpers\ArrayHelper::map(\app\models\tables\Rates::find()->all(), 'id', 'ru_name'),
+                'value' => function($model){
+                    return Html::tag('span', $model->ru_name);
+                }
+            ],
             'ru_description',
-            'en_name',
+            [
+                'attribute' => 'en_name',
+                'format' => 'html',
+                'filter' => \yii\helpers\ArrayHelper::map(\app\models\tables\Rates::find()->all(), 'id', 'en_name'),
+                'value' => function($model){
+                    return Html::tag('span', $model->en_name);
+                }
+            ],
             'en_description',
             'price',
 

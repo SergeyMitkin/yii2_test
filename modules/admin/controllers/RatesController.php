@@ -35,10 +35,13 @@ class RatesController extends Controller
      */
     public function actionIndex()
     {
+        $model = new Rates();
+
         $searchModel = new RatesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'model' => $model,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

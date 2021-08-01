@@ -53,7 +53,7 @@ echo substr(Yii::$app->request->cookies['language'], 0, 2);
                 'attribute' => 'rate_name',
                 'label' => 'Тариф',
                 'format' => 'html',
-                'filter' => \yii\helpers\ArrayHelper::map(\app\models\tables\Rates::find()->all(), 'id', 'name'),
+                'filter' => \yii\helpers\ArrayHelper::map(\app\models\tables\Rates::find()->all(), 'id', 'ru_name'),
                 'value' => function($model){
                     return Html::tag('span', $model->rate->ru_name);
                 }

@@ -29,9 +29,9 @@ $this->title = 'Серверы';
                 'attribute' => 'rate_name',
                 'label' => 'Тариф',
                 'format' => 'html',
-                'filter' => [ "1"=>"Тариф 1", "2"=>"Тариф 2", "3"=>"Тариф 3" ],
+                'filter' => \yii\helpers\ArrayHelper::map(\app\models\tables\Rates::find()->all(), 'id', 'ru_name'),
                 'value' => function($model){
-                    return Html::tag('span', $model->rate->name);
+                    return Html::tag('span', $model->rate->ru_name);
                 }
             ],
             [
