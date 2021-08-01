@@ -4,13 +4,27 @@ use yii\helpers\Url;
 
 <div class="u-container-layout u-similar-container u-container-layout-1">
 
-    <h4 class="u-custom-font u-font-lato u-text u-text-palette-1-dark-3 u-text-1"><? echo $model->name; ?></h4>
+    <h4 class="u-custom-font u-font-lato u-text u-text-palette-1-dark-3 u-text-1">
+        <?
+        if (\Yii::$app->language == 'ru-RU'){
+            echo $model->ru_name;
+        } elseif (\Yii::$app->language == 'en-UK'){
+            echo $model->en_name;
+        }
+        ?>
+    </h4>
 
     <span class="u-border-2 u-border-grey-90 u-icon u-icon-circle u-text-grey-90 u-icon-1">
 
          <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 36 36"
               data-rate-id="<? echo $model->id ?>"
-              data-rate-name="<? echo $model->name ?>"
+              data-rate-name="<?
+              if (\Yii::$app->language == 'ru-RU'){
+                  echo $model->ru_name;
+              } elseif (\Yii::$app->language == 'en-UK'){
+                  echo $model->en_name;
+              }
+              ?>
               data-price="<? echo $model->price ?>"
               data-url="<? echo Url::toRoute(['site/index'])?>"
          >
@@ -40,6 +54,12 @@ use yii\helpers\Url;
              </g>
         </svg>
     </span>
-    <p class="u-text u-text-palette-1-dark-3 u-text-2"><? echo $model->description; ?></p>
+    <p class="u-text u-text-palette-1-dark-3 u-text-2"><?
+        if (\Yii::$app->language == 'ru-RU'){
+            echo $model->ru_description;
+        } elseif (\Yii::$app->language == 'en-UK'){
+            echo $model->en_description;
+        }
+        ?></p>
     <p class="u-text u-text-palette-1-dark-3 u-text-3"><?= Yii::t("app", "price") ?>: <? echo $model->price; ?> $</b></p>
 </div>

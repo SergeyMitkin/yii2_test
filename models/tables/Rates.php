@@ -8,7 +8,10 @@ use Yii;
  * This is the model class for table "rates".
  *
  * @property int $id
- * @property string|null $name
+ * @property string|null $ru_name
+ * @property string|null $en_name
+ * @property string|null $ru_description
+ * @property string|null $en_description
  * @property float|null $price
  */
 class Rates extends \yii\db\ActiveRecord
@@ -28,10 +31,8 @@ class Rates extends \yii\db\ActiveRecord
     {
         return [
             [['price'], 'number'],
-            [['ru_name'], 'string', 'max' => 50],
-            [['ru_description'], 'string', 'max' => 250],
-            [['en_name'], 'string', 'max' => 50],
-            [['en_description'], 'string', 'max' => 250],
+            [['ru_name', 'en_name'], 'string', 'max' => 50],
+            [['ru_description', 'en_description'], 'string', 'max' => 250],
         ];
     }
 
