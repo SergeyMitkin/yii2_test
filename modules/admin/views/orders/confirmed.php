@@ -49,10 +49,10 @@ $this->title = 'Подтверждённые Заказы';
             [
                 'attribute' => 'rate_name',
                 'label' => 'Тариф',
-                'filter' => [ "1"=>"Тариф 1", "2"=>"Тариф 2", "3"=>"Тариф 3" ],
+                'filter' => \yii\helpers\ArrayHelper::map(\app\models\tables\Rates::find()->all(), 'id', 'ru_name'),
                 'format' => 'html',
                 'value' => function($model){
-                    return Html::tag('span', $model->rate->name);
+                    return Html::tag('span', $model->rate->ru_name);
                 },
             ],
             [
@@ -65,6 +65,7 @@ $this->title = 'Подтверждённые Заказы';
                 'filter' => DatePicker::widget([
                     'model' => $ordersSearchModel,
                     'attribute' => 'date',
+                    'language' => 'ru',
                     'clientOptions' => [
                         'autoclose' => true,
                         'format' => 'yyyy-mm-dd'

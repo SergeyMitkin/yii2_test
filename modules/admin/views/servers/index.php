@@ -52,6 +52,7 @@ $this->title = 'Серверы';
                 'filter' => DatePicker::widget([
                     'model' => $searchModel,
                     'attribute' => 'date',
+                    'language' => 'ru',
                     'clientOptions' => [
                         'autoclose' => true,
                         'format' => 'yyyy-mm-dd'

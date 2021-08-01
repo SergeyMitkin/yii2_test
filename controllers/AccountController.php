@@ -63,6 +63,8 @@ class AccountController extends Controller
         $active_li = ($request->get()['active_li'] !== NULL) ? $request->get()['active_li'] : 'servers';
         $this->view->registerJsVar('active_li', $active_li);
 
+        $language = substr(Yii::$app->language, 0, 2);
+
         return $this->render('index', [
             'serversSearchModel' => $serversSearchModel,
             'serversDataProvider' => $serversDataProvider,
@@ -71,6 +73,7 @@ class AccountController extends Controller
             'username' => $username,
             'model_rates' => $model_rates,
             'model_orders' => $model_orders,
+            'language' => $language
         ]);
     }
 }

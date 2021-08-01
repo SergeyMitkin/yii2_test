@@ -68,6 +68,7 @@ echo substr(Yii::$app->request->cookies['language'], 0, 2);
                 'filter' => DatePicker::widget([
                     'model' => $ordersSearchModel,
                     'attribute' => 'date',
+                    'language' => 'ru',
                     'clientOptions' => [
                         'autoclose' => true,
                         'format' => 'yyyy-mm-dd'
