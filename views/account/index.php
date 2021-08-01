@@ -70,7 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             [
                                 'attribute' => 'rate_name',
                                 'label' => Yii::t("app", "rate"),
-                                'filter' => \yii\helpers\ArrayHelper::map($model_rates::find()->all(),'id', substr(\Yii::$app->request->cookies['language'], 0, 2) . '_name'),
+                                'filter' => \yii\helpers\ArrayHelper::map($model_rates::find()->all(),'id', $language . '_name'),
                                 'format' => 'html',
                                 'value' => function($model){
                                     if (\Yii::$app->request->cookies['language'] == 'ru-RU'){
@@ -129,7 +129,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             [
                                 'attribute' => 'rate_name',
                                 'label' => Yii::t("app", "rate"),
-                                'filter' => \yii\helpers\ArrayHelper::map($model_rates::find()->all(),'id', substr(\Yii::$app->request->cookies['language'], 0, 2) . '_name'),
+                                'filter' => \yii\helpers\ArrayHelper::map($model_rates::find()->all(),'id', $language . '_name'),
                                 'format' => 'html',
                                 'value' => function($model){
                                     if (\Yii::$app->request->cookies['language'] == 'ru-RU'){
