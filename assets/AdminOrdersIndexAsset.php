@@ -9,7 +9,6 @@
 namespace app\assets;
 
 use yii\web\AssetBundle;
-use yii\web\JqueryAsset;
 
 class AdminOrdersIndexAsset extends AssetBundle
 {
@@ -26,8 +25,7 @@ class AdminOrdersIndexAsset extends AssetBundle
     ];
 
     public $depends = [
-        'yii\web\YiiAsset',
-        JqueryAsset::class
+        AdminLteAsset::class
     ];
 
 }

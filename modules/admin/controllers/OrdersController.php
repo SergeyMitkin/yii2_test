@@ -8,6 +8,8 @@
 
 namespace app\modules\admin\controllers;
 
+use app\assets\AdminOrdersConfirmedAsset;
+use app\assets\AdminOrdersIndexAsset;
 use app\models\tables\Users;
 use Yii;
 use app\models\tables\Orders;
@@ -58,6 +60,8 @@ class OrdersController extends Controller
 
         $ordersSearchModel = new OrdersFilter();
         $ordersDataProvider = $ordersSearchModel->search(Yii::$app->request->queryParams);
+
+        AdminOrdersIndexAsset::register(Yii::$app->getView());
 
         return $this->render('index', [
             'ordersSearchModel' => $ordersSearchModel,

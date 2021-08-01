@@ -15,9 +15,6 @@ use yii\widgets\Pjax;
 use yii\bootstrap\Modal;
 use dosamigos\datepicker\DatePicker;
 
-// Подключаем ассет
-\app\assets\AdminOrdersIndexAsset::register($this);
-
 $this->title = 'Новые Заказы';
 $this->params['breadcrumbs'][] = $this->title;
 ?>

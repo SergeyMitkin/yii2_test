@@ -10,12 +10,8 @@
 
 use yii\grid\GridView;
 use yii\helpers\Html;
-use yii\helpers\Url;
 use yii\widgets\Pjax;
 use dosamigos\datepicker\DatePicker; // Подключаем виджет для фильтра по дате
-
-// Регистрируем CSS file
-$this->registerCssFile('css/admin-orders-confirmed.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
 
 $this->title = 'Подтверждённые Заказы';
 
