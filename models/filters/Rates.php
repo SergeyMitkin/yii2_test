@@ -18,7 +18,7 @@ class Rates extends RatesModel
     {
         return [
             [['id'], 'integer'],
-            [['name', 'description', 'en_name', 'en_description'], 'string'],
+            [['ru_name', 'ru_description', 'en_name', 'en_description'], 'string'],
             [['price'], 'number'],
         ];
     }
@@ -63,8 +63,8 @@ class Rates extends RatesModel
             'price' => $this->price,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name]);
-        $query->andFilterWhere(['like', 'description', $this->description]);
+        $query->andFilterWhere(['like', 'ru_name', $this->ru_name]);
+        $query->andFilterWhere(['like', 'ru_description', $this->ru_description]);
         $query->andFilterWhere(['like', 'en_name', $this->en_name]);
         $query->andFilterWhere(['like', 'en_description', $this->en_description]);
 
