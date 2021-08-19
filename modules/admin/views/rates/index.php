@@ -8,7 +8,7 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Тарифы';
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="rates-index">
 

@@ -16,8 +16,7 @@ use yii\bootstrap\Modal;
 use dosamigos\datepicker\DatePicker;
 
 $this->title = 'Новые Заказы';
-$this->params['breadcrumbs'][] = $this->title;
-echo substr(Yii::$app->request->cookies['language'], 0, 2);
+
 ?>
 <div class="admin-new">
     <h1><?= Html::encode($this->title) ?></h1>

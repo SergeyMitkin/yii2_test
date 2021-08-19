@@ -20,6 +20,7 @@ $config = [
         '@adminlte/widgets'=>'@vendor/adminlte/yii2-widgets',
         '@gallery-views'=> '@app/views/gallery/default'
     ],
+    'language' => $app->request->cookies['language'] ? $app->request->cookies['language'] : 'ru-RU',
     'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Admin',
@@ -105,7 +106,6 @@ $config = [
         ],
     ],
     'params' => $params,
-    'language' => $app->request->cookies['language'] ? $app->request->cookies['language'] : 'ru-RU',
 ];
 
 if (YII_ENV_DEV) {
