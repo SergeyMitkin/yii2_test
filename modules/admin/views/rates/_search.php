@@ -17,7 +17,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'name') ?>
+    <?= $form->field($model, 'ru_name') ?>
+
+    <?= $form->field($model, 'ru_description') ?>
+
+    <?= $form->field($model, 'en_name') ?>
+
+    <?= $form->field($model, 'en_description') ?>
 
     <?= $form->field($model, 'price') ?>
 

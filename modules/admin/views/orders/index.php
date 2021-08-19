@@ -15,9 +15,6 @@ use yii\widgets\Pjax;
 use yii\bootstrap\Modal;
 use dosamigos\datepicker\DatePicker;
 
-// Регистрируем CSS file
-$this->registerCssFile('css/admin-orders-index.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
-
 $this->title = 'Новые Заказы';
 
 ?>
@@ -55,9 +52,9 @@ $this->title = 'Новые Заказы';
                 'attribute' => 'rate_name',
                 'label' => 'Тариф',
                 'format' => 'html',
-                'filter' => [ "1"=>"Тариф 1", "2"=>"Тариф 2", "3"=>"Тариф 3" ],
+                'filter' => \yii\helpers\ArrayHelper::map(\app\models\tables\Rates::find()->all(), 'id', 'ru_name'),
                 'value' => function($model){
-                    return Html::tag('span', $model->rate->name);
+                    return Html::tag('span', $model->rate->ru_name);
                 }
             ],
             [
@@ -70,6 +67,7 @@ $this->title = 'Новые Заказы';
                 'filter' => DatePicker::widget([
                     'model' => $ordersSearchModel,
                     'attribute' => 'date',
+                    'language' => 'ru',
                     'clientOptions' => [
                         'autoclose' => true,
                         'format' => 'yyyy-mm-dd'
@@ -149,6 +147,3 @@ Modal::begin([
 echo 'Модальное окно';
 
 Modal::end();
-
-// Регистрируем JS file
-$this->registerJSFile(Yii::$app->request->baseUrl.'/js/admin-orders-index.js',['depends' => [\yii\web\JqueryAsset::className()]]);

@@ -31,6 +31,9 @@ class Admin extends \yii\base\Module
      * На неё перенаправляются все запросы от неавторизованного админа.
      */
     public function behaviors(){
+        // Язык для админки всегда русский
+        \Yii::$app->language = 'ru-RU';
+
         return [
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),

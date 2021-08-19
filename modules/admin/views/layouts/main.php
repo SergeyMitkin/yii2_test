@@ -4,10 +4,8 @@
 /* @var $content string */
 
 use yii\helpers\Html;
-use app\assets\AppAsset;
 use app\assets\AdminLteAsset;
 
-AppAsset::register($this);
 $asset = AdminLteAsset::register($this);
 $baseUrl = $asset->baseUrl;
 
@@ -32,14 +30,6 @@ $baseUrl = $asset->baseUrl;
     <?= $this->render('footer.php', ['baserUrl' => $baseUrl]) ?>
     <?= $this->render('rightside.php', ['baserUrl' => $baseUrl]) ?>
 </div>
-
-<!--footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?//= date('Y') ?></p>
-
-        <p class="pull-right"><?//= Yii::powered() ?></p>
-    </div>
-</footer-->
 
 <?php $this->endBody() ?>
 </body>

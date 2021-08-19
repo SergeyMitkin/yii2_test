@@ -7,18 +7,16 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\filters\Rates */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Rates';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Тарифы';
+
 ?>
 <div class="rates-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Rate', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать тариф', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -27,12 +25,28 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'name',
+            [
+                'attribute' => 'ru_name',
+                'format' => 'html',
+                'filter' => \yii\helpers\ArrayHelper::map(\app\models\tables\Rates::find()->all(), 'id', 'ru_name'),
+                'value' => function($model){
+                    return Html::tag('span', $model->ru_name);
+                }
+            ],
+            'ru_description',
+            [
+                'attribute' => 'en_name',
+                'format' => 'html',
+                'filter' => \yii\helpers\ArrayHelper::map(\app\models\tables\Rates::find()->all(), 'id', 'en_name'),
+                'value' => function($model){
+                    return Html::tag('span', $model->en_name);
+                }
+            ],
+            'en_description',
             'price',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-
 
 </div>

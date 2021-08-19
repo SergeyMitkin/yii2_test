@@ -2,3 +2,11 @@
     color: orangered;
     left: 3px;
 }
+
+.confirm-buttons {
+    margin: 15px;
+}
+
+.btn-success{
+    width: 80px;
+}

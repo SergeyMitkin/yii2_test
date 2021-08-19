@@ -1,35 +1,88 @@
-.wrap{
-    background: url("../images/network-2402637.jpg") no-repeat;
+.site-login{
+    margin-top: 5%;
+    padding: 10px 40px;
+    border: 2px solid whitesmoke;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    position: absolute;
+    left: 25%;
 }
 
-.site-login h1{
-    color: #f5f5f5;
+.login-title-div{
+    text-align: center;
+    margin-bottom: 40px;
 }
 
-.fill-form-request{
-    color: #f5f5f5;
-    background-color: rgb(34,34,34);
+.login-title-h{
+    color: rgb(34,34,34);
     padding: 10px;
-    margin-left: -10px;
     border-radius: 5px;
 }
 
-.control-label{
-    color: yellow;
+.login-label{
+    color: rgb(34,34,34);
 }
 
 .has-error .control-label{
-    color: red;
+    color: rgb(34,34,34);
 }
 
-.has-success .control-label{
-    color: #00e600;
+.login-group label{
+    font-weight: normal;
+    color: grey;
 }
 
-.col-lg-8 .help-block-error{
-    color: red;
+.login-button{
+    width: 100%;
 }
 
+/*
 .col-lg-offset-1 label{
-    color: #f5f5f5;
+    color: rgb(34,34,34);
+}
+*/
+
+/* nicepage */
+
+@media (max-width: 1199px) {
+    .u-section-1 .u-container-layout-1 {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .site-login{
+        left: 25%;
+    }
+}
+
+@media (max-width: 991px) {
+    .u-section-1 .u-container-layout-1 {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .u-section-1 .u-text-1 {
+        width: auto;
+        margin-top: 3px;
+    }
+
+    .site-login{
+        left: 15%;
+    }
+}
+
+@media (max-width: 767px) {
+    .u-section-1 .u-text-1 {
+        margin-top: 0;
+    }
+
+    .site-login{
+        left: 7%;
+    }
+}
+
+@media (max-width: 575px) {
+    .u-section-1 .u-text-1 {
+        margin-top: 11px;
+    }
 }

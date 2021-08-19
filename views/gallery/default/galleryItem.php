@@ -18,24 +18,24 @@ $date = new DateTime($model->date);
     <div class="image">
         <?php
             echo Html::beginTag('div', ['class' => 'change-btns']);
-            echo Html::a('<i class="glyphicon glyphicon-trash"></i>', Url::toRoute(["delete", 'id'=>$model->gallery_id]),
-                ['title' => 'Delete',
+            echo Html::a('<i class="glyphicon glyphicon-trash"></i>', Url::toRoute(['/gallery_language/delete', 'id'=>$model->gallery_id]),
+                ['title' => Yii::t('app', 'delete'),
                     'class' => 'update-btn',
                     'role' => 'modal-toggle',
-                    'data-modal-title'=>'Are you sure?',
-                    'data-modal-body'=>'This will permanently delete all the pictures are in the gallery.',
+                    'data-modal-title'=>Yii::t('app', 'are you sure?'),
+                    'data-modal-body'=>Yii::t('app', 'delete warning'),
                 ]);
-            echo Html::a('<i class="glyphicon glyphicon-pencil"></i>', Url::toRoute(["update", 'id'=>$model->gallery_id]), [
-                'title' => 'Update',
+            echo Html::a('<i class="glyphicon glyphicon-pencil"></i>', Url::toRoute(['/gallery_language/update', 'id'=>$model->gallery_id]), [
+                'title' => Yii::t('app', 'update'),
                 'method' => 'get',
                 'class'=>"update-btn",
                 'role'=>"modal-toggle",
-                'data-modal-title'=>'Update',
+                'data-modal-title'=>Yii::t('app', 'update'),
             ]);
             echo Html::endTag('div');
         ?>
 
-        <a class="image-wrap" href="<?= Url::toRoute(["view", 'id'=>$model->gallery_id]) ?>">
+        <a class="image-wrap" href="<?= Url::toRoute(['view', 'id'=>$model->gallery_id]) ?>">
             <?php
             foreach($model->galleryPhotos as $prevPhoto){
                 echo \yii\helpers\Html::img('/img/gallery/' . Translator::rus2translit($model->name) . '/thumb/' . $prevPhoto->name);

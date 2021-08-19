@@ -1,12 +1,46 @@
-.wrap {
-    background: url("../images/network-2402637.jpg");
+.gallery-index {
+    margin: 70px 5%;
+    padding: 1%;
+    border: 2px solid rgb(255,255,255);
+    color: rgb(34,34,34);
+}
+
+#gallery-modal{
+    color: rgb(34,34,34);;
+}
+
+.tab-title-div{
+    background-color: rgb(255,255,255);
+    margin-bottom: 1%;
+    padding: 5px 5px;
+    text-align: center;
+}
+
+.tab-title-h{
+    margin: 5px 0px;
+    color: rgb(34,34,34);
 }
 
 .name {
-    background-color: rgba(245,245,245,0.9);
+    background-color: rgb(255,255,255) ;
     padding-bottom: 10px;
 }
 
 .summary{
+    padding: 0px 8px;
     color: rgb(245,245,245);
+    background-color: rgb(26,26,26);
+    display: inline-block;
+}
+
+.empty{
+    margin-top: 1%;
+    padding: 0px 8px;
+    display: inline-block;
+    background: rgb(26,26,26);
+    color: rgb(245,245,245);
+}
+
+.btn-default{
+    color: #5b99d4 !important;
 }

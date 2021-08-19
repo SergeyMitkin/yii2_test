@@ -24,4 +24,36 @@ class Email extends Model
             ->setTextBody($body)
             ->send();
     }
+
+    public function orderRateEmail($event){
+
+        $order_id = $event->sender->id;
+        $user = $event->sender->user;
+        $email = $user->email;
+        $username = $user->name;
+        $rate = $event->sender->rate;
+        $rate_name = $rate->name;
+        $rate_price = $rate->price;
+
+        $subject = 'Заказ сервера';
+        $body = 'Уважаемый ' . $username . ', Вы заказали ' . $rate_name .
+            ' за ' . $rate_price . ' $. Номер заказа ' . $order_id . '.
+                Дождитесь подтверждения администратором';
+
+        $this->contact($email, $subject, $body);
+    }
+
+    public function confirmOrderEmail($event){
+
+        $order_id = $event->sender->id;
+        $user = $event->sender->user;
+        $email = $user->email;
+        $username = $user->name;
+
+        $subject = 'Подтверждение заказа';
+        $body = 'Уважаемый ' . $username . ', Ваш заказ № ' . $order_id . ' подтверждён.';
+
+
+        $this->contact($email, $subject, $body);
+    }
 }

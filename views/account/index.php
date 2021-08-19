@@ -10,163 +10,168 @@
 
 use yii\grid\GridView;
 use yii\helpers\Html;
-use yii\helpers\Url;
 use yii\widgets\Pjax;
 use dosamigos\datepicker\DatePicker; // Подключаем виджет для фильтра по дате
+// Подключаем ассет
+\app\assets\AccountIndexAsset::register($this);
 
-// Регистрируем CSS file
-$this->registerCssFile('css/account-index.css', ['depends' => ['yii\bootstrap\BootstrapAsset']]);
-
-$this->title = 'Личный кабинет';
-$this->params['breadcrumbs'][] = array(
-    'label'=> $this->title,
-    'url'=>Url::toRoute('account/index')
-);
+$this->title = Yii::t("app", "account title");
+$this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<div class="title-div">
+    <h2 class="title-h"><?= Html::encode($this->title) ?> (<?=$username?>)</h2>
+</div>
+
 <div class="account-index">
-    <h1><?= Html::encode($this->title) ?> (<?=$username?>)</h1>
 
-    <ul id="ul-account-index" class="nav nav-tabs" role="tablist">
-        <li id="servers_li" class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#servers_content" role="tab">Серверы</a>
-        </li>
-        <li id="orders_li" class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#orders_content" role="tab">Заказы</a>
-        </li>
-    </ul>
+    <div class="tabs">
 
-    <div class="tab-content">
-        <div class="tab-pane" id="servers_content" role="tabpanel">
-            <div class="div-user-servers">
-                <h3>Предоставленные серверы</h3>
-                <?php
-                Pjax::begin();
-                echo GridView::widget([
-                    'dataProvider' => $serversDataProvider,
-                    'filterModel' => $serversSearchModel,
-                    'headerRowOptions' => [
-                        'class' => 'header-row'
-                    ],
-                    'summary' => false,
-                    'columns' => [
-                        [
-                            'class' => 'yii\grid\SerialColumn',
-                        ],
-                        [
-                            'attribute' => 'id',
-                            'format' => 'html',
-                            'value' => function($model){
-                                return Html::tag('span', $model->id, ['class' => 'span-in-td']);
-                            }
-                        ],
-                        [
-                            'attribute' => 'rate_name',
-                            'label' => 'Тариф',
-                            'filter' => [ "1"=>"Тариф 1", "14"=>"Тариф 14", "3"=>"Тариф 3" ],
-                            'format' => 'html',
-                            'value' => function($model){
-                                return Html::tag('span', $model->rate->name, ['class' => 'span-in-td']);
-                            }
-                        ],
-                        [
-                            'attribute' => 'date',
-                            'format' => 'raw',
-                            'value' => function($model){
-                                return Html::tag('span', $model->date, ['class' => 'span-in-td']);
-                            },
-                            'filter' => DatePicker::widget([
-                                'model' => $serversSearchModel,
-                                'attribute' => 'date',
-                                    'clientOptions' => [
-                                        'autoclose' => true,
-                                        'format' => 'yyyy-mm-dd'
-                                    ]
-                            ])
-                        ]
-                    ]
-                ]);
-                Pjax::end();
-                ?>
-            </div>
+        <div class="tabs-ul">
+            <ul id="ul-account-index" class="nav nav-tabs" role="tablist">
+                <li id="servers_li" class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#servers_content" role="tab"><?= Yii::t("app", "servers") ?></a>
+                </li>
+
+                <li id="orders_li" class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#orders_content" role="tab"><?= Yii::t("app", "orders") ?></a>
+                </li>
+            </ul>
         </div>
 
-        <div class="tab-pane" id="orders_content" role="tabpanel">
-            <div class="div-user-orders">
+        <div class="tab-content">
+            <div class="tab-pane" id="servers_content" role="tabpanel">
+                <div class="div-user-servers">
 
-                <h3>Мои заказы</h3>
-                <?php
-                Pjax::begin();
-                echo GridView::widget([
-                    'dataProvider' => $ordersDataProvider,
-                    'filterModel' => $ordersSearchModel,
-                    'headerRowOptions' => [
-                        'class' => 'header-row'
-                    ],
-                    'summary' => false,
-                    'columns' => [
-                        [
-                            'class' => 'yii\grid\SerialColumn',
+                    <div class="tab-title-div">
+                        <h3 class="tab-title-h"><?= Yii::t("app", "provided servers") ?></h3>
+                    </div>
+
+                    <?php
+                    Pjax::begin();
+                    echo GridView::widget([
+                        'dataProvider' => $serversDataProvider,
+                        'filterModel' => $serversSearchModel,
+                        'headerRowOptions' => [
+                            'class' => 'header-row'
                         ],
-                        [
-                            'attribute' => 'id',
-                            'format' => 'html',
-                            'value' => function($model){
-                                return Html::tag('span', $model->id, ['class' => 'span-in-td']);
-                            }
-                        ],
-                        [
-                            'attribute' => 'rate_name',
-                            'label' => 'Тариф',
-                            'filter' => [ "1"=>"Тариф 1", "14"=>"Тариф 14", "3"=>"Тариф 3" ],
-                            'format' => 'html',
-                            'value' => function($model){
-                                return Html::tag('span', $model->id, ['class' => 'span-in-td']);
-                            }
-                        ],
-                        [
-                            'attribute' => 'date',
-                            'format' => 'raw',
-                            'value' => function($model){
-                                return Html::tag('span', $model->date, ['class' => 'span-in-td']);
-                            },
-                            'filter' => DatePicker::widget([
-                                'model' => $ordersSearchModel,
+                        'summary' => false,
+                        'columns' => [
+                            [
+                                'class' => 'yii\grid\SerialColumn',
+                            ],
+                            [
+                                'attribute' => 'id',
+                                'format' => 'html',
+                                'value' => function($model){
+                                    return Html::tag('span', $model->id, ['class' => 'span-in-td']);
+                                }
+                            ],
+                            [
+                                'attribute' => 'rate_name',
+                                'label' => Yii::t("app", "rate"),
+                                'filter' => \yii\helpers\ArrayHelper::map($model_rates::find()->all(),'id', $language . '_name'),
+                                'format' => 'html',
+                                'value' => function($model){
+                                    if (\Yii::$app->request->cookies['language'] == 'ru-RU'){
+                                        return Html::tag('span', $model->rate->ru_name, ['class' => 'span-in-td']);
+                                    } else if (\Yii::$app->request->cookies['language'] == 'en-UK')
+                                        return Html::tag('span', $model->rate->en_name, ['class' => 'span-in-td']);
+                                    }
+                            ],
+                            [
                                 'attribute' => 'date',
-                                    'clientOptions' => [
-                                        'autoclose' => true,
-                                        'format' => 'yyyy-mm-dd'
-                                    ]
-                            ])
-                        ],
-                        [
-                            'attribute' => 'status',
-                            'label' => 'Статус',
-                            'filter' => [ "0"=>"Новый", "1"=>"Подтверждён"],
-                            // Вывадим статус заказа
-                            'format' => 'html',
-                            'value' => function($model){
-                                $status_name = ($model['status'] == 0) ? 'Новый' : 'Подтверждён';
-                                return Html::tag('span', $status_name, ['class' => 'span-in-td']);
-                            }
+                                'label' => Yii::t("app", "date and time"),
+                                'format' => 'raw',
+                                'value' => function($model){
+                                    return Html::tag('span', $model->date, ['class' => 'span-in-td']);
+                                },
+                                'filter' => DatePicker::widget([
+                                    'model' => $serversSearchModel,
+                                    'attribute' => 'date',
+                                    'language' => $language,
+                                        'clientOptions' => [
+                                            'autoclose' => true,
+                                            'format' => 'yyyy-mm-dd'
+                                        ]
+                                ])
+                            ]
                         ]
-                    ]
-                ]);
-                Pjax::end();
-                ?>
+                    ]);
+                    Pjax::end();
+                    ?>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="orders_content" role="tabpanel">
+                <div class="div-user-orders">
+                    <div class="tab-title-div"><h3 class="tab-title-h"><?= Yii::t("app", "my orders") ?></h3></div>
+                    <?php
+                    Pjax::begin();
+                    echo GridView::widget([
+                        'dataProvider' => $ordersDataProvider,
+                        'filterModel' => $ordersSearchModel,
+                        'headerRowOptions' => [
+                            'class' => 'header-row'
+                        ],
+                        'summary' => false,
+                        'columns' => [
+                            [
+                                'class' => 'yii\grid\SerialColumn',
+                            ],
+                            [
+                                'attribute' => 'id',
+                                'format' => 'html',
+                                'value' => function($model){
+                                    return Html::tag('span', $model->id, ['class' => 'span-in-td']);
+                                }
+                            ],
+                            [
+                                'attribute' => 'rate_name',
+                                'label' => Yii::t("app", "rate"),
+                                'filter' => \yii\helpers\ArrayHelper::map($model_rates::find()->all(),'id', $language . '_name'),
+                                'format' => 'html',
+                                'value' => function($model){
+                                    if (\Yii::$app->request->cookies['language'] == 'ru-RU'){
+                                        return Html::tag('span', $model->rate->ru_name, ['class' => 'span-in-td']);
+                                    } else if (\Yii::$app->request->cookies['language'] == 'en-UK')
+                                        return Html::tag('span', $model->rate->en_name, ['class' => 'span-in-td']);
+                                }
+                            ],
+                            [
+                                'attribute' => 'date',
+                                'label' => Yii::t("app", "date and time"),
+                                'format' => 'raw',
+                                'value' => function($model){
+                                    return Html::tag('span', $model->date, ['class' => 'span-in-td']);
+                                },
+                                'filter' => DatePicker::widget([
+                                    'model' => $ordersSearchModel,
+                                    'attribute' => 'date',
+                                    'language' => $language,
+                                        'clientOptions' => [
+                                            'autoclose' => true,
+                                            'format' => 'yyyy-mm-dd'
+                                        ]
+                                ])
+                            ],
+                            [
+                                'attribute' => 'status',
+                                'label' => Yii::t("app", "status"),
+                                'filter' => [ "0"=>"Новый", "1"=>"Подтверждён"],
+                                // Вывадим статус заказа
+                                'format' => 'html',
+                                'value' => function($model){
+                                    $status_name = ($model['status'] == 0) ? 'Новый' : 'Подтверждён';
+                                    return Html::tag('span', $status_name, ['class' => 'span-in-td']);
+                                }
+                            ]
+                        ]
+                    ]);
+                    Pjax::end();
+                    ?>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-<?
-// Определяем аткивную вкладку личного кабинета
-$active = 'servers';
-$request = Yii::$app->request;
-$active = ($request->get()[1]['active_li'] !== NULL) ? $request->get()[1]['active_li'] : 'servers';
-?>
-<script>
-    var active = "<?php echo $active?>";
-</script>
-<?
-// Регистрируем JS file
-$this->registerJSFile(Yii::$app->request->baseUrl.'/js/account-index.js',['depends' => [\yii\web\JqueryAsset::className()]]);

@@ -1,4 +1,70 @@
-.wrap{
-    background: url("../images/white-male-1834091_1280_copy.jpg") no-repeat;
-    background-position: 93% 30%;
+.account-index {
+    margin: 0% 5%;
+    padding: 1%;
+    border-radius: 5px;
+    color: rgb(34,34,34);
+}
+
+/* Tabs */
+.active > a{
+    background: rgb(233,242,250) !important;
+}
+
+.nav-item{
+    background: rgb(255,255,255) !important;
+    border-radius: 3px 3px 0px 0px;
+}
+
+.nav-item > a {
+    margin: 0 !important;
+}
+
+.tab-content {
+    background-color: rgb(233,242,250);
+    margin-top: -20px;
+}
+
+.tab-title-div{
+    padding-top: 15px;
+    text-align: center;
+}
+
+.tab-title-h{
+    margin-top: 5px;
+    color: #292e33;
+}
+
+.nav-tabs{
+    border-bottom: none !important;
+}
+
+.nav-tabs > li.active > a{
+    color: #007cad !important;
+}
+
+.nav-tabs > li > a{
+    color: rgb(17,17,17);
+}
+
+.nav-tabs > li:not(.active) > a:hover{
+    background-color: rgb(249,249,249) !important;
+    color: rgb(219,84,90);
+}
+
+.tab-content{
+    border-radius: 0px 5px 5px 5px !important;
+    border: 1px solid rgb(233,242,250);
+}
+
+/* GridView */
+.header-row{
+    background: rgb(249,249,249)
+}
+
+.header-row > th a{
+    color: #5b99d4;
+}
+
+.header-row > th a:hover{
+    color: #5b99d4;
 }

@@ -8,18 +8,12 @@ use dosamigos\datepicker\DatePicker;
 /* @var $searchModel app\models\filters\ServersFilter */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Servers';
+$this->title = 'Серверы';
 
 ?>
 <div class="servers-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?//= Html::a('Create Server', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -35,9 +29,9 @@ $this->title = 'Servers';
                 'attribute' => 'rate_name',
                 'label' => 'Тариф',
                 'format' => 'html',
-                'filter' => [ "1"=>"Тариф 1", "2"=>"Тариф 2", "3"=>"Тариф 3" ],
+                'filter' => \yii\helpers\ArrayHelper::map(\app\models\tables\Rates::find()->all(), 'id', 'ru_name'),
                 'value' => function($model){
-                    return Html::tag('span', $model->rate->name);
+                    return Html::tag('span', $model->rate->ru_name);
                 }
             ],
             [
@@ -58,6 +52,7 @@ $this->title = 'Servers';
                 'filter' => DatePicker::widget([
                     'model' => $searchModel,
                     'attribute' => 'date',
+                    'language' => 'ru',
                     'clientOptions' => [
                         'autoclose' => true,
                         'format' => 'yyyy-mm-dd'

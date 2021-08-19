@@ -7,12 +7,20 @@ $config = [
     'id' => 'basic',
     'name' => 'My Company',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+        'log',
+        // Класс для подключения языка
+        [
+            'class' => 'app\components\LanguageSelector'
+        ],
+    ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
-        '@adminlte/widgets'=>'@vendor/adminlte/yii2-widgets'
+        '@adminlte/widgets'=>'@vendor/adminlte/yii2-widgets',
+        '@gallery-views'=> '@app/views/gallery/default'
     ],
+    'language' => $app->request->cookies['language'] ? $app->request->cookies['language'] : 'ru-RU',
     'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Admin',
@@ -23,6 +31,20 @@ $config = [
         ]
     ],
     'components' => [
+        'i18n' => [
+            'translations' => [
+                'app*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/messages',
+                    // 'sourceLanguage' => 'en-US',
+
+                    'fileMap' => [
+                        'app'       => 'app.php',
+                        'app/error' => 'error.php',
+                    ],
+                ],
+            ],
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'XpvF0EBsNY1ls_evgA8R82A7hPoLsm0d',
@@ -64,10 +86,16 @@ $config = [
                 'action' => yii\web\UrlNormalizer::ACTION_REDIRECT_PERMANENT
             ]
         ],
+        'assetManager' => [
+            'bundles' => [
+                'onmotion\gallery\ModuleAsset'=> ['js' => ['js/onmotion-bootstrap-modal.js']] // Оставляем в расширении галереи файл js, не требующий перевода. Другой, переведённый подключим в GalleryViewAsset.
+            ],
+        ],
         'view' => [
             'theme' => [
                 'pathMap' => [
-                    '@vendor/onmotion/yii2-gallery/views' => '@app/views/gallery', // example: @app/views/gallery/default/index.php
+                    '@vendor/onmotion/yii2-gallery/views' => '@app/views/gallery',
+                    '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-basic-app',
                 ],
             ],
         ],
@@ -78,7 +106,6 @@ $config = [
         ],
     ],
     'params' => $params,
-    'language' => 'ru-RU', // язык приложения
 ];
 
 if (YII_ENV_DEV) {

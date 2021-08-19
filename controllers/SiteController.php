@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use yii\db\Exception;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
@@ -11,6 +12,10 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\SignupForm;
 use app\models\tables\Rates;
+use app\models\tables\Orders;
+use app\models\Email;
+use yii\base\Event;
+use yii\web\Cookie;
 
 class SiteController extends Controller
 {
@@ -65,6 +70,44 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $model = new Rates();
+        $model_orders = new Orders();
+
+        // Передаём в переменные js информацию о пользователе
+        if(Yii::$app->user->isGuest){
+            $is_guest = 'guest';
+        }else{
+            $is_guest =  'authorized';
+        }
+
+        $this->view->registerJsVar('is_guest', $is_guest, 2);
+
+        if(\Yii::$app->request->isAjax){
+            $rate_id = $_GET['rate_id'];
+            $rate_name = $_GET['rate_name'];
+            $user_id = Yii::$app->user->identity->getId();
+
+            // При обновлении выборе тарифа пользователем, отправляем email о создании заказа
+            Event::on(Orders::class, Orders::EVENT_AFTER_INSERT, function ($event){
+
+                $model_email = new Email();
+                $model_email->orderRateEmail($event);
+            });
+
+            // Добавляем заказ
+            try{
+                $model_orders->setOrder($rate_id, $user_id);
+
+                $res['order'] = 'created';
+                $res['rate_name'] = $rate_name;
+                return json_encode($res);
+
+            }catch (Exception $e){
+                $res['order'] = 'refused';
+                $res['message'] = $e->getName();
+                return json_encode($res);
+            }
+        }
+
         return $this->render('index', [
             'model' => $model
         ]);
@@ -150,5 +193,36 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
+    /**
+     * @return Response
+     * Переключение языка
+     */
+    public function actionLanguage(){
+
+        $language = Yii::$app->request->get('language');
+
+        if(!$language == 'ru-RU' || !$language == 'en-UK'){
+
+            return $this->redirect(Yii::$app->request->referrer);
+
+        }
+
+        Yii::$app->language = $language;
+
+        $languageCookie = new Cookie([
+
+            'name' => 'language',
+
+            'value' => $language,
+
+            'expire' => time() + 60 * 60 * 24 * 30,
+
+        ]);
+
+        Yii::$app->response->cookies->add($languageCookie);
+
+        return $this->redirect(Yii::$app->request->referrer);
+
+    }
 
 }
