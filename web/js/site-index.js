@@ -21,13 +21,11 @@ $(document).ready(function() {
             const result = confirm(question);
 
             if (result === true){
-                var action = "adOrder";
 
                 $.ajax({
                     url: url,
                     type: "GET",
                     data: {
-                        ajax: action,
                         rate_id: rate_id,
                         rate_name: rate_name
                     },

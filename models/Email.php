@@ -32,7 +32,7 @@ class Email extends Model
         $email = $user->email;
         $username = $user->name;
         $rate = $event->sender->rate;
-        $rate_name = $rate->name;
+        $rate_name = $rate->ru_name;
         $rate_price = $rate->price;
 
         $subject = 'Заказ сервера';

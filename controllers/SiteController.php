@@ -82,15 +82,18 @@ class SiteController extends Controller
         $this->view->registerJsVar('is_guest', $is_guest, 2);
 
         if(\Yii::$app->request->isAjax){
+
             $rate_id = $_GET['rate_id'];
             $rate_name = $_GET['rate_name'];
             $user_id = Yii::$app->user->identity->getId();
 
-            // При обновлении выборе тарифа пользователем, отправляем email о создании заказа
+            // При выборе тарифа пользователем, отправляем email о создании заказа
+
             Event::on(Orders::class, Orders::EVENT_AFTER_INSERT, function ($event){
 
                 $model_email = new Email();
                 $model_email->orderRateEmail($event);
+
             });
 
             // Добавляем заказ
@@ -99,6 +102,7 @@ class SiteController extends Controller
 
                 $res['order'] = 'created';
                 $res['rate_name'] = $rate_name;
+
                 return json_encode($res);
 
             }catch (Exception $e){

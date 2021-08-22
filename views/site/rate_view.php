@@ -24,7 +24,7 @@ use yii\helpers\Url;
               } elseif (\Yii::$app->language == 'en-UK'){
                   echo $model->en_name;
               }
-              ?>
+              ?>"
               data-price="<? echo $model->price ?>"
               data-url="<? echo Url::toRoute(['site/index'])?>"
          >

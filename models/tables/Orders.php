@@ -58,6 +58,8 @@ class Orders extends \yii\db\ActiveRecord
 
         $this->rate_id = $rate_id;
         $this->user_id = $user_id;
+        $rate = $this->rate;
+
         $this->save();
     }
 
