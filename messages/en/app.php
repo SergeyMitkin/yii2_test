@@ -15,6 +15,12 @@ return [
     // Главная
     'main title' => 'Affordable rates',
     'price' => 'Price',
+    // JS главной
+    'log in to order' => 'log in to order a tariff',
+    'to order' => 'Order ',
+    'for' => 'for',
+    'error alert' => 'Something went wrong!',
+    'added to order' => 'added to order',
 
     // Личный кабинет
     'account title' => 'My account',

@@ -78,17 +78,27 @@ class SiteController extends Controller
         }else{
             $is_guest =  'authorized';
         }
-
         $this->view->registerJsVar('is_guest', $is_guest, 2);
+
+        // Переменные для интренационализации
+        $log_in_to_order = Yii::t("app", "log in to order");
+        $this->view->registerJsVar('log_in_to_order', $log_in_to_order, 2);
+        $to_order = Yii::t("app", "to order");
+        $this->view->registerJsVar('to_order', $to_order, 2);
+        $for = Yii::t("app", "for");
+        $this->view->registerJsVar('for_', $for, 2);
+        $error_alert = Yii::t("app", "error alert");
+        $this->view->registerJsVar('error_alert', $error_alert, 2);
+        $added_to_order= Yii::t("app", "added to order");
+        $this->view->registerJsVar('added_to_order', $added_to_order, 2);
 
         if(\Yii::$app->request->isAjax){
 
-            $rate_id = $_GET['rate_id'];
-            $rate_name = $_GET['rate_name'];
+            $rate_id = Yii::$app->request->get()['rate_id'];
+            $rate_name = Yii::$app->request->get()['rate_name'];;
             $user_id = Yii::$app->user->identity->getId();
 
             // При выборе тарифа пользователем, отправляем email о создании заказа
-
             Event::on(Orders::class, Orders::EVENT_AFTER_INSERT, function ($event){
 
                 $model_email = new Email();
@@ -206,9 +216,7 @@ class SiteController extends Controller
         $language = Yii::$app->request->get('language');
 
         if(!$language == 'ru-RU' || !$language == 'en-UK'){
-
             return $this->redirect(Yii::$app->request->referrer);
-
         }
 
         Yii::$app->language = $language;
@@ -216,9 +224,7 @@ class SiteController extends Controller
         $languageCookie = new Cookie([
 
             'name' => 'language',
-
             'value' => $language,
-
             'expire' => time() + 60 * 60 * 24 * 30,
 
         ]);
@@ -226,7 +232,5 @@ class SiteController extends Controller
         Yii::$app->response->cookies->add($languageCookie);
 
         return $this->redirect(Yii::$app->request->referrer);
-
     }
-
 }

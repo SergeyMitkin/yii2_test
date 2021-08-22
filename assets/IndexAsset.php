@@ -19,7 +19,7 @@ class IndexAsset extends AssetBundle
         'css/index.css'
     ];
     public $js = [
-        'js/site-index.js'
+        "js/site-index.js",
     ];
 
     public $depends = [

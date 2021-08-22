@@ -13,11 +13,11 @@ $(document).ready(function() {
         if (is_guest == "guest"){
 
             $(this).attr("data-toggle", "none"); // Предотвращаем появление модального окна
-            alert("Для заказа тарифа авторизуйтесь");
+            alert(log_in_to_order);
 
         } else {
 
-            var question = 'Заказать' + rate_name + ' за ' + price + ' $?';
+            var question = to_order + rate_name + ' ' + for_ + ' ' + price + ' $?';
             const result = confirm(question);
 
             if (result === true){
@@ -30,14 +30,14 @@ $(document).ready(function() {
                         rate_name: rate_name
                     },
                     error: function () {
-                        alert('Что-то пошло не так!');
+                        alert(error_alert);
                     },
                     success: function (res) {
                         var obj = jQuery.parseJSON(res);
                         var order = obj['order'];
                         
                         if (order === 'created'){
-                            alert(obj['rate_name'] + ' добавлен в заказ')
+                            alert(obj['rate_name'] + ' ' + added_to_order)
                         }
                     }
                 })
