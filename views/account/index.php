@@ -12,6 +12,7 @@ use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\Pjax;
 use dosamigos\datepicker\DatePicker; // Подключаем виджет для фильтра по дате
+
 // Подключаем ассет
 \app\assets\AccountIndexAsset::register($this);
 
