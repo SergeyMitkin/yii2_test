@@ -60,6 +60,13 @@ return [
     'something went wrong' => 'Что-то пошло не так... Ошибка: ',
     'deleting gallery' => 'Удаление галереи',
 
+    // Email
+    'server order' => 'Заказ сервера',
+    'dear' => 'Уважаемый',
+    'you ordered' => 'Вы заказали',
+    'order' => 'Заказ',
+    'wait confirmation' => 'Дождитесь подтверждения администратором',
+
     // Футер
     'images ​from' => 'Изображения от',
     'created with' => 'создан с помощью',

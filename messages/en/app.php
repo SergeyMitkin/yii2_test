@@ -57,6 +57,13 @@ return [
     'something went wrong' => 'Something went wrong... Error: ',
     'deleting gallery' => 'Deleting gallery',
 
+    // Email
+    'server order' => 'Server order',
+    'dear' => 'Dear',
+    'you ordered' => 'you ordered',
+    'order' => 'Order',
+    'wait confirmation' => 'Wait for confirmation by the administrator',
+
     // Футер
     'images ​from' => 'Images from',
     'created with' => 'created with',
