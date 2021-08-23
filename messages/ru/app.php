@@ -66,6 +66,9 @@ return [
     'you ordered' => 'Вы заказали',
     'order' => 'Заказ',
     'wait confirmation' => 'Дождитесь подтверждения администратором',
+    'order confirmation' => 'Подтверждение заказа',
+    'your order' => 'Ваш заказ',
+    'confirmed' => 'подтвержён',
 
     // Футер
     'images ​from' => 'Изображения от',

@@ -63,6 +63,9 @@ return [
     'you ordered' => 'you ordered',
     'order' => 'Order',
     'wait confirmation' => 'Wait for confirmation by the administrator',
+    'order confirmation' => 'Order confirmation',
+    'your order' => 'Your order',
+    'confirmed' => 'confirmed',
 
     // Футер
     'images ​from' => 'Images from',

@@ -8,7 +8,6 @@
 
 namespace app\models;
 
-
 use yii\base\Model;
 use Yii;
 
@@ -50,9 +49,8 @@ class Email extends Model
         $email = $user->email;
         $username = $user->name;
 
-        $subject = 'Подтверждение заказа';
-        $body = 'Уважаемый ' . $username . ', Ваш заказ № ' . $order_id . ' подтверждён.';
-
+        $subject = Yii::t("app", "order confirmation");
+        $body = Yii::t("app", "dear") . ' ' . $username . ', ' . Yii::t("app", "dear") . ' № ' . $order_id . Yii::t("app", "confirmed");
 
         $this->contact($email, $subject, $body);
     }
