@@ -29,7 +29,6 @@ class OrdersController extends Controller
         $user->isAdmin();
 
         $request = Yii::$app->request;
-        $order_id = $request->get()["id"];
         $model_orders = new Orders();
 
         // При обновлении статуса заказа, отправляем пользователю email
@@ -40,6 +39,8 @@ class OrdersController extends Controller
         });
 
         if ($request->isPjax){
+
+            $order_id = $request->get()["id"];
             // Принимаем заказ
             if($request->get('action') === 'confirm'){
 

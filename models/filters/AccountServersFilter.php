@@ -56,8 +56,13 @@ class AccountServersFilter extends Servers
         ]);
 
         $dataProvider->sort->attributes['rate_name'] = [
-            'asc' => [Rates::tableName().'.name' => SORT_ASC],
-            'desc' => [Rates::tableName().'.name' => SORT_DESC],
+            'asc' => [Rates::tableName().'.ru_name' => SORT_ASC],
+            'desc' => [Rates::tableName().'.ru_name' => SORT_DESC],
+        ];
+
+        $dataProvider->sort->attributes['rate_name'] = [
+            'asc' => [Rates::tableName().'.en_name' => SORT_ASC],
+            'desc' => [Rates::tableName().'.en_name' => SORT_DESC],
         ];
 
         $this->load($params);
@@ -73,7 +78,8 @@ class AccountServersFilter extends Servers
             'servers.id' => $this->id,
         ])
         ->andFilterWhere(['like', 'date', $this->date])
-        ->andFilterWhere(['like', Rates::tableName().'.name', $this->rate_name])
+        ->andFilterWhere(['like', Rates::tableName().'.ru_name', $this->rate_name])
+        ->andFilterWhere(['like', Rates::tableName().'.en_name', $this->rate_name])
         ->andFilterWhere(['user_id' => \Yii::$app->user->identity->id]);
 
         return $dataProvider;

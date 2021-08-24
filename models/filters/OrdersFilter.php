@@ -72,8 +72,13 @@ class OrdersFilter extends Orders
         }
 
         $dataProvider->sort->attributes['rate_name'] = [
-            'asc' => [Rates::tableName().'.name' => SORT_ASC],
-            'desc' => [Rates::tableName().'.name' => SORT_DESC],
+            'asc' => [Rates::tableName().'.ru_name' => SORT_ASC],
+            'desc' => [Rates::tableName().'.ru_name' => SORT_DESC],
+        ];
+
+        $dataProvider->sort->attributes['rate_name'] = [
+            'asc' => [Rates::tableName().'.en_name' => SORT_ASC],
+            'desc' => [Rates::tableName().'.en_name' => SORT_DESC],
         ];
 
         $dataProvider->sort->attributes['user_email'] = [
@@ -95,14 +100,15 @@ class OrdersFilter extends Orders
         ])
             ->andFilterWhere(['like', 'date', $this->date])
             ->andFilterWhere(['like', Rates::tableName().'.ru_name', $this->rate_name])
+            ->andFilterWhere(['like', Rates::tableName().'.en_name', $this->rate_name])
             ->andFilterWhere(['like', User::tableName().'.email', $this->user_email]);
 
             if (\Yii::$app->controller->module->id === 'admin'){
                 if (\Yii::$app->controller->action->id === 'index'){
-                    $query ->andFilterWhere(['status' => 0]); // Выводим заказы только новые заказы
+                    $query ->andFilterWhere(['status' => 0]); // Выводим только новые заказы
                 }
                 else if (\Yii::$app->controller->action->id === 'confirmed'){
-                    $query ->andFilterWhere(['status' => 1]); // Выводим заказы только принятые
+                    $query ->andFilterWhere(['status' => 1]); // Выводим только принятые заказы
                 }
             }
         return $dataProvider;

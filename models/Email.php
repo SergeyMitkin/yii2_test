@@ -50,7 +50,7 @@ class Email extends Model
         $username = $user->name;
 
         $subject = Yii::t("app", "order confirmation");
-        $body = Yii::t("app", "dear") . ' ' . $username . ', ' . Yii::t("app", "dear") . ' № ' . $order_id . Yii::t("app", "confirmed");
+        $body = Yii::t("app", "dear") . ' ' . $username . '. ' . Yii::t("app", "your order") . ' № ' . $order_id . Yii::t("app", "confirmed");
 
         $this->contact($email, $subject, $body);
     }

@@ -21,7 +21,7 @@ $(document).ready(function() {
                 event.preventDefault();
                 modal.modal('hide');
 
-                $.pjax.reload({
+                $.pjax({
                     container:'#admin-new-orders',
                     data: {
                         id: order_id,
@@ -31,6 +31,7 @@ $(document).ready(function() {
             })
         }
 
+        // При клике на ссылку "Ок", отменяем заказ и перезагружаем GridView
         else if (action === 'cancel'){
 
             modal.find('.modal-body').html('<h3 align="center">Отменить заказ </h3><h3 align="center">№ ' + order_id + '? </h3>' +
@@ -44,7 +45,7 @@ $(document).ready(function() {
                 event.preventDefault();
                 modal.modal('hide');
 
-                $.pjax.reload({
+                $.pjax({
                     container:'#admin-new-orders',
                     data: {
                         id: order_id,
