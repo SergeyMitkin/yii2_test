@@ -99,7 +99,9 @@ $this->params['breadcrumbs'][] = $model->name;
                         'label' => Yii::t('app', 'upload photo'),
                         'content' =>
                             '<input id="input-1a" name="image[]" type="file" class="file-loading" data-language="' . Yii::t('app', 'language') .'" multiple>' .
-                            ' <div id="errorBlock"><ul class="alert-warning-message"></ul></div>'
+                            ' <div id="errorBlock">
+                                    <ul class="alert-warning-message"></ul>
+                              </div>'
                     ]
                 ],
                 'options' => [
@@ -116,7 +118,7 @@ $this->params['breadcrumbs'][] = $model->name;
                 echo Html::a('<i class="glyphicon glyphicon-repeat"></i>', ['#'],
                     ['title' => Yii::t('app', 'reset'), 'class' => 'btn btn-default', 'style' => "display:none", 'id' => 'reset-all',
                         'data-toggle' => "tooltip", 'data-placement' => "top", 'data-trigger' => "hover"]);
-                echo Html::a('<i class="glyphicon glyphicon-trash"></i>', Url::toRoute('gallery_language/photos-delete'),
+                echo Html::a('<i class="glyphicon glyphicon-trash"></i>', Url::toRoute('#'),
                     ['title' => Yii::t('app', 'delete photos'), 'class' => 'btn btn-danger', 'style' => "display:none", 'id' => 'photos-delete-btn',
                         'data-toggle' => "tooltip", 'data-placement' => "top", 'data-trigger' => "hover", 'data-method' => 'post',
                         'role' => 'modal-toggle',
@@ -131,7 +133,7 @@ Modal::begin([
     "footer" =>
         Html::a(Yii::t('app', 'close'), ['#'],
             ['title' => Yii::t('app', 'cancel'), 'class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
-        Html::a('ОК', Url::toRoute('photos-delete'),
+        Html::a('ОК', Url::toRoute('../../gallery_language/photos-delete'),
             ['title' => '', 'class' => 'btn btn-primary', 'id' => 'photos-delete-confirm-btn']),
 ]);
 
@@ -153,7 +155,7 @@ $(document).ready(function() {
     } 
     inputField.fileinput({
         showPreview: false,
-        uploadUrl: 'fileupload',
+        uploadUrl: '../../gallery_language/fileupload',
         uploadAsync: true,
         uploadExtraData: {
            'gallery_id': "$model->gallery_id",
