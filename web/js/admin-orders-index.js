@@ -16,22 +16,23 @@ $(document).ready(function() {
                     '<button class="confirm-buttons btn btn-danger" data-dismiss="modal">Отмена</button>' +
                 '</div>');
 
-            // При клике на ссылку "Ок", подтверждаем заказ и перезагружаем GridView
+            // При клике на ссылку "Ок", подтверждаем заказ
             $('#confirm-order-a_' + order_id).on('click', function (event) {
-                event.preventDefault();
                 modal.modal('hide');
 
-                $.pjax({
+                $.ajax({
                     container:'#admin-new-orders',
                     data: {
                         id: order_id,
                         action: 'confirm'
                     }
-                });
+                }).done(function () {
+                    var new_url = $(location).attr('href').replace(/id=.*?&/, '').replace(/confirm=.*?&/, '');
+                    location.href = new_url;
+                })
             })
         }
 
-        // При клике на ссылку "Ок", отменяем заказ и перезагружаем GridView
         else if (action === 'cancel'){
 
             modal.find('.modal-body').html('<h3 align="center">Отменить заказ </h3><h3 align="center">№ ' + order_id + '? </h3>' +
@@ -40,18 +41,21 @@ $(document).ready(function() {
                     '<button class="confirm-buttons btn btn-danger" data-dismiss="modal">Отмена</button>' +
                 '</div>');
 
-            // При клике на ссылку "Ок", подтверждаем заказ и перезагружаем GridView
+            // При клике на ссылку "Ок", подтверждаем заказ
             $('#confirm-order-a_' + order_id).on('click', function (event) {
-                event.preventDefault();
                 modal.modal('hide');
 
-                $.pjax({
+                $.ajax({
                     container:'#admin-new-orders',
                     data: {
                         id: order_id,
                         action: 'cancel'
                     }
-                });
+                }).done(function () {
+                    var new_url = $(location).attr('href').replace(/id=.*?&/, '').replace(/cancel=.*?&/, '');
+                    location.href = new_url;
+                })
+
             })
         }
     })

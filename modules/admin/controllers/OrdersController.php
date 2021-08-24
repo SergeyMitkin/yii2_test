@@ -38,11 +38,13 @@ class OrdersController extends Controller
             $model_email->confirmOrderEmail($event);
         });
 
-        if ($request->isPjax){
+
+        if ($request->isAjax){
 
             $order_id = $request->get()["id"];
+
             // Принимаем заказ
-            if($request->get('action') === 'confirm'){
+            if($request->get()['action'] === 'confirm'){
 
                 if ($model_orders->confirmOrder($request->get('id'))){
                     $model_servers = new Servers();
@@ -54,7 +56,7 @@ class OrdersController extends Controller
                 }
             }
             // Отменяем заказ
-            else if ($request->get('action') === 'cancel'){
+            else if ($request->get()['action'] === 'cancel'){
                 $model_orders->cancelOrder($order_id);
             }
         }
