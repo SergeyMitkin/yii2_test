@@ -8,7 +8,11 @@
 
 namespace app\assets;
 
+use yii\bootstrap\BootstrapAsset;
+use yii\grid\GridViewAsset;
 use yii\web\AssetBundle;
+use yii\web\JqueryAsset;
+use yii\widgets\PjaxAsset;
 
 class AdminOrdersIndexAsset extends AssetBundle
 {

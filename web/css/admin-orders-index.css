@@ -3,6 +3,10 @@
     left: 3px;
 }
 
+.glyphicon-remove:hover{
+    color: rgb(241,106,115);
+}
+
 .confirm-buttons {
     margin: 15px;
 }

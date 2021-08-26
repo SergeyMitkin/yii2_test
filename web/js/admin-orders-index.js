@@ -26,9 +26,6 @@ $(document).ready(function() {
                         id: order_id,
                         action: 'confirm'
                     }
-                }).done(function () {
-                    var new_url = $(location).attr('href').replace(/id=.*?&/, '').replace(/confirm=.*?&/, '');
-                    location.href = new_url;
                 })
             })
         }
@@ -51,12 +48,66 @@ $(document).ready(function() {
                         id: order_id,
                         action: 'cancel'
                     }
-                }).done(function () {
-                    var new_url = $(location).attr('href').replace(/id=.*?&/, '').replace(/cancel=.*?&/, '');
-                    location.href = new_url;
                 })
-
             })
         }
     })
+
+    // Убираем гет-параметры после принятия или отмены заказа
+    var href_without_id_parametr = removeURLParameter($(location).attr('href'), 'id');
+    var href_without_id_and_action_parameters = removeURLParameter(href_without_id_parametr, 'action');
+    window.history.pushState({}, '', href_without_id_and_action_parameters);
+
+        // При скрытии модального окна, очищмем гет-параметры
+    /*
+    $('#action-order-modal').on('hidden.bs.modal', function (event) {
+        var href_without_id_parametr = removeURLParameter($(location).attr('href'), 'id');
+        var href_without_id_and_action_parameters = removeURLParameter(href_without_id_parametr, 'action');
+        window.history.pushState({}, '', href_without_id_and_action_parameters);
+    })
+    */
+
+    // Отменить выбранные заказы
+    $("#delete-select").on("click", function(e){
+        e.preventDefault()
+        var keys = $("#grid").yiiGridView("getSelectedRows");
+        $.ajax({
+            url: "'. \yii\helpers\Url::toRoute('delete') .'",
+            type: "POST",
+            data: {id: keys},
+            success: function(){
+                alert("yes")
+            }
+        })
+    });
+
+
+    // Функция для удаления гет-параметров
+    function removeURLParameter(url, parameter) {
+        //prefer to use l.search if you have a location/link object
+        var urlparts= url.split('?');
+        if (urlparts.length>=2) {
+
+            var prefix= encodeURIComponent(parameter)+'=';
+            var pars= urlparts[1].split(/[&;]/g);
+
+            //reverse iteration as may be destructive
+            for (var i= pars.length; i-- > 0;) {
+                //idiom for string.startsWith
+                if (pars[i].lastIndexOf(prefix, 0) !== -1) {
+                    pars.splice(i, 1);
+                }
+            }
+
+            if(pars.length > 0) {
+                url= urlparts[0]+'?'+pars.join('&');
+            } else {
+                url= urlparts[0];
+            }
+
+            return url;
+        } else {
+            return url;
+        }
+    }
 })

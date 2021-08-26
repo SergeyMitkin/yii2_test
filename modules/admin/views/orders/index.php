@@ -75,9 +75,34 @@ $this->title = 'Новые Заказы';
                     ])
                 ],
                 [
+                    'class' => 'yii\grid\CheckboxColumn',
+                    'checkboxOptions' => function(){
+                        return [
+                            'onchange' => '
+                            var keys = $("#w0").yiiGridView("getSelectedRows");
+                            $(this).parent().parent().toggleClass("info")
+                            '
+                        ];
+                    }
+                ],
+                [
                     'class' => 'yii\grid\ActionColumn',
                     // Кнопка принятия заказа
                     'template' => '{confirm} {cancel}',
+                    'header' => '
+                        <a class="accept-icons header-accept-icons" title="Подтвердить выбранные заказы" aria-label="Подтвердить выбранные заказы"
+                        data-action="confirmggg" data-toggle="modal" data-target="#action-order-modal"
+                        href="#"
+                        >
+                        <span class="glyphicon glyphicon-plus-sign"></span>
+                        </a>
+                        <a class="accept-icons header-remove-icons" title="Подтвердить выбранные заказы" aria-label="Подтвердить выбранные заказы"
+                        data-action="cancelkkk" data-toggle="modal" data-target="#action-order-modal"
+                        href="#"
+                        >
+                        <span class="glyphicon glyphicon-remove"></span>
+                        </a>
+                    ',
                     'buttons' => [
                         'confirm' => function ($url, $model_orders, $key) {
                             $options = [
@@ -91,7 +116,7 @@ $this->title = 'Новые Заказы';
                                 'data-target' => '#action-order-modal'
                             ];
 
-                            return Html::a('<span class="glyphicon glyphicon-ok-sign"></span>', $url, $options);
+                            return Html::a('<span class="glyphicon glyphicon-plus-sign"></span>', $url, $options);
                         },
 
                         // Кнопка удаления заказа
