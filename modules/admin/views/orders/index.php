@@ -91,13 +91,13 @@ $this->title = 'Новые Заказы';
                     'template' => '{confirm} {cancel}',
                     'header' => '
                         <a class="accept-icons header-accept-icons" title="Подтвердить выбранные заказы" aria-label="Подтвердить выбранные заказы"
-                        data-action="confirmggg" data-toggle="modal" data-target="#action-order-modal"
+                        data-action="confirm-select" data-toggle="modal" data-target="#action-order-modal"
                         href="#"
                         >
                         <span class="glyphicon glyphicon-plus-sign"></span>
                         </a>
                         <a class="accept-icons header-remove-icons" title="Подтвердить выбранные заказы" aria-label="Подтвердить выбранные заказы"
-                        data-action="cancelkkk" data-toggle="modal" data-target="#action-order-modal"
+                        data-action="cancel-select" data-toggle="modal" data-target="#action-order-modal"
                         href="#"
                         >
                         <span class="glyphicon glyphicon-remove"></span>

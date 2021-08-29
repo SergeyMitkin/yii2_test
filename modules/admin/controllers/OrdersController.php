@@ -38,9 +38,14 @@ class OrdersController extends Controller
             $model_email->confirmOrderEmail($event);
         });
 
-
         if ($request->isAjax){
 
+            if ($request->post()['action'] === 'confirm_select'){
+
+                $model_orders->confirmOrders($request->post()['id']);
+            }
+
+            /*
             $order_id = $request->get()["id"];
 
             // Принимаем заказ
@@ -59,6 +64,7 @@ class OrdersController extends Controller
             else if ($request->get()['action'] === 'cancel'){
                 $model_orders->cancelOrder($order_id);
             }
+            */
         }
 
         $ordersSearchModel = new OrdersFilter();

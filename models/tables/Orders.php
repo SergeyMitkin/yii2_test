@@ -69,10 +69,22 @@ class Orders extends \yii\db\ActiveRecord
         $order = $this::findOne($order_id);
         $order->status = 1;
 
-        if ($order->save()){
-            return true;
-        }
+
     }
+
+    // Принимаем выбранные заказы
+    public function confirmOrders($id_array){
+
+        // Так как EVENT_AFTER_UPDATE при updateAll не работает, отдельно обновляем статус каждого заказа
+        for ($i=0; $i<= count($id_array); $i++){
+
+            $order = $this::findOne($id_array[$i]);
+            $order->status = 1;
+            $order->save();
+        }
+
+    }
+
 
     // Отменяем заказ
     public function cancelOrder($order_id){
