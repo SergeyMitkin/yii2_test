@@ -1,10 +1,21 @@
 // Обработка клика на иконку принятия заказа
 $(document).ready(function() {
 
+    // При закрытии модального окна, восстанавливаем css иконки, по клику на которую, его открыли
+    $('#action-order-modal').on('hidden.bs.modal', function () {
+
+        $(".pressed-icon").css('color', 'rgb(60,141,188)').mouseover(function() {
+            $(this).css("color","rgb(114,175,210)");
+        }).mouseout(function() {
+            $(this).css("color","rgb(60,141,188)");
+        });
+    })
+
     // Показываем модальное окно
     $('#action-order-modal').on('show.bs.modal', function (event) {
 
         var icon = $(event.relatedTarget);
+        icon.addClass("pressed-icon"); // Добавляем класс к иконке, по которой кликнули для вызова окна, чтобы при закрытии окна, вернуть ей первоначальный цвет
         var order_id = icon.data('order-id');
         var url = icon.data('url');
         var action = icon.data('action');
@@ -22,22 +33,27 @@ $(document).ready(function() {
 
             $("#confirm-orders").on("click", function (event) {
 
-                var keys = $("#w0").yiiGridView("getSelectedRows");
+                var keys = $("#w0").yiiGridView("getSelectedRows"); // Выбранные заказы
 
-                $.ajax({
-                    type: "GET",
-                    data: ({
-                        id: keys,
-                        action: 'confirm_select'
-                    }),
-                    error: function(){
-                      alert('Что-то пошло не так!');
-                    },
-                    success: function(){
-                       // Обновляем pjax
-                       $.pjax.reload('#admin-new-orders', {url: $(location).attr('href')});
-                    }
-                })
+                // Если есть отмеченные заказы, отпарвляем ajax-запрос и перезагружаем pjax
+                if (keys.length !== 0){
+                    $.ajax({
+                        type: "GET",
+                        data: ({
+                            id: keys,
+                            action: 'confirm_select'
+                        }),
+                        error: function(){
+                            alert('Что-то пошло не так!');
+                        },
+                        success: function(){
+                            // Обновляем pjax
+                            $.pjax.reload('#admin-new-orders', {url: $(location).attr('href')});
+                        }
+                    })
+                } else {
+                    alert("Отметьте заказы, которые хотите принять");
+                }
             })
         }
     })
