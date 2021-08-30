@@ -21,7 +21,7 @@ $this->title = 'Новые Заказы';
 <div class="admin-new">
     <h1><?= Html::encode($this->title) ?></h1>
     <?php
-    Pjax::begin(['id' => 'admin-new-orders']);
+    Pjax::begin(['id' => 'admin-new-orders', 'timeout' => false, 'enablePushState' => false]);
         echo GridView::widget([
             'dataProvider' => $ordersDataProvider,
             'filterModel' => $ordersSearchModel,

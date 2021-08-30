@@ -40,9 +40,10 @@ class OrdersController extends Controller
 
         if ($request->isAjax){
 
-            if ($request->post()['action'] === 'confirm_select'){
+            if ($request->get()['action'] === 'confirm_select'){
 
-                $model_orders->confirmOrders($request->post()['id']);
+                $model_orders->confirmOrders($request->get()['id']);
+
             }
 
             /*

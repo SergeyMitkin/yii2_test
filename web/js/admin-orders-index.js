@@ -10,6 +10,7 @@ $(document).ready(function() {
         var action = icon.data('action');
         var modal = $(this);
 
+        // Подтверждаем выбранные заказы
         if (action === 'confirm-select') {
 
             modal.find('.modal-body').html(
@@ -24,20 +25,20 @@ $(document).ready(function() {
                 var keys = $("#w0").yiiGridView("getSelectedRows");
 
                 $.ajax({
-                    //container: '#w0',
-                    type: "POST",
+                    type: "GET",
                     data: ({
                         id: keys,
                         action: 'confirm_select'
                     }),
-
-                    success: function(request){
-                        console.log(request);
+                    error: function(){
+                      alert('Что-то пошло не так!');
+                    },
+                    success: function(){
+                       // Обновляем pjax
+                       $.pjax.reload('#admin-new-orders', {url: $(location).attr('href')});
                     }
-
                 })
             })
-
         }
     })
 
