@@ -19,7 +19,7 @@ $this->title = 'Подтверждённые Заказы';
 <div class="admin-confirmed">
     <h1><?= Html::encode($this->title) ?></h1>
     <?php
-    Pjax::begin();
+    Pjax::begin(['enablePushState' => false]);
     echo GridView::widget([
         'dataProvider' => $ordersDataProvider,
         'filterModel' => $ordersSearchModel,

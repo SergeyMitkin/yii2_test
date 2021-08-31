@@ -15,7 +15,6 @@ use Yii;
 use app\models\tables\Orders;
 use app\models\filters\OrdersFilter;
 use app\models\Email;
-use app\models\tables\Servers;
 use yii\web\Controller;
 use yii\base\Event;
 
