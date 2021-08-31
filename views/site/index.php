@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\data\ActiveDataProvider;
+use yii\bootstrap\Modal;
 
 \app\assets\IndexAsset::register($this);
 
@@ -36,3 +37,21 @@ $this->params['breadcrumbs'][] = '';
 
     ?>
 </div>
+
+<?php
+// Модальное окно принятия заказа
+Modal::begin([
+    'headerOptions' => [
+        'style' => 'display:none;'
+    ],
+    'footerOptions' => [
+        'style' => 'display:none;'
+    ],
+    'options' => [
+        'id' => 'rate-order-modal'
+    ],
+]);
+
+echo 'Модальное окно';
+
+Modal::end();

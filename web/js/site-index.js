@@ -17,6 +17,27 @@ $(document).ready(function() {
 
         } else {
 
+            // Показываем модальное окно
+            $('#rate-order-modal').on('show.bs.modal', function (event) {
+
+                var icon = $(event.relatedTarget);
+                var rate_id = icon.data('rate-id');
+                var url = icon.data('url');
+                var modal = $(this);
+
+                var question = to_order + rate_name + ' ' + for_ + ' ' + price + ' $?';
+
+                modal.find('.modal-body').html(
+                    '<h4 align="center">' + question +'</h4>' +
+                    '<div align="center" class="div-confirm-buttons">' +
+                    '<button class="confirm-buttons new-btn btn-success" data-dismiss="modal" id="confirm-orders">Ok</button>' +
+                    '<button class="confirm-buttons new-btn btn-danger" data-dismiss="modal">Отмена</button>' +
+                    '</div>');
+
+
+            })
+
+            /*
             var question = to_order + rate_name + ' ' + for_ + ' ' + price + ' $?';
             const result = confirm(question);
 
@@ -37,11 +58,15 @@ $(document).ready(function() {
                         var order = obj['order'];
                         
                         if (order === 'created'){
+
+
                             alert(obj['rate_name'] + ' ' + added_to_order)
                         }
                     }
                 })
             }
+            */
+
         }
     })
 })

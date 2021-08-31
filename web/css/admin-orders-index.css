@@ -9,6 +9,7 @@
 
 .confirm-buttons {
     margin: 15px;
+    cursor: pointer;
 }
 
 .btn-success{
