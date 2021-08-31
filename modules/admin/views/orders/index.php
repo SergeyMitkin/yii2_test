@@ -93,7 +93,7 @@ $this->title = 'Новые Заказы';
                         >
                         <span class="glyphicon glyphicon-plus-sign"></span>
                         </a>
-                        <a class="accept-icons header-remove-icons" title="Подтвердить выбранные заказы" aria-label="Подтвердить выбранные заказы"
+                        <a class="accept-icons header-remove-icons" title="Отменить выбранные заказы" aria-label="Отменить выбранные заказы"
                         data-action="cancel-select" data-toggle="modal" data-target="#action-order-modal"
                         href="#"
                         >

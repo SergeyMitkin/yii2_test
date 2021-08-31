@@ -41,7 +41,7 @@ $(document).ready(function() {
                         type: "GET",
                         data: ({
                             id: keys,
-                            action: 'confirm_select'
+                            action: 'confirm'
                         }),
                         error: function(){
                             alert('Что-то пошло не так!');
@@ -67,8 +67,6 @@ $(document).ready(function() {
                 '<button class="confirm-buttons btn btn-danger" data-dismiss="modal">Отмена</button>' +
                 '</div>');
 
-        }
-
             // При клике на ссылку "Ок", подтверждаем заказ
             $('#confirm-order-button_' + order_id).on('click', function (event) {
 
@@ -79,7 +77,7 @@ $(document).ready(function() {
                         type: "GET",
                         data: ({
                             id: keys,
-                            action: 'confirm_select'
+                            action: 'confirm'
                         }),
                         error: function () {
                             alert('Что-то пошло не так!');
@@ -92,7 +90,52 @@ $(document).ready(function() {
                 }
 
             })
-        })
+
+        }
+
+        // Отменяем выбранные заказы
+        else if (action === 'cancel-select') {
+
+            modal.find('.modal-body').html(
+                '<h3 align="center">Отменить выбранные заказы? </h3>' +
+                '<div align="center" class="div-confirm-buttons">' +
+                '<button class="confirm-buttons btn btn-success" data-dismiss="modal" id="cancel-orders">Ok</button>' +
+                '<button class="confirm-buttons btn btn-danger" data-dismiss="modal">Отмена</button>' +
+                '</div>');
+
+
+            $("#cancel-orders").on("click", function (event) {
+
+                var keys = $("#w0").yiiGridView("getSelectedRows"); // Выбранные заказы
+
+                // Если есть отмеченные заказы, отпарвляем ajax-запрос и перезагружаем pjax
+                if (keys.length !== 0){
+                    $.ajax({
+                        type: "GET",
+                        data: ({
+                            id: keys,
+                            action: 'cancel'
+                        }),
+                        error: function(){
+                            alert('Что-то пошло не так!');
+                        },
+                        success: function(){
+                            // Обновляем pjax
+                            $.pjax.reload('#admin-new-orders', {url: $(location).attr('href')});
+                        }
+                    })
+                } else {
+                    alert("Отметьте заказы, которые хотите отменить");
+                }
+
+            })
+
+        }
+
+
+    })
+
+
 
 
         /*

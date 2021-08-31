@@ -70,7 +70,7 @@ class Orders extends \yii\db\ActiveRecord
         $order->status = 1;
     }
 
-    // Принимаем выбранные заказы
+    // Принимаем заказы
     public function confirmOrders($id_array){
 
         // Так как EVENT_AFTER_UPDATE при updateAll не работает, отдельно обновляем статус каждого заказа
@@ -79,6 +79,12 @@ class Orders extends \yii\db\ActiveRecord
             $order->status = 1;
             $order->save();
         }
+    }
+
+    // Отменяем заказы
+    public function cancelOrders($id_array){
+
+        $this::deleteAll(['in', 'id',  $id_array]);
     }
 
 

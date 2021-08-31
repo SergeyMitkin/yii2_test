@@ -40,9 +40,15 @@ class OrdersController extends Controller
 
         if ($request->isAjax){
 
-            if ($request->get()['action'] === 'confirm_select'){
+            if ($request->get()['action'] === 'confirm'){
 
                 $model_orders->confirmOrders($request->get()['id']);
+
+            }
+
+            elseif ($request->get()['action'] === 'cancel'){
+
+                $model_orders->cancelOrders($request->get()['id']);
 
             }
 
