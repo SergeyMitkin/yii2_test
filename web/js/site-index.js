@@ -10,7 +10,7 @@ $(document).ready(function() {
 
         // Если пользователь неавторизован, просим авторизваться
         // Иначе просим подтвердить заказ тарифа
-        if (is_guest == "guest"){
+        if (is_guest == "guest") {
 
             $(this).attr("data-toggle", "none"); // Предотвращаем появление модального окна
             alert(log_in_to_order);
@@ -28,45 +28,38 @@ $(document).ready(function() {
                 var question = to_order + rate_name + ' ' + for_ + ' ' + price + ' $?';
 
                 modal.find('.modal-body').html(
-                    '<h4 align="center">' + question +'</h4>' +
+                    '<h4 align="center">' + question + '</h4>' +
                     '<div align="center" class="div-confirm-buttons">' +
-                    '<button class="confirm-buttons new-btn btn-success" data-dismiss="modal" id="confirm-orders">Ok</button>' +
+                    '<button class="confirm-buttons new-btn btn-success" data-dismiss="modal" id="order-rate">Ok</button>' +
                     '<button class="confirm-buttons new-btn btn-danger" data-dismiss="modal">Отмена</button>' +
                     '</div>');
 
 
-            })
+                $("#order-rate").on("click", function (event) {
 
-            /*
-            var question = to_order + rate_name + ' ' + for_ + ' ' + price + ' $?';
-            const result = confirm(question);
+                    $.ajax({
+                        url: url,
+                        type: "GET",
+                        data: {
+                            rate_id: rate_id,
+                            rate_name: rate_name
+                        },
+                        error: function () {
+                            alert(error_alert);
+                        },
+                        success: function (res) {
+                            var obj = jQuery.parseJSON(res);
+                            var order = obj['order'];
 
-            if (result === true){
+                            if (order === 'created') {
 
-                $.ajax({
-                    url: url,
-                    type: "GET",
-                    data: {
-                        rate_id: rate_id,
-                        rate_name: rate_name
-                    },
-                    error: function () {
-                        alert(error_alert);
-                    },
-                    success: function (res) {
-                        var obj = jQuery.parseJSON(res);
-                        var order = obj['order'];
-                        
-                        if (order === 'created'){
-
-
-                            alert(obj['rate_name'] + ' ' + added_to_order)
+                                alert(obj['rate_name'] + ' ' + added_to_order);
+                            }
                         }
-                    }
+                    })
                 })
-            }
-            */
 
+            })
         }
     })
 })
