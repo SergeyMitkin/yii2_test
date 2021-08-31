@@ -132,73 +132,39 @@ $(document).ready(function() {
 
         }
 
-
-    })
-
-
-
-
-        /*
-        else if (action === 'cancel') {
+        // Отменяем отдельный заказ
+        else if (action === 'cancel'){
 
             modal.find('.modal-body').html('<h3 align="center">Отменить заказ </h3><h3 align="center">№ ' + order_id + '? </h3>' +
                 '<div align="center" class="div-confirm-buttons">' +
-                '<a href="' + url + '" class="confirm-buttons btn btn-success" id="confirm-order-a_' + order_id + '">Ок</a>' +
+                '<button class="confirm-buttons btn btn-success" data-dismiss="modal" id="cancel-order-button_' + order_id + '">Ok</button>' +
                 '<button class="confirm-buttons btn btn-danger" data-dismiss="modal">Отмена</button>' +
                 '</div>');
 
-            // При клике на ссылку "Ок", подтверждаем заказ
-            $('#confirm-order-a_' + order_id).on('click', function (event) {
-                event.preventDefault;
-                modal.modal('hide');
+            // При клике на ссылку "Ок", отменяем заказ
+            $('#cancel-order-button_' + order_id).on('click', function (event) {
 
-                $.ajax({
-                    container: '#admin-new-orders',
-                    data: {
-                        id: order_id,
-                        action: 'cancel'
-                    }
-                })
+                var keys = [order_id];
+
+                if (keys.length !== 0) {
+                    $.ajax({
+                        type: "GET",
+                        data: ({
+                            id: keys,
+                            action: 'cancel'
+                        }),
+                        error: function () {
+                            alert('Что-то пошло не так!');
+                        },
+                        success: function () {
+                            // Обновляем pjax
+                            $.pjax.reload('#admin-new-orders', {url: $(location).attr('href')});
+                        }
+                    })
+                }
             })
         }
     })
-    */
-
-    // Убираем гет-параметры после принятия или отмены заказа
-    /*
-    var href_without_id_parametr = removeURLParameter($(location).attr('href'), 'id');
-    var href_without_id_and_action_parameters = removeURLParameter(href_without_id_parametr, 'action');
-    window.history.pushState({}, '', href_without_id_and_action_parameters);
-    */
-
-    // Функция для удаления гет-параметров
-    function removeURLParameter(url, parameter) {
-        //prefer to use l.search if you have a location/link object
-        var urlparts = url.split('?');
-        if (urlparts.length >= 2) {
-
-            var prefix = encodeURIComponent(parameter) + '=';
-            var pars = urlparts[1].split(/[&;]/g);
-
-            //reverse iteration as may be destructive
-            for (var i = pars.length; i-- > 0;) {
-                //idiom for string.startsWith
-                if (pars[i].lastIndexOf(prefix, 0) !== -1) {
-                    pars.splice(i, 1);
-                }
-            }
-
-            if (pars.length > 0) {
-                url = urlparts[0] + '?' + pars.join('&');
-            } else {
-                url = urlparts[0];
-            }
-
-            return url;
-        } else {
-            return url;
-        }
-    }
 
 })
 

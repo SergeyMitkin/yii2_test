@@ -3,10 +3,7 @@
 namespace app\models\tables;
 
 use app\models\User;
-use Yii;
-use yii\base\ExitException;
-use yii\db\Exception;
-use yii\db\Query;
+
 
 /**
  * This is the model class for table "orders".
@@ -63,13 +60,6 @@ class Orders extends \yii\db\ActiveRecord
         $this->save();
     }
 
-    // Принимаем заказ
-    public function confirmOrder($order_id){
-
-        $order = $this::findOne($order_id);
-        $order->status = 1;
-    }
-
     // Принимаем заказы
     public function confirmOrders($id_array){
 
@@ -85,16 +75,6 @@ class Orders extends \yii\db\ActiveRecord
     public function cancelOrders($id_array){
 
         $this::deleteAll(['in', 'id',  $id_array]);
-    }
-
-
-    // Отменяем заказ
-    public function cancelOrder($order_id){
-
-        $order = $this::findOne($order_id);
-        if ($order->delete()){
-            return true;
-        };
     }
 
     // Получаем тариф

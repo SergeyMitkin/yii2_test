@@ -38,40 +38,18 @@ class OrdersController extends Controller
             $model_email->confirmOrderEmail($event);
         });
 
+        // Принимаем или удаляем заказы через аякс
         if ($request->isAjax){
 
             if ($request->get()['action'] === 'confirm'){
 
                 $model_orders->confirmOrders($request->get()['id']);
-
             }
 
             elseif ($request->get()['action'] === 'cancel'){
 
                 $model_orders->cancelOrders($request->get()['id']);
-
             }
-
-            /*
-            $order_id = $request->get()["id"];
-
-            // Принимаем заказ
-            if($request->get()['action'] === 'confirm'){
-
-                if ($model_orders->confirmOrder($request->get('id'))){
-                    $model_servers = new Servers();
-                    $order = $model_orders::findOne($order_id);
-                    $user_id = $order->user_id;
-                    $rate_id = $order->rate_id;
-
-                    $model_servers->setServer($rate_id, $user_id, $order_id);
-                }
-            }
-            // Отменяем заказ
-            else if ($request->get()['action'] === 'cancel'){
-                $model_orders->cancelOrder($order_id);
-            }
-            */
         }
 
         $ordersSearchModel = new OrdersFilter();
