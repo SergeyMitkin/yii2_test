@@ -78,10 +78,7 @@ $this->title = 'Новые Заказы';
                     'class' => 'yii\grid\CheckboxColumn',
                     'checkboxOptions' => function(){
                         return [
-                            'onchange' => '
-                            var keys = $("#w0").yiiGridView("getSelectedRows");
-                            $(this).parent().parent().toggleClass("info")
-                            '
+                            'onchange' => '$(this).parent().parent().toggleClass("info")'
                         ];
                     }
                 ],

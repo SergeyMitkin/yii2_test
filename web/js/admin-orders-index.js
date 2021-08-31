@@ -8,7 +8,7 @@ $(document).ready(function() {
             $(this).css("color","rgb(114,175,210)");
         }).mouseout(function() {
             $(this).css("color","rgb(60,141,188)");
-        });
+        }).removeClass("pressed-icon");
     })
 
     // Показываем модальное окно
@@ -54,38 +54,46 @@ $(document).ready(function() {
                 } else {
                     alert("Отметьте заказы, которые хотите принять");
                 }
+
             })
         }
-    })
 
-    $('#action-order-modal').on('hide.bs.modal', function (event) {
-        event.preventDefault;
-    })
-
-        /*
-        if (action === 'confirm') {
+        // Подтверждаем отдельный заказ
+        else if (action === 'confirm'){
 
             modal.find('.modal-body').html('<h3 align="center">Подтвердить заказ </h3><h3 align="center">№ ' + order_id + '? </h3>' +
                 '<div align="center" class="div-confirm-buttons">' +
-                '<a href="' + url + '" class="confirm-buttons btn btn-success" id="confirm-order-a_' + order_id + '">Ок</a>' +
+                '<button class="confirm-buttons btn btn-success" data-dismiss="modal" id="confirm-order-button_' + order_id + '">Ok</button>' +
                 '<button class="confirm-buttons btn btn-danger" data-dismiss="modal">Отмена</button>' +
                 '</div>');
 
-            // При клике на ссылку "Ок", подтверждаем заказ
-            $('#confirm-order-a_' + order_id).on('click', function (event) {
-                event.preventDefault;
-                modal.modal('hide');
-
-                $.ajax({
-                    container: '#admin-new-orders',
-                    data: {
-                        id: order_id,
-                        action: 'confirm'
-                    }
-                })
-            })
         }
-        */
+
+            // При клике на ссылку "Ок", подтверждаем заказ
+            $('#confirm-order-button_' + order_id).on('click', function (event) {
+
+                var keys = [order_id];
+
+                if (keys.length !== 0) {
+                    $.ajax({
+                        type: "GET",
+                        data: ({
+                            id: keys,
+                            action: 'confirm_select'
+                        }),
+                        error: function () {
+                            alert('Что-то пошло не так!');
+                        },
+                        success: function () {
+                            // Обновляем pjax
+                            $.pjax.reload('#admin-new-orders', {url: $(location).attr('href')});
+                        }
+                    })
+                }
+
+            })
+        })
+
 
         /*
         else if (action === 'cancel') {
