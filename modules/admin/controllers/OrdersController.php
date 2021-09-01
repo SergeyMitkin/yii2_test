@@ -8,7 +8,6 @@
 
 namespace app\modules\admin\controllers;
 
-use app\assets\AdminOrdersConfirmedAsset;
 use app\assets\AdminOrdersIndexAsset;
 use app\models\tables\Users;
 use Yii;
