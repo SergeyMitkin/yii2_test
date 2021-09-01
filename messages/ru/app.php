@@ -14,6 +14,12 @@ return [
     // Главная
     'main title' => 'Доступные тарифы',
     'price' => 'Цена',
+    // JS главной
+    'log in to order' => 'Авторизуйтесь для заказа тарифа',
+    'to order' => 'Заказать ',
+    'for' => 'за',
+    'error alert' => 'Что-то пошло не так!',
+    'added to order' => 'добавлен в заказ',
 
     // Личный кабинет
     'account title' => 'Личный кабинет',
@@ -53,6 +59,16 @@ return [
     'update gallery' => 'Редактировать альбом',
     'something went wrong' => 'Что-то пошло не так... Ошибка: ',
     'deleting gallery' => 'Удаление галереи',
+
+    // Email
+    'server order' => 'Заказ сервера',
+    'dear' => 'Уважаемый',
+    'you ordered' => 'Вы заказали',
+    'order' => 'Заказ',
+    'wait confirmation' => 'Дождитесь подтверждения администратором',
+    'order confirmation' => 'Подтверждение заказа',
+    'your order' => 'Ваш заказ',
+    'confirmed' => 'подтвержён',
 
     // Футер
     'images ​from' => 'Изображения от',

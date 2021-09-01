@@ -6,6 +6,7 @@ use app\models\tables\Users;
 use Yii;
 use app\models\LoginForm;
 use yii\web\Controller;
+use app\assets\AdminLoginAsset;
 
 /**
  * Default controller for the `admin` module
@@ -34,6 +35,8 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return Yii::$app->response->redirect(['/admin/orders']);
         }
+
+        AdminLoginAsset::register(Yii::$app->getView());
 
         return $this->render('login', [
             'model' => $model,

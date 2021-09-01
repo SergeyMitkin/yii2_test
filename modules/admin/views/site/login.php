@@ -38,9 +38,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>'])->passwordInput()
                                 ->input('password', ['placeholder'=>'Пароль'])?>
 
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
+                <div class="col-sm-12">
+                    <?= $form->field($model, 'rememberMe')->checkbox() ?>
+                </div>
 
-                <div class="form-group">
+                <div class="admin-login-button">
                     <?= Html::submitButton('Вход', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
                 </div>
 

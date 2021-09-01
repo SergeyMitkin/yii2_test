@@ -2,29 +2,28 @@
 /**
  * Created by PhpStorm.
  * User: Sergey
- * Date: 19.03.2021
- * Time: 16:21
+ * Date: 01.09.2021
+ * Time: 1:58
  */
 
 namespace app\assets;
-use yii\web\AssetBundle;
-use yii\web\JqueryAsset;
 
-class IndexAsset extends AssetBundle
+use yii\web\AssetBundle;
+
+class AdminLoginAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
 
     public $css = [
-        'css/index.css'
+        'css/admin-login.css'
     ];
+
     public $js = [
-        "js/site-index.js",
+        //'js/admin-orders-index.js'
     ];
 
     public $depends = [
-        'yii\web\YiiAsset',
-        JqueryAsset::class
+        AdminLteAsset::class
     ];
-
 }

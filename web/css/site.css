@@ -81,6 +81,10 @@
     background-color: rgb(255,255,255);
 }
 
+.pagination li.active a, .pagination li.active a:hover{
+    color: rgb(57,135,195);
+}
+
 @media (max-width: 1199px) {
     .u-section-1 {
         min-height: 1307px;

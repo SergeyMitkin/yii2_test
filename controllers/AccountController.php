@@ -60,7 +60,7 @@ class AccountController extends Controller
         $ordersDataProvider = $ordersSearchModel->search(Yii::$app->request->queryParams);
 
         // Определяем активную вкладку
-        $active_li = ($request->get()['active_li'] !== NULL) ? $request->get()['active_li'] : 'servers';
+        $active_li = (isset($request->get()['active_li']) && $request->get()['active_li'] !== NULL) ? $request->get()['active_li'] : 'servers';
         $this->view->registerJsVar('active_li', $active_li);
 
         $language = substr(Yii::$app->language, 0, 2);

@@ -1,3 +1,23 @@
+/* Модальное окно  */
+.modal-body h4 {
+  color: rgb(41,46,51);
+}
+
+.confirm-buttons {
+  margin: 15px;
+}
+
+.new-btn{
+  padding: 4px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.btn-success {
+  width: 80px;
+}
+
+/* Список тарифов */
 .u-section-1 .u-list-1 {
   min-height: 599px;
   width: 893px;

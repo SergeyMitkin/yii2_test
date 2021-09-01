@@ -8,7 +8,6 @@
 
 namespace app\models;
 
-
 use yii\base\Model;
 use Yii;
 
@@ -32,13 +31,13 @@ class Email extends Model
         $email = $user->email;
         $username = $user->name;
         $rate = $event->sender->rate;
-        $rate_name = $rate->name;
+        $rate_name = (Yii::$app->language->value == 'en-UK') ? $rate->ru_name : $rate->en_name;
         $rate_price = $rate->price;
 
-        $subject = 'Заказ сервера';
-        $body = 'Уважаемый ' . $username . ', Вы заказали ' . $rate_name .
-            ' за ' . $rate_price . ' $. Номер заказа ' . $order_id . '.
-                Дождитесь подтверждения администратором';
+        $subject = Yii::t("app", "server order");
+        $body = Yii::t("app", "dear") . ' ' . $username . ', ' . Yii::t("app", "you ordered") . ' ' . $rate_name .
+            ' ' . Yii::t("app", "for") . ' ' . $rate_price . ' $. ' . Yii::t("app", "order") . ' № ' . $order_id . '. '
+                . Yii::t("app", "wait confirmation");
 
         $this->contact($email, $subject, $body);
     }
@@ -50,9 +49,8 @@ class Email extends Model
         $email = $user->email;
         $username = $user->name;
 
-        $subject = 'Подтверждение заказа';
-        $body = 'Уважаемый ' . $username . ', Ваш заказ № ' . $order_id . ' подтверждён.';
-
+        $subject = Yii::t("app", "order confirmation");
+        $body = Yii::t("app", "dear") . ' ' . $username . '. ' . Yii::t("app", "your order") . ' № ' . $order_id . Yii::t("app", "confirmed");
 
         $this->contact($email, $subject, $body);
     }

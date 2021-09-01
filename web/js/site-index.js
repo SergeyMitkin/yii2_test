@@ -10,40 +10,56 @@ $(document).ready(function() {
 
         // Если пользователь неавторизован, просим авторизваться
         // Иначе просим подтвердить заказ тарифа
-        if (is_guest == "guest"){
+        if (is_guest == "guest") {
 
             $(this).attr("data-toggle", "none"); // Предотвращаем появление модального окна
-            alert("Для заказа тарифа авторизуйтесь");
+            alert(log_in_to_order);
 
         } else {
 
-            var question = 'Заказать' + rate_name + ' за ' + price + ' $?';
-            const result = confirm(question);
+            // Показываем модальное окно
+            $('#rate-order-modal').on('show.bs.modal', function (event) {
 
-            if (result === true){
-                var action = "adOrder";
+                var icon = $(event.relatedTarget);
+                var rate_id = icon.data('rate-id');
+                var url = icon.data('url');
+                var modal = $(this);
 
-                $.ajax({
-                    url: url,
-                    type: "GET",
-                    data: {
-                        ajax: action,
-                        rate_id: rate_id,
-                        rate_name: rate_name
-                    },
-                    error: function () {
-                        alert('Что-то пошло не так!');
-                    },
-                    success: function (res) {
-                        var obj = jQuery.parseJSON(res);
-                        var order = obj['order'];
-                        
-                        if (order === 'created'){
-                            alert(obj['rate_name'] + ' добавлен в заказ')
+                var question = to_order + rate_name + ' ' + for_ + ' ' + price + ' $?';
+
+                modal.find('.modal-body').html(
+                    '<h4 align="center">' + question + '</h4>' +
+                    '<div align="center" class="div-confirm-buttons">' +
+                    '<button class="confirm-buttons new-btn btn-success" data-dismiss="modal" id="order-rate">Ok</button>' +
+                    '<button class="confirm-buttons new-btn btn-danger" data-dismiss="modal">Отмена</button>' +
+                    '</div>');
+
+
+                $("#order-rate").on("click", function (event) {
+
+                    $.ajax({
+                        url: url,
+                        type: "GET",
+                        data: {
+                            rate_id: rate_id,
+                            rate_name: rate_name
+                        },
+                        error: function () {
+                            alert(error_alert);
+                        },
+                        success: function (res) {
+                            var obj = jQuery.parseJSON(res);
+                            var order = obj['order'];
+
+                            if (order === 'created') {
+
+                                alert(obj['rate_name'] + ' ' + added_to_order);
+                            }
                         }
-                    }
+                    })
                 })
-            }
+
+            })
         }
     })
 })

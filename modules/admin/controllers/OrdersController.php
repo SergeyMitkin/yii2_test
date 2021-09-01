@@ -8,14 +8,12 @@
 
 namespace app\modules\admin\controllers;
 
-use app\assets\AdminOrdersConfirmedAsset;
 use app\assets\AdminOrdersIndexAsset;
 use app\models\tables\Users;
 use Yii;
 use app\models\tables\Orders;
 use app\models\filters\OrdersFilter;
 use app\models\Email;
-use app\models\tables\Servers;
 use yii\web\Controller;
 use yii\base\Event;
 
@@ -29,7 +27,6 @@ class OrdersController extends Controller
         $user->isAdmin();
 
         $request = Yii::$app->request;
-        $order_id = $request->get()["id"];
         $model_orders = new Orders();
 
         // При обновлении статуса заказа, отправляем пользователю email
@@ -39,22 +36,17 @@ class OrdersController extends Controller
             $model_email->confirmOrderEmail($event);
         });
 
-        if ($request->isPjax){
-            // Принимаем заказ
-            if($request->get('action') === 'confirm'){
+        // Принимаем или удаляем заказы через аякс
+        if ($request->isAjax){
 
-                if ($model_orders->confirmOrder($request->get('id'))){
-                    $model_servers = new Servers();
-                    $order = $model_orders::findOne($order_id);
-                    $user_id = $order->user_id;
-                    $rate_id = $order->rate_id;
+            if ($request->get()['action'] === 'confirm'){
 
-                    $model_servers->setServer($rate_id, $user_id, $order_id);
-                }
+                $model_orders->confirmOrders($request->get()['id']);
             }
-            // Отменяем заказ
-            else if ($request->get('action') === 'cancel'){
-                $model_orders->cancelOrder($order_id);
+
+            elseif ($request->get()['action'] === 'cancel'){
+
+                $model_orders->cancelOrders($request->get()['id']);
             }
         }
 

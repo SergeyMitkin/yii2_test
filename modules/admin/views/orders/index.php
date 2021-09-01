@@ -21,110 +21,132 @@ $this->title = 'Новые Заказы';
 <div class="admin-new">
     <h1><?= Html::encode($this->title) ?></h1>
     <?php
-    Pjax::begin(['id' => 'admin-new-orders']);
-    echo GridView::widget([
-        'dataProvider' => $ordersDataProvider,
-        'filterModel' => $ordersSearchModel,
-        'summary' => false,
-        'headerRowOptions' => [
-            'class' => 'header-row'
-        ],
-        'columns' => [
-            [
-                'class' => 'yii\grid\SerialColumn',
+    Pjax::begin(['id' => 'admin-new-orders', 'timeout' => false, 'enablePushState' => false]);
+        echo GridView::widget([
+            'dataProvider' => $ordersDataProvider,
+            'filterModel' => $ordersSearchModel,
+            'summary' => false,
+            'headerRowOptions' => [
+                'class' => 'header-row'
             ],
-            [
-                'attribute' => 'id',
-                'format' => 'html',
-                'value' => function($model){
-                    return Html::tag('span', $model->id);
-                }
-            ],
-            [
-                'attribute' => 'user_email',
-                'label' => 'Email пользователя',
-                'format' => 'html',
-                'value' => function($model){
-                    return Html::tag('span', $model->user->email);
-                }
-            ],
-            [
-                'attribute' => 'rate_name',
-                'label' => 'Тариф',
-                'format' => 'html',
-                'filter' => \yii\helpers\ArrayHelper::map(\app\models\tables\Rates::find()->all(), 'id', 'ru_name'),
-                'value' => function($model){
-                    return Html::tag('span', $model->rate->ru_name);
-                }
-            ],
-            [
-                'attribute' => 'date',
-                'label' => 'Дата и время',
-                'format' => 'raw',
-                'value' => function($model){
-                    return Html::tag('span', $model->date);
-                },
-                'filter' => DatePicker::widget([
-                    'model' => $ordersSearchModel,
-                    'attribute' => 'date',
-                    'language' => 'ru',
-                    'clientOptions' => [
-                        'autoclose' => true,
-                        'format' => 'yyyy-mm-dd'
-                    ]
-                ])
-            ],
-            [
-                'class' => 'yii\grid\ActionColumn',
-                // Кнопка принятия заказа
-                'template' => '{confirm} {cancel}',
-                'buttons' => [
-                    'confirm' => function ($url, $model_orders, $key) {
-                        $options = [
-                            'title' => 'Подтвердить',
-                            'aria-label' => 'Подтвердить',
-                            'class' => 'accept-icons',
-                            'data-order-id' => $key,
-                            'data-url' => $url,
-                            'data-action' => 'confirm',
-                            'data-toggle' => 'modal',
-                            'data-target' => '#action-order-modal'
-                        ];
-
-                        return Html::a('<span class="glyphicon glyphicon-ok-sign"></span>', $url, $options);
-                    },
-
-                    // Кнопка удаления заказа
-                    'cancel' => function ($url, $model_orders, $key){
-
-                        $options = [
-                            'title' => 'Отменить',
-                            'aria-label' => 'Отменить',
-                            'class' => 'accept-icons',
-                            'data-order-id' => $key,
-                            'data-url' => $url,
-                            'data-action' => 'cancel',
-                            'data-toggle' => 'modal',
-                            'data-target' => '#action-order-modal'
-                        ];
-
-                        return Html::a('<span class="glyphicon glyphicon-remove"></span>', $url, $options);
-                    }
-
+            'columns' => [
+                [
+                    'class' => 'yii\grid\SerialColumn',
                 ],
-                'urlCreator' => function ($action, $model, $key, $index) {
-                    if ($action === 'confirm') {
-                        $url = Url::current(['id' => $key, 'action' => 'confirm']);
-                        return $url;
+                [
+                    'attribute' => 'id',
+                    'format' => 'html',
+                    'value' => function($model){
+                        return Html::tag('span', $model->id);
                     }
-                    if ($action === 'cancel'){
-                        $url = Url::current(['id' => $key, 'action' => 'cancel']);
-                        return $url;
+                ],
+                [
+                    'attribute' => 'user_email',
+                    'label' => 'Email пользователя',
+                    'format' => 'html',
+                    'value' => function($model){
+                        return Html::tag('span', $model->user->email);
                     }
-                }
+                ],
+                [
+                    'attribute' => 'rate_name',
+                    'label' => 'Тариф',
+                    'format' => 'html',
+                    'filter' => \yii\helpers\ArrayHelper::map(\app\models\tables\Rates::find()->all(), 'id', 'ru_name'),
+                    'value' => function($model){
+                        return Html::tag('span', $model->rate->ru_name);
+                    }
+                ],
+                [
+                    'attribute' => 'date',
+                    'label' => 'Дата и время',
+                    'format' => 'raw',
+                    'value' => function($model){
+                        return Html::tag('span', $model->date);
+                    },
+                    'filter' => DatePicker::widget([
+                        'model' => $ordersSearchModel,
+                        'attribute' => 'date',
+                        'language' => 'ru',
+                        'clientOptions' => [
+                            'autoclose' => true,
+                            'format' => 'yyyy-mm-dd'
+                        ]
+                    ])
+                ],
+                [
+                    'class' => 'yii\grid\CheckboxColumn',
+                    'checkboxOptions' => function(){
+                        return [
+                            'onchange' => '$(this).parent().parent().toggleClass("info")'
+                        ];
+                    }
+                ],
+                [
+                    'class' => 'yii\grid\ActionColumn',
+                    // Кнопка принятия заказа
+                    'template' => '{confirm} {cancel}',
+                    'header' => '
+                        <a class="accept-icons header-accept-icons" title="Подтвердить выбранные заказы" aria-label="Подтвердить выбранные заказы"
+                        data-action="confirm-select" data-toggle="modal" data-target="#action-order-modal"
+                        href="#"
+                        >
+                        <span class="glyphicon glyphicon-plus-sign"></span>
+                        </a>
+                        <a class="accept-icons header-remove-icons" title="Отменить выбранные заказы" aria-label="Отменить выбранные заказы"
+                        data-action="cancel-select" data-toggle="modal" data-target="#action-order-modal"
+                        href="#"
+                        >
+                        <span class="glyphicon glyphicon-remove"></span>
+                        </a>
+                    ',
+                    'buttons' => [
+                        'confirm' => function ($url, $model_orders, $key) {
+                            $options = [
+                                'title' => 'Подтвердить',
+                                'aria-label' => 'Подтвердить',
+                                'class' => 'accept-icons',
+                                'data-order-id' => $key,
+                                'data-url' => $url,
+                                'data-action' => 'confirm',
+                                'data-toggle' => 'modal',
+                                'data-target' => '#action-order-modal'
+                            ];
+
+                            return Html::a('<span class="glyphicon glyphicon-plus-sign"></span>', $url, $options);
+                        },
+
+                        // Кнопка удаления заказа
+                        'cancel' => function ($url, $model_orders, $key){
+
+                            $options = [
+                                'title' => 'Отменить',
+                                'aria-label' => 'Отменить',
+                                'class' => 'accept-icons',
+                                'data-order-id' => $key,
+                                'data-url' => $url,
+                                'data-action' => 'cancel',
+                                'data-toggle' => 'modal',
+                                'data-target' => '#action-order-modal'
+                            ];
+
+                            return Html::a('<span class="glyphicon glyphicon-remove"></span>', $url, $options);
+                        }
+
+                    ],
+                    'urlCreator' => function ($action, $model, $key, $index) {
+                        if ($action === 'confirm') {
+                            $url = Url::current(['id' => $key, 'action' => 'confirm']);
+                            return $url;
+                        }
+                        if ($action === 'cancel'){
+                            $url = Url::current(['id' => $key, 'action' => 'cancel']);
+                            return $url;
+                        }
+                    }
+                ]
             ]
-        ]
-    ]);
+        ]);
     Pjax::end();
     ?>
 </div>

@@ -24,9 +24,11 @@ use yii\helpers\Url;
               } elseif (\Yii::$app->language == 'en-UK'){
                   echo $model->en_name;
               }
-              ?>
+              ?>"
               data-price="<? echo $model->price ?>"
               data-url="<? echo Url::toRoute(['site/index'])?>"
+              data-toggle = "modal"
+              data-target = "#rate-order-modal"
          >
              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-7da8_<? echo $model->id ?>">
              </use>

@@ -3,10 +3,7 @@
 namespace app\models\tables;
 
 use app\models\User;
-use Yii;
-use yii\base\ExitException;
-use yii\db\Exception;
-use yii\db\Query;
+
 
 /**
  * This is the model class for table "orders".
@@ -58,27 +55,26 @@ class Orders extends \yii\db\ActiveRecord
 
         $this->rate_id = $rate_id;
         $this->user_id = $user_id;
+        $rate = $this->rate;
+
         $this->save();
     }
 
-    // Принимаем заказ
-    public function confirmOrder($order_id){
+    // Принимаем заказы
+    public function confirmOrders($id_array){
 
-        $order = $this::findOne($order_id);
-        $order->status = 1;
-
-        if ($order->save()){
-            return true;
+        // Так как EVENT_AFTER_UPDATE при updateAll не работает, отдельно обновляем статус каждого заказа
+        for ($i=0; $i<count($id_array); $i++){
+            $order = $this::findOne($id_array[$i]);
+            $order->status = 1;
+            $order->save();
         }
     }
 
-    // Отменяем заказ
-    public function cancelOrder($order_id){
+    // Отменяем заказы
+    public function cancelOrders($id_array){
 
-        $order = $this::findOne($order_id);
-        if ($order->delete()){
-            return true;
-        };
+        $this::deleteAll(['in', 'id',  $id_array]);
     }
 
     // Получаем тариф

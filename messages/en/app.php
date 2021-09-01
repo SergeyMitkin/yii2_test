@@ -15,6 +15,12 @@ return [
     // Главная
     'main title' => 'Affordable rates',
     'price' => 'Price',
+    // JS главной
+    'log in to order' => 'log in to order a tariff',
+    'to order' => 'Order ',
+    'for' => 'for',
+    'error alert' => 'Something went wrong!',
+    'added to order' => 'added to order',
 
     // Личный кабинет
     'account title' => 'My account',
@@ -50,6 +56,16 @@ return [
     'failed to rename directory' => 'Failed to rename directory',
     'something went wrong' => 'Something went wrong... Error: ',
     'deleting gallery' => 'Deleting gallery',
+
+    // Email
+    'server order' => 'Server order',
+    'dear' => 'Dear',
+    'you ordered' => 'you ordered',
+    'order' => 'Order',
+    'wait confirmation' => 'Wait for confirmation by the administrator',
+    'order confirmation' => 'Order confirmation',
+    'your order' => 'Your order',
+    'confirmed' => 'confirmed',
 
     // Футер
     'images ​from' => 'Images from',
