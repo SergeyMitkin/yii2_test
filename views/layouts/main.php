@@ -112,6 +112,9 @@ AppAsset::register($this);
                                 '</li>';
                             }
                             ?>
+                            <li class="u-nav-item">
+                                <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/site/test" style="padding: 10px 20px;"><?//= Yii::t("app", "menu home"); ?>Тестовая страница</a>
+                            </li>
                         </ul>
                     </div>
 
@@ -156,6 +159,9 @@ AppAsset::register($this);
                                             '</li>';
                                         }
                                         ?>
+                                        <li class="u-nav-item">
+                                            <a class="u-button-style u-nav-link" href="/site/test"><?//= Yii::t("app", "menu home") ?>Тестовая страница</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
