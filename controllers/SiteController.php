@@ -249,7 +249,6 @@ class SiteController extends Controller
             }
 
             $return = getCaptcha($secret_key, $captcha);
-//            var_dump($return);
 
             if ($return->success == true && $return->score >= 0.5){
                 echo 'success';
