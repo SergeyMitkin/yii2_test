@@ -156,6 +156,9 @@ AppAsset::register($this);
                                             '</li>';
                                         }
                                         ?>
+                                        <li class="u-nav-item">
+                                            <a class="u-button-style u-nav-link" href="/site/test"><?//= Yii::t("app", "menu home") ?>Тестовая страница</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>

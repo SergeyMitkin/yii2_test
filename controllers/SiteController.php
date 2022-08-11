@@ -231,4 +231,37 @@ class SiteController extends Controller
 
         return $this->redirect(Yii::$app->request->referrer);
     }
+
+    public function actionTest(){
+
+        $captcha = '';
+        $site_key = '6Lca5Z4fAAAAACFNANKMKoiWh_8iJuA-S9VHWCxv';
+        $secret_key = '6Lca5Z4fAAAAALKJjkAAU0H99FVMC6UIVXSAXcEn';
+
+        if (Yii::$app->request->isAjax){
+
+            $captcha = $_POST['recaptcha'];
+
+            function getCaptcha($secret_key, $captcha){
+                $response = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response=' . $captcha);
+                $return = json_decode($response);
+                return $return;
+            }
+
+            $return = getCaptcha($secret_key, $captcha);
+
+            if ($return->success == true && $return->score >= 0.5){
+                echo 'success';
+            } else {
+                echo 'robot';
+            }
+
+        } else {
+            return $this->render('test', [
+                'site_key' => $site_key,
+                'secret_key' => $secret_key
+            ]);
+        }
+
+    }
 }

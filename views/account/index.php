@@ -74,10 +74,11 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'filter' => \yii\helpers\ArrayHelper::map($model_rates::find()->all(),'id', $language . '_name'),
                                 'format' => 'html',
                                 'value' => function($model){
-                                    if (\Yii::$app->request->cookies['language'] == 'ru-RU'){
-                                        return Html::tag('span', $model->rate->ru_name, ['class' => 'span-in-td']);
-                                    } else if (\Yii::$app->request->cookies['language'] == 'en-UK')
-                                        return Html::tag('span', $model->rate->en_name, ['class' => 'span-in-td']);
+                                        if (!isset(\Yii::$app->request->cookies['language']->value) || \Yii::$app->request->cookies['language']->value !== 'en-UK'){
+                                            return Html::tag('span', $model->rate->ru_name, ['class' => 'span-in-td']);
+                                        } else {
+                                            return Html::tag('span', $model->rate->en_name, ['class' => 'span-in-td']);
+                                        }
                                     }
                             ],
                             [
@@ -133,10 +134,11 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'filter' => \yii\helpers\ArrayHelper::map($model_rates::find()->all(),'id', $language . '_name'),
                                 'format' => 'html',
                                 'value' => function($model){
-                                    if (\Yii::$app->request->cookies['language'] == 'ru-RU'){
+                                    if (!isset(\Yii::$app->request->cookies['language']->value) || \Yii::$app->request->cookies['language']->value !== 'en-UK'){
                                         return Html::tag('span', $model->rate->ru_name, ['class' => 'span-in-td']);
-                                    } else if (\Yii::$app->request->cookies['language'] == 'en-UK')
+                                    } else {
                                         return Html::tag('span', $model->rate->en_name, ['class' => 'span-in-td']);
+                                    }
                                 }
                             ],
                             [

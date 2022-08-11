@@ -43,7 +43,6 @@ class AccountOrdersFilter extends Orders
      */
     public function search($params)
     {
-
         $query = Orders::find();
         $query->joinWith(['rate']);
         // add conditions that should always apply here

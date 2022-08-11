@@ -47,6 +47,7 @@ $config = [
         ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
+            'enableCsrfValidation'=>false,
             'cookieValidationKey' => 'XpvF0EBsNY1ls_evgA8R82A7hPoLsm0d',
         ],
         'cache' => [
